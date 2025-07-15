@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { PortalComponent } from './components/portal/portal.component';
+import { PortalBarComponent } from './components/portal-bar/portal-bar.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [PortalBarComponent,PortalComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
