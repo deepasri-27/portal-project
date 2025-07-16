@@ -1,10 +1,17 @@
 import { Component } from '@angular/core';
+import { LoginComponent } from '../shared/login/login.component'; // adjust path if needed
 
 @Component({
   selector: 'app-vendor-portal',
-  imports: [],
-  templateUrl: './vendor-portal.component.html',
-  styleUrl: './vendor-portal.component.css'
+  standalone: true,
+  imports: [LoginComponent],
+  template: `
+    <app-login
+      [actor]="'vendor'"
+      [heading]="'Vendor Login'"
+      [placeholder]="'Vendor ID'">
+    </app-login>
+  `
 })
 export class VendorPortalComponent {
 

@@ -1,11 +1,15 @@
-<div class="portal-bar">
-  <button (click)="navigateTo('customer')" class="portal-btn">
-    👤 Customer Portal
-  </button>
-  <button (click)="navigateTo('vendor')" class="portal-btn">
-    🛒 Vendor Portal
-  </button>
-  <button (click)="navigateTo('employee')" class="portal-btn">
-    💼 Employee Portal
-  </button>
+<!-- Logo on top -->
+<div class="logo-container">
+  <img src="assets/images/kaar-logo.png" alt="Kaar Logo" class="logo" />
+</div>
+
+<!-- Icons for portals -->
+<div class="sidebar-icon" (click)="navigateTo('customer')" title="Customer Portal">
+  <i class="fas fa-user"></i>
+</div>
+<div class="sidebar-icon" (click)="navigateTo('vendor')" title="Vendor Portal">
+  <i class="fas fa-store"></i>
+</div>
+<div class="sidebar-icon" (click)="navigateTo('employee')" title="Employee Portal">
+  <i class="fas fa-briefcase"></i>
 </div>

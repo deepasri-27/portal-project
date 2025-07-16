@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
+import { LoginComponent } from '../shared/login/login.component'; // adjust path if needed
 
 @Component({
   selector: 'app-employee-portal',
-  imports: [],
-  templateUrl: './employee-portal.component.html',
-  styleUrl: './employee-portal.component.css'
+  standalone: true,
+  imports: [LoginComponent],
+  template: `
+    <app-login
+      [actor]="'employee'"
+      [heading]="'Employee Login'"
+      [placeholder]="'Employee ID'">
+    </app-login>
+  `
 })
-export class EmployeePortalComponent {
-
-}
+export class EmployeePortalComponent {}
