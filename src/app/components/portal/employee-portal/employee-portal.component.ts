@@ -5,12 +5,6 @@ import { LoginComponent } from '../shared/login/login.component'; // adjust path
   selector: 'app-employee-portal',
   standalone: true,
   imports: [LoginComponent],
-  template: `
-    <app-login
-      [actor]="'employee'"
-      [heading]="'Employee Login'"
-      [placeholder]="'Employee ID'">
-    </app-login>
-  `
+  templateUrl:'employee-portal.component.html'
 })
 export class EmployeePortalComponent {}

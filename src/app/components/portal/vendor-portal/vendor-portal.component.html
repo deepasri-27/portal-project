@@ -1,5 +1,17 @@
-<app-login
-  [actor]="'vendor'"
-  [heading]="'Vendor Login'"
-  [placeholder]="'Vendor ID'">
-</app-login>
+<ng-container *ngIf="isVendorLoggedIn; else showLogin">
+  <div class="portal-wrapper">
+    <app-top-nav [profileUrl]="profileUrl" [tileData]="tileData"  [portal]="portal"></app-top-nav>
+    <div class="portal-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #showLogin>
+  <app-login
+    [actor]="'vendor'"
+    [heading]="'Vendor Login'"
+    [placeholder]="'Vendor ID'"
+    (loginSuccess)="handleLoginSuccess()">
+  </app-login>
+</ng-template>

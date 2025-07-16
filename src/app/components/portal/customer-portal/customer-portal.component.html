@@ -1,5 +1,14 @@
-<app-login
+<!-- <app-login
   [actor]="'customer'"
   [heading]="'Customer Login'"
   [placeholder]="'Customer ID'">
-</app-login>
+</app-login> -->
+
+<app-top-nav
+  [profileUrl]="'customer001'"
+  [tileData]="[
+    { label: 'Orders', url: '/portal/customer/orders' },
+    { label: 'Support', url: '/portal/customer/support' }
+  ]">
+</app-top-nav>
+<div></div>

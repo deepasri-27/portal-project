@@ -1,0 +1,26 @@
+<nav class="top-nav">
+  <!-- Tile list on left -->
+  <div class="tiles">
+    <span 
+      class="tile" 
+      *ngFor="let tile of tileData" 
+      (click)="navigate(tile.url)">
+      {{ tile.label }}
+    </span>
+  </div>
+
+  <!-- Profile on right -->
+  <div class="profile-section">
+    <div class="profile-icon" (click)="toggleDropdown()">
+      <!-- Replace emoji with SVG icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 12c2.67 0 8 1.34 8 4v2H4v-2c0-2.66 5.33-4 8-4zm0-2a4 4 0 100-8 4 4 0 000 8z"/>
+      </svg>
+    </div>
+
+    <div class="dropdown" *ngIf="showDropdown">
+      <div (click)="navigate(profileUrl)">Profile</div>
+      <div (click)="logout()">Logout</div>
+    </div>
+  </div>
+</nav>
