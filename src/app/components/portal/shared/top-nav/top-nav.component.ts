@@ -30,7 +30,7 @@ export class TopNavComponent {
   }
 
   logout() {
-    localStorage.removeItem(this.portal);
+     document.cookie = `${this.portal}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
     console.log("logout: "+this.portal);
     this.router.navigate(['/']);
   }

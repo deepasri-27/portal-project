@@ -1,1 +1,23 @@
-<p>vendor-profile works!</p>
+<div class="profile-wrapper">
+  <div class="profile-card">
+    <h2 class="title"><i class="fas fa-file-invoice"></i> Vendor Profile</h2>
+    <div class="info">
+      <div class="info-item">
+        <i class="fas fa-id-badge icon"></i>
+        <span class="text">{{ profile.VendorId }}</span>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-building icon"></i>
+        <span class="text">{{ profile.Name }}</span>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-city icon"></i>
+        <span class="text">{{ profile.City }}, {{ profile.Country }} - {{ profile.Postcode }}</span>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-road icon"></i>
+        <span class="text">{{ profile.Street }}</span>
+      </div>
+    </div>
+  </div>
+</div>

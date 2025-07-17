@@ -1,14 +1,17 @@
-<!-- <app-login
-  [actor]="'customer'"
-  [heading]="'Customer Login'"
-  [placeholder]="'Customer ID'">
-</app-login> -->
+<ng-container *ngIf="isCustomerLoggedIn; else showLogin">
+  <div class="portal-wrapper">
+    <app-top-nav [profileUrl]="profileUrl" [tileData]="tileData" [portal]="'customer'"></app-top-nav>
+    <div class="portal-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</ng-container>
 
-<app-top-nav
-  [profileUrl]="'customer001'"
-  [tileData]="[
-    { label: 'Orders', url: '/portal/customer/orders' },
-    { label: 'Support', url: '/portal/customer/support' }
-  ]">
-</app-top-nav>
-<div></div>
+<ng-template #showLogin>
+  <app-login
+    [actor]="'customer'"
+    [heading]="'Customer Login'"
+    [placeholder]="'Customer ID'"
+    (loginSuccess)="handleLoginSuccess()">
+  </app-login>
+</ng-template>

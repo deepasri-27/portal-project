@@ -1,5 +1,17 @@
-<app-login
-  [actor]="'employee'"
-  [heading]="'Employee Login'"
-  [placeholder]="'Employee ID'">
-</app-login>
+<ng-container *ngIf="isEmployeeLoggedIn; else showLogin">
+  <div class="portal-wrapper">
+    <app-top-nav [profileUrl]="profileUrl" [tileData]="tileData" [portal]="'employee'"></app-top-nav>
+    <div class="portal-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #showLogin>
+  <app-login
+    [actor]="'employee'"
+    [heading]="'Employee Login'"
+    [placeholder]="'Employee ID'"
+    (loginSuccess)="handleLoginSuccess()">
+  </app-login>
+</ng-template>
