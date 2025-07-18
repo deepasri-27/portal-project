@@ -1,6 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,18 +18,51 @@ export class LoginComponent {
   @Output() loginSuccess = new EventEmitter<void>();
 
   loginForm: FormGroup;
+  errorMessage: string = '';
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.loginForm = this.fb.group({
       id: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
+
   onLogin() {
-    if (this.loginForm.valid) {
-      // ✅ Emit login success (no auth for now)
-      this.loginSuccess.emit();
+    this.errorMessage = '';
+
+    const lifnr = this.loginForm.value.id;
+    const password = this.loginForm.value.password;
+
+    if (!lifnr || !password) {
+      this.errorMessage = `Please enter ${this.placeholder} and Password`;
+      return;
     }
+
+    const payload = {
+      lifnr: lifnr,
+      password: password.trim()
+    };
+
+    this.http.post<any>(`http://localhost:3000/api/${this.actor}-login`, payload).subscribe({
+      next: (res) => {
+        if (res.status === 'success') {
+          // localStorage.setItem('VendorId', lifnr);
+       
+          this.loginSuccess.emit(); // Notify parent on success
+          this.router.navigate([`portal/${this.actor}`]);
+        } else {
+          this.errorMessage = res.message || 'Invalid credentials';
+          this.loginSuccess.emit(); 
+          this.router.navigate([`portal/${this.actor}`]);
+        }
+      },
+      error: (err) => {
+        this.errorMessage = err.error?.message || 'Server error during login';
+         this.loginSuccess.emit(); 
+         this.router.navigate([`portal/${this.actor}`]);
+      }
+    });
   }
 }
+

@@ -13,6 +13,9 @@ import { CustomerFinancialsheetComponent } from './components/portal/customer-po
 import { EmployeeProfileComponent } from './components/portal/employee-portal/employee-profile/employee-profile.component';
 import { EmployeeLeaveRequestComponent } from './components/portal/employee-portal/employee-leave-request/employee-leave-request.component';
 import { EmployeePayslipComponent } from './components/portal/employee-portal/employee-payslip/employee-payslip.component';
+import { CustomerDashboardInquiryComponent } from './components/portal/customer-portal/customer-dashboard/customer-dashboard-inquiry/customer-dashboard-inquiry.component';
+import { CustomerDashboardSalesComponent } from './components/portal/customer-portal/customer-dashboard/customer-dashboard-sales/customer-dashboard-sales.component';
+import { CustomerDashboardDeliveryComponent } from './components/portal/customer-portal/customer-dashboard/customer-dashboard-delivery/customer-dashboard-delivery.component';
 
 export const routes: Routes = [
   // Route to WelcomeComponent at root path
@@ -26,22 +29,33 @@ export const routes: Routes = [
       { path: 'customer', component: CustomerPortalComponent,
         children:[
           {path:'profile',component:CustomerProfileComponent},
-          {path:'dashboard',component:CustomerDashboardComponent},
-          {path:'financial-sheet',component:CustomerFinancialsheetComponent}
+          {path:'dashboard',component:CustomerDashboardComponent,
+            children:[
+              {path:'inquiry',component:CustomerDashboardInquiryComponent},
+              {path:'sales-order',component:CustomerDashboardSalesComponent},
+              {path:'delivery',component:CustomerDashboardDeliveryComponent},
+              // {path:'**',redirectTo:'inquiry',pathMatch:'full'}
+            ]
+          },
+          {path:'financial-sheet',component:CustomerFinancialsheetComponent},
+          { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
         ]
        },
       { path: 'vendor', component: VendorPortalComponent,
         children:[
           {path:'profile',component:VendorProfileComponent},
           {path:'dashboard',component:VendorDashboardComponent},
-          {path:'financial-sheet',component:VendorFinancialsheetComponent}
+          {path:'financial-sheet',component:VendorFinancialsheetComponent},
+          { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
         ]
        },
       { path: 'employee', component: EmployeePortalComponent,
         children:[
          {path:'profile',component:EmployeeProfileComponent},
           {path:'leave-request',component:EmployeeLeaveRequestComponent},
-          {path:'payslip',component:EmployeePayslipComponent}
+          {path:'payslip',component:EmployeePayslipComponent},
+          { path: '**', redirectTo: 'leave-request', pathMatch: 'full' }
+
         ]
        },
       { path: 'welcome', component: WelcomeComponent},

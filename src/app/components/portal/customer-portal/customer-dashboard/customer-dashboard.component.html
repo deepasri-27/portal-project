@@ -1,1 +1,7 @@
-<p>customer-dashboard works!</p>
+<div class="dashboard-container">
+ <app-top-tab [tabs]="tileData"></app-top-tab>
+  
+  <div class="tab-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
