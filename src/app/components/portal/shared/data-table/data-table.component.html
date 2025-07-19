@@ -1,1 +1,33 @@
-<p>data-table works!</p>
+<div class="table-wrapper">
+  <div class="table-scrollable">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th *ngFor="let title of titles">{{ title }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of paginatedData">
+          <td *ngFor="let key of keys">{{ row[key] }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer-controls">
+    <div class="items-per-page">
+      <label for="items">Items per page:</label>
+      <select id="items" (change)="onItemsPerPageChange($event)">
+        <option *ngFor="let opt of [5, 10, 20, 50]" [value]="opt" [selected]="opt === itemsPerPage">
+          {{ opt }}
+        </option>
+      </select>
+    </div>
+
+    <div class="pagination-controls">
+      <button (click)="changePage(page - 1)" [disabled]="page === 1">← Prev</button>
+      <span>Page {{ page }} of {{ totalPages }}</span>
+      <button (click)="changePage(page + 1)" [disabled]="page === totalPages">Next →</button>
+    </div>
+  </div>
+</div>
