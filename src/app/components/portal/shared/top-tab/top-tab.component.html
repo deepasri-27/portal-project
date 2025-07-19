@@ -1,8 +1,5 @@
 <div class="tab-bar">
-  <a *ngFor="let tab of tabs"
-     [routerLink]="tab.url"
-     routerLinkActive="active"
-     class="tab">
+  <a *ngFor="let tab of tabs" [routerLink]="tab.url" routerLinkActive="active" class="tab">
     {{ tab.label }}
   </a>
 </div>

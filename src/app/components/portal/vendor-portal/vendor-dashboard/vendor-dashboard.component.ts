@@ -11,11 +11,12 @@ import { TileData } from '../../shared/types/tile-data.types';
 })
 export class VendorDashboardComponent {
 
-  tileData:TileData[]=[
-    {label:"Request For Quotation",url:"portal/vendor/dashboard/rfq"},
-    {label:"Purchase Order",url:"portal/vendor/dashboard/purchase-order"},
-    {label:"Goods Request",url:"portal/vendor/dashboard/goods-request"},
 
-  ]
+  tileData: TileData[] = [
+    { label: 'Request For Quotation', url: 'rfq' },
+    { label: 'Purchase Order', url: 'purchase-order' },
+    { label: 'Goods Request', url: 'goods-request' },
+
+     ];
 
 }

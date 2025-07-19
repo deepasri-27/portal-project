@@ -9,11 +9,18 @@ import { TileData } from '../../shared/types/tile-data.types';
   styleUrl: './vendor-financialsheet.component.css'
 })
 export class VendorFinancialsheetComponent {
-  tileData:TileData[]=[
-      {label:"Invoice",url:"portal/vendor/financial-sheet/invoice"},
-      {label:"Payments and Aging",url:"portal/vendor/financial-sheet/payment-aging"},
-      {label:"Credit/Debit Memo",url:"portal/vendor/financial-sheet/memo"},
+  // tileData:TileData[]=[
+  //     {label:"Invoice",url:"portal/vendor/financial-sheet/invoice"},
+  //     {label:"Payments and Aging",url:"portal/vendor/financial-sheet/payment-aging"},
+  //     {label:"Credit/Debit Memo",url:"portal/vendor/financial-sheet/memo"},
   
-    ]
+  //   ]
+    
+  tileData: TileData[] = [
+    { label: 'Invoice', url: 'invoice' },
+    { label: 'Payments and Aging', url: 'payment-aging' },
+    { label: 'Credit/Debit Memo', url: 'memo' },
+
+     ];
 
 }

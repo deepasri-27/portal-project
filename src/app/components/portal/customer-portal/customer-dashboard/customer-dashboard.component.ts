@@ -9,10 +9,9 @@ import { TileData } from '../../shared/types/tile-data.types';
   styleUrl: './customer-dashboard.component.css'
 })
 export class CustomerDashboardComponent {
-  tileData:TileData[]=[
-      {label:'Inquiry Data',url:'portal/customer/dashboard/inquiry'},
-      {label:'Sales Order Data',url:'portal/customer/dashboard/sales-order'},
-      {label:'List Of Delivery',url:'portal/customer/dashboard/delivery'},
-
-    ]
+  tileData: TileData[] = [
+  { label: 'Inquiry Data', url: 'inquiry' },
+  { label: 'Sales Order Data', url: 'sales-order' },
+  { label: 'List Of Delivery', url: 'delivery' }
+];
 }

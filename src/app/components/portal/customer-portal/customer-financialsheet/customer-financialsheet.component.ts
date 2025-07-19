@@ -9,10 +9,11 @@ import { TileData } from '../../shared/types/tile-data.types';
   styleUrl: './customer-financialsheet.component.css'
 })
 export class CustomerFinancialsheetComponent {
-  tileData:TileData[]=[
-      {label:"Invoice",url:"portal/customer/financial-sheet/invoice"},
-      {label:"Payments and Aging",url:"portal/customer/financial-sheet/payment-aging"},
-      {label:"Credit/Debit Memo",url:"portal/customer/financial-sheet/memo"},
-      {label:"Overall Sales Data",url:"portal/customer/financial-sheet/overall-sales"},
-    ]
+
+   tileData: TileData[] = [
+    { label: 'Invoice', url: 'invoice' },
+    { label: 'Payments and Aging', url: 'payment-aging' },
+    { label: 'Credit/Debit Memo', url: 'memo' },
+    {label:'Overall Sales Data',url:'overall-sales'}
+     ];
 }
