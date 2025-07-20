@@ -1,14 +1,14 @@
 export type VmemoDataType={
-     MemoDoc : string,
-     DocYear : string,
-     PostingDate : Date,
-     EntryDate : Date,
-     VendorId : string,
-     MemoType : string,
-     Amount : number,
-     Currency :string,
-     ReferenceDocNo : string,
-     DocType : string,
-     CompanyCode : string
+     memoDoc : string,
+     docYear : string,
+     postingDate : Date,
+     entryDate : Date,
+     vendorId : string,
+     memoType : string,
+     amount : number,
+     currency :string,
+     referenceDocNo : string,
+     docType : string,
+     companyCode : string
 
 }

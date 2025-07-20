@@ -8,7 +8,7 @@ import { VgoodsDataType } from '../../../shared/types/vendor-gr-data.types';
   selector: 'app-vendor-dashboard-gr',
    standalone: true,
   imports: [DataTableComponent],
-  templateUrl: './vendor-dashboard-gr.component.html',
+  templateUrl: './vendor-dashboard-gr.component.html', 
   styleUrl: './vendor-dashboard-gr.component.css'
 })
 export class VendorDashboardGrComponent {

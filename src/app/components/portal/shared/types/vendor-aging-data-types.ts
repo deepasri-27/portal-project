@@ -1,15 +1,15 @@
 export type VagingDataType={
-    PaymentDoc : string,
-    DocYear : string,
-    PaymentDate : Date,
-    EnrtyDate : Date,
-    VendorId : string,
-    AmountPaid :number,
-    Currency : string,
-    ClearingDoc : string,
-    RefDocNo : string,
-    DueDate : Date,
-    Aging: number
+    paymentDoc : string,
+    docYear : string,
+    paymentDate : Date,
+    enrtyDate : Date,
+    vendorId : string,
+    amountPaid :number,
+    currency : string,
+    clearingDoc : string,
+    refDocNo : string,
+    dueDate : Date,
+    aging: number
 }
 
 
