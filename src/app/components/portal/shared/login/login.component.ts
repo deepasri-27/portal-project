@@ -47,8 +47,8 @@ export class LoginComponent {
     this.http.post<any>(`http://localhost:3000/api/${this.actor}-login`, payload).subscribe({
       next: (res) => {
         if (res.status === 'success') {
-          // localStorage.setItem('VendorId', lifnr);
-       
+           localStorage.setItem('VendorId', lifnr);
+          
           this.loginSuccess.emit(); // Notify parent on success
           this.router.navigate([`portal/${this.actor}`]);
         } else {
