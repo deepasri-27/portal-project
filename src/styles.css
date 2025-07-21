@@ -1,3 +1,13 @@
+:root {
+
+        --primary-color: #7F8CAA;
+        --secondary-color: #B8CFCE;
+        --tertiary-color: #EAEFEF;
+        --dark-color: #333446;
+        
+}
+
+
 body{
     margin:0;
     font-family:Arial, Helvetica, sans-serif;

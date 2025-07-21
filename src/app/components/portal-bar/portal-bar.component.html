@@ -1,15 +1,31 @@
-<!-- Logo on top -->
-<div class="logo-container">
-  <a href="portal/welcome"><img src="assets/images/kaar-logo.png" alt="Kaar Logo" class="logo" /></a>
+<div class="sidebar">
+  <div class="logo-container">
+  <a href="portal/welcome">
+    <img src="assets/images/kaar-logo.png" alt="Kaar Logo" class="logo" />
+  </a>
 </div>
 
-<!-- Icons for portals -->
-<div class="sidebar-icon" (click)="navigateTo('customer')" title="Customer Portal">
-  <i class="fas fa-user"></i>
+<div class="sidebar-icon" [ngClass]="{ active: currentPortal === 'customer' }"
+     (click)="navigateTo('customer')" title="Customer Portal">
+  <div class="icon-wrapper">
+    <i class="fas fa-user"></i>
+    <span>Customer</span>
+  </div>
 </div>
-<div class="sidebar-icon" (click)="navigateTo('vendor')" title="Vendor Portal">
-  <i class="fas fa-store"></i>
+
+<div class="sidebar-icon" [ngClass]="{ active: currentPortal === 'vendor' }"
+     (click)="navigateTo('vendor')" title="Vendor Portal">
+  <div class="icon-wrapper">
+    <i class="fas fa-store"></i>
+    <span>Vendor</span>
+  </div>
 </div>
-<div class="sidebar-icon" (click)="navigateTo('employee')" title="Employee Portal">
-  <i class="fas fa-briefcase"></i>
+
+<div class="sidebar-icon" [ngClass]="{ active: currentPortal === 'employee' }"
+     (click)="navigateTo('employee')" title="Employee Portal">
+  <div class="icon-wrapper">
+    <i class="fas fa-briefcase"></i>
+    <span>Employee</span>
+  </div>
+</div>
 </div>

@@ -4,15 +4,7 @@
   overflow: hidden;
 }
 
-.sidebar {
-  width: 10%;
-  background-color: #1e1e2f;
-  /* padding-top: 20px; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-}
+
 
 .portal-content {
   width: 90%;

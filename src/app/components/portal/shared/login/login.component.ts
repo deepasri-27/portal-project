@@ -53,14 +53,14 @@ export class LoginComponent {
           this.router.navigate([`portal/${this.actor}`]);
         } else {
           this.errorMessage = res.message || 'Invalid credentials';
-          this.loginSuccess.emit(); 
-          this.router.navigate([`portal/${this.actor}`]);
+          // this.loginSuccess.emit(); 
+          // this.router.navigate([`portal/${this.actor}`]);
         }
       },
       error: (err) => {
         this.errorMessage = err.error?.message || 'Server error during login';
-         this.loginSuccess.emit(); 
-         this.router.navigate([`portal/${this.actor}`]);
+        //  this.loginSuccess.emit(); 
+        //  this.router.navigate([`portal/${this.actor}`]);
       }
     });
   }
