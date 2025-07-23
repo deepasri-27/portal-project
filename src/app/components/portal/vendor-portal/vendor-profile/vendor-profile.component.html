@@ -1,4 +1,4 @@
-<div class="profile-container">
+<div class="profile-container" *ngIf="vendorProfile">
   <!-- Header Section -->
   <div class="profile-header">
     <div class="header-left">
@@ -10,7 +10,7 @@
           Vendor for Kaar
           <span class="profile-status">Active</span>
         </div>
-        <div class="profile-id">Vendor ID: 100000</div>
+        <div class="profile-id">Vendor ID: {{ vendorProfile.vendorId }}</div>
       </div>
     </div>
     <div class="header-right">
@@ -27,42 +27,42 @@
       <span class="detail-icon"><i class="fas fa-id-card"></i></span>
       <div class="detail-content">
         <div class="detail-title">Vendor Name</div>
-        <div class="detail-value">Kaar Vendor</div>
+        <div class="detail-value">{{ vendorProfile.name }}</div>
       </div>
     </div>
     <div class="detail-item">
       <span class="detail-icon"><i class="fas fa-map-marker-alt"></i></span>
       <div class="detail-content">
         <div class="detail-title">City</div>
-        <div class="detail-value">Chennai</div>
+        <div class="detail-value">{{ vendorProfile.city }}</div>
       </div>
     </div>
     <div class="detail-item">
       <span class="detail-icon"><i class="fas fa-flag"></i></span>
       <div class="detail-content">
         <div class="detail-title">Country</div>
-        <div class="detail-value">IN</div>
+        <div class="detail-value">{{ vendorProfile.country }}</div>
       </div>
     </div>
     <div class="detail-item">
       <span class="detail-icon"><i class="fas fa-mail-bulk"></i></span>
       <div class="detail-content">
         <div class="detail-title">Postcode</div>
-        <div class="detail-value">524305</div>
+        <div class="detail-value">{{ vendorProfile.postcode }}</div>
       </div>
     </div>
     <div class="detail-item">
       <span class="detail-icon"><i class="fas fa-road"></i></span>
       <div class="detail-content">
         <div class="detail-title">Street Address</div>
-        <div class="detail-value">A-1234 Shivalayam street</div>
+        <div class="detail-value">{{ vendorProfile.street }}</div>
       </div>
     </div>
     <div class="detail-item">
       <span class="detail-icon"><i class="fas fa-hashtag"></i></span>
       <div class="detail-content">
         <div class="detail-title">Vendor ID</div>
-        <div class="detail-value">100000</div>
+        <div class="detail-value">{{ vendorProfile.vendorId }}</div>
       </div>
     </div>
   </div>

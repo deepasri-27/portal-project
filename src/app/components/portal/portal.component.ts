@@ -10,3 +10,4 @@ import { PortalBarComponent } from '../portal-bar/portal-bar.component';
 export class PortalComponent {
 
 }
+
