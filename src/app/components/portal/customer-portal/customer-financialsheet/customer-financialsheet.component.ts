@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TopTabComponent } from '../../shared/top-tab/top-tab.component';
 import { TileData } from '../../shared/types/tile-data.types';
 @Component({
   selector: 'app-customer-financialsheet',
-  imports: [RouterOutlet,TopTabComponent],
+  imports: [RouterOutlet],
   templateUrl: './customer-financialsheet.component.html',
   styleUrl: './customer-financialsheet.component.css'
 })

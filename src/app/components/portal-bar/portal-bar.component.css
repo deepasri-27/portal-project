@@ -18,7 +18,6 @@
 /* Sidebar icon styles */
 .sidebar-icon {
   margin: 20% 20%;
-  background-color: rgb(51, 52, 70);  /* Default background */
   color: white;
   display: flex;
   justify-content: center;
@@ -30,15 +29,9 @@
   padding: 10% 25%;
 }
 
-/* Hover only */
-.sidebar-icon:hover {
-  background-color: var(--secondary-color);
-  color: var(--text-dark);
-}
-
 /* Active (selected/clicked) icon */
 .sidebar-icon.active {
-  background-color: var(--primary-color);
+  background-color: var(--accent-color);
   color: white;
 }
 
@@ -63,4 +56,5 @@
 .sidebar {
   background-color: var(--dark-color);
   min-height:100vh;
+  box-shadow: 4px 0 8px red; /* right-side shadow */
 }

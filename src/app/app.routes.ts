@@ -26,7 +26,10 @@ import { VendorDashboardGrComponent } from './components/portal/vendor-portal/ve
 import { VendorFinanceInvoiceComponent } from './components/portal/vendor-portal/vendor-financialsheet/vendor-finance-invoice/vendor-finance-invoice.component';
 import { VendorFinanceAgingComponent } from './components/portal/vendor-portal/vendor-financialsheet/vendor-finance-aging/vendor-finance-aging.component';
 import { VendorFinanceMemoComponent } from './components/portal/vendor-portal/vendor-financialsheet/vendor-finance-memo/vendor-finance-memo.component';
-
+import { VendorDashboardDefaultComponent } from './components/portal/vendor-portal/vendor-dashboard/vendor-dashboard-default/vendor-dashboard-default.component';
+import { VendorFinanceDefaultComponent } from './components/portal/vendor-portal/vendor-financialsheet/vendor-finance-default/vendor-finance-default.component';
+import { CustomerDashboardDefaultComponent } from './components/portal/customer-portal/customer-dashboard/customer-dashboard-default/customer-dashboard-default.component';
+import { CustomerFinanceDefaultComponent } from './components/portal/customer-portal/customer-financialsheet/customer-finance-default/customer-finance-default.component';
 export const routes: Routes = [
   // Route to WelcomeComponent at root path
  
@@ -44,7 +47,8 @@ export const routes: Routes = [
               {path:'inquiry',component:CustomerDashboardInquiryComponent},
               {path:'sales-order',component:CustomerDashboardSalesComponent},
               {path:'delivery',component:CustomerDashboardDeliveryComponent},
-               {path:'**',redirectTo:'inquiry',pathMatch:'full'}
+              {path: 'default', component: CustomerDashboardDefaultComponent},
+               {path:'**',redirectTo:'default',pathMatch:'full'}
             ]
           },
           {path:'financial-sheet',component:CustomerFinancialsheetComponent,
@@ -53,7 +57,8 @@ export const routes: Routes = [
               {path:'payment-aging',component:CustomerFinanceAgingComponent},
               {path:'memo',component:CustomerFinanceMemoComponent},
               {path:'overall-sales',component:CustomerFinanceOsalesComponent},
-              {path:'**',redirectTo:'invoice',pathMatch:'full'}
+              {path: 'default', component: CustomerFinanceDefaultComponent},
+              {path:'**',redirectTo:'default',pathMatch:'full'}
             ]
           },
           { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
@@ -67,7 +72,8 @@ export const routes: Routes = [
               {path:'rfq',component:VendorDashboardRfqComponent},
               {path:'purchase-order',component:VendorDashboardPoComponent},
               {path:'goods-request',component:VendorDashboardGrComponent},
-              {path:'**',redirectTo:'rfq',pathMatch:'full'}
+              {path: 'default', component: VendorDashboardDefaultComponent},
+              {path:'**',redirectTo:'default',pathMatch:'full'}
             ]
           },
           {path:'financial-sheet',component:VendorFinancialsheetComponent,
@@ -75,7 +81,8 @@ export const routes: Routes = [
               {path:'invoice',component:VendorFinanceInvoiceComponent},
               {path:'payment-aging',component:VendorFinanceAgingComponent},
               {path:'memo',component:VendorFinanceMemoComponent},
-               {path:'**',redirectTo:'invoice',pathMatch:'full'}
+              {path: 'default', component: VendorFinanceDefaultComponent},
+              {path:'**',redirectTo:'default',pathMatch:'full'}
             ]
           },
           { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }

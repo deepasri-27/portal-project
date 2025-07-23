@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TopTabComponent } from '../../shared/top-tab/top-tab.component';
 import { TileData } from '../../shared/types/tile-data.types';
 
 @Component({
   selector: 'app-vendor-dashboard',
-  imports: [RouterOutlet,TopTabComponent],
+  imports: [RouterOutlet],
   templateUrl: './vendor-dashboard.component.html',
   styleUrl: './vendor-dashboard.component.css'
 })
