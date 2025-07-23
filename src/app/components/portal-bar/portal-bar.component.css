@@ -2,15 +2,14 @@
 
 /* Logo styles */
 .logo-container {
-  margin-top: 8px;
-  margin-bottom: 40px;
+  padding:30px 0;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .logo {
-  width: 50px;
+  width: 70px;
   height: auto;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -18,9 +17,7 @@
 
 /* Sidebar icon styles */
 .sidebar-icon {
-  width: 70px;
-  height: 70px;
-  margin: 24px auto;
+  margin: 20% 20%;
   background-color: rgb(51, 52, 70);  /* Default background */
   color: white;
   display: flex;
@@ -30,6 +27,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   text-align: center;
+  padding: 10% 25%;
 }
 
 /* Hover only */
@@ -51,20 +49,18 @@
 }
 
 .icon-wrapper i {
-  font-size: 16px;
+  font-size: 2rem;
   margin-bottom: 4px;
   color: inherit; /* Uses color from .sidebar-icon */
 }
 
 .icon-wrapper span {
-  font-size: 10px;
+  font-size: 1rem;
   color: inherit;
+  padding-top: 0.75rem;
 }
 
 .sidebar {
-  width:10%;
-  background-color: rgb(51, 52, 70);
-  /* padding-top: 20px; */
+  background-color: var(--dark-color);
   min-height:100vh;
-  
 }

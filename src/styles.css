@@ -1,14 +1,41 @@
 :root {
+  /* Primary Palette (Fresh Blue-Green Theme) */
+  --primary-color: #5A9FD4;       /* soft elegant blue */
+  --secondary-color: #7ED6C1;     /* minty sea green */
+  --tertiary-color: #F1F9F9;      /* clean light blue-gray background */
 
-        --primary-color: #7F8CAA;
-        --secondary-color: #B8CFCE;
-        --tertiary-color: #EAEFEF;
-        --dark-color: #333446;
-        
+  /* Accent Colors */
+  --accent-color: #FF6B81;        /* lively rose coral */
+  --accent-hover: #E65A71;        /* darker coral on hover */
+
+  /* Neutrals */
+  --dark-color: #34495E;          /* deep slate blue-gray */
+  --primary-white: #ffffff;
+  --primary-black: #1A1A1A;
+
+  /* Backgrounds and Borders */
+  --background-hover-white: #f0f0f0;
+  --background-light: #FAFCFD;
+  --border-color: #DDE6ED;
+  --shadow-color: rgba(0, 0, 0, 0.06);
+
+  /* Text Colors */
+  --text-color: #2C3E50;          /* soft navy */
+  --text-light: #6C7A89;          /* muted gray-blue */
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.35s ease;
 }
 
-
-body{
-    margin:0;
-    font-family:Arial, Helvetica, sans-serif;
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-light);
+  color: var(--text-color);
 }

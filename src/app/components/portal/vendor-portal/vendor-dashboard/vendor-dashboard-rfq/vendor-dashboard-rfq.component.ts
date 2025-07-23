@@ -12,8 +12,8 @@ import { VrfqDataType } from '../../../shared/types/vendor-rfq-data.types';
 })
 export class VendorDashboardRfqComponent implements OnInit {
   titles: string[] = [
-    'poNumber', 'vendorId', 'docDate', 'itemNumber', 'material',
-    'unit', 'description', 'deliveryDate'
+    'PO Number', 'Vendor ID', 'Doc Date', 'Item Nmber', 'Material',
+    'Unit', 'Description', 'Delivery Date'
   ];
   keys:string[]=['poNumber', 'vendorId', 'docDate', 'itemNumber', 'material',
     'unit', 'description', 'deliveryDate'];

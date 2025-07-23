@@ -10,7 +10,7 @@ import { VendorPoService } from '../../../../../services/backend/vendor-po.servi
 })
 export class VendorDashboardPoComponent {
 titles: string[] = [
-    'vendorId','deliveryDate','docDate','material','unit', 'poNumber','itemNumber'
+    'Vendor ID','Delivery Date','Doc Date','Material','Unit', 'PO Number','Item Number'
   ];
   keys :string[]=['vendorId','deliveryDate','docDate','material','unit', 'poNumber','itemNumber'];
   data: VpoDataType[] = [];

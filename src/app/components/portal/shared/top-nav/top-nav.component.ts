@@ -1,9 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { Subscription, filter } from 'rxjs';
 import { TileData } from '../types/tile-data.types';
-
-
 
 @Component({
   selector: 'app-top-nav',
@@ -12,14 +11,50 @@ import { TileData } from '../types/tile-data.types';
   templateUrl: './top-nav.component.html',
   styleUrls: ['./top-nav.component.css']
 })
-export class TopNavComponent {
-  @Input() profileUrl: string = ''; // optional profile name or icon
+export class TopNavComponent implements OnInit, OnDestroy {
+  @Input() profileUrl: string = '';
   @Input() tileData: TileData[] = [];
-  @Input() portal:string='';
+  @Input() portal: string = '';
 
   showDropdown = false;
+  currentTab: string = '';
+
+  private routerSubscription!: Subscription;
 
   constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.updateTabFromUrl(this.router.url);
+
+    // Listen to router changes
+    this.routerSubscription = this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: any) => {
+        this.updateTabFromUrl(event.urlAfterRedirects);
+      });
+  }
+
+  updateTabFromUrl(url: string): void {
+    const match = url.match(/^\/portal\/([^\/]+)\/([^\/]+)/);
+    if (match) {
+      this.portal = match[1];
+      this.currentTab = match[2];
+    } else {
+      this.currentTab = '';
+    }
+  }
+
+  getTabFromUrl(url: string): string {
+    const match = url.match(/^\/portal\/([^\/]+)\/([^\/]+)/);
+    let tab:string;
+    if(match){
+      tab = match[2];
+    }
+    else {
+      tab = '';
+    }
+    return tab;
+  }
 
   toggleDropdown() {
     this.showDropdown = !this.showDropdown;
@@ -30,8 +65,14 @@ export class TopNavComponent {
   }
 
   logout() {
-     document.cookie = `${this.portal}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-    console.log("logout: "+this.portal);
+    document.cookie = `${this.portal}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    console.log('logout: ' + this.portal);
     this.router.navigate(['/']);
+  }
+
+  ngOnDestroy(): void {
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
   }
 }

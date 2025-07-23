@@ -7,28 +7,35 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #0d47a1; 
+  background-color:var(--primary-color); 
   color: white;
   height: 60px;
-  padding: 0 20px;
   font-family: Arial, sans-serif;
 }
 
 .tiles {
   display: flex;
-  gap: 20px;
+  height: 100%;
 }
 
 .tile {
+  display: grid;
+  place-items: center;
   cursor: pointer;
+  height: 100%;
+  padding: 0 40px;
   font-weight: 500;
-  padding: 8px 12px;
-  border-radius: 6px;
+  font-size:1rem;
   transition: background-color 0.3s ease;
 }
 
-.tile:hover {
-  background-color: #1565c0;
+.tile.active {
+  background-color: var(--dark-color);
+  /* color: var(--dark-color); */
+  font-weight:700;
+  border-radius: 20px;
+  margin: 5px 5px;
+  height: 80%;
 }
 
 .profile-section {
@@ -43,8 +50,9 @@
 }
 
 .profile-icon svg {
-  width: 24px;
-  height: 24px;
+  margin: 0 20px;
+  width: 2rem;
+  height: 2rem;
   fill: white;
 }
 
@@ -52,6 +60,7 @@
   position: absolute;
   right: 0;
   top: 50px;
+  margin: 0 20px;
   background-color: #ffffff;
   color: #333;
   border-radius: 12px;
@@ -73,5 +82,5 @@
 }
 
 .dropdown div:hover {
-  background-color: #f0f0f0;
+  background-color: var(--background-hover-white);
 }

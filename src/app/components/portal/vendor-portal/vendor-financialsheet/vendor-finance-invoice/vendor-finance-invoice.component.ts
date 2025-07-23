@@ -10,9 +10,9 @@ import { VendorInvoiceService } from '../../../../../services/backend/vendor-inv
 })
 export class VendorFinanceInvoiceComponent {
    titles: string[] = [
-    'vendorId', 'invoiceNo', 'invoiceDate', 'totalAmount', 'currency',
-    'paymentTerms', 'poNo', 'poItem', 'materialNo', 'description',
-    'quantity', 'unitPrice', 'unit'
+    'Vendor ID', 'Invoice No', 'Invoice Date', 'Total Amount', 'Currency',
+    'Payment Terms', 'PO No', 'PO Item', 'Material No', 'Description',
+    'Quantity', 'Unit Price', 'Unit'
   ];
   keys: string[] = [
     'vendorId', 'invoiceNo', 'invoiceDate', 'totalAmount', 'currency',

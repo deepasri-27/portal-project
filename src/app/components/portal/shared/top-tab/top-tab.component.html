@@ -1,5 +1,7 @@
 <div class="tab-bar">
-  <a *ngFor="let tab of tabs" [routerLink]="tab.url" routerLinkActive="active" class="tab">
+  <a *ngFor="let tab of tabs" [routerLink]="tab.url" routerLinkActive="active" class="tab"
+    [ngClass]="{ active: tab.url === currentInnerTab }"
+  >
     {{ tab.label }}
   </a>
 </div>

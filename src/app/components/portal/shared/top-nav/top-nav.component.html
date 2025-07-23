@@ -1,15 +1,16 @@
 <nav class="top-nav">
   <!-- Tile list on left -->
   <div class="tiles">
-    <span 
+    <div 
       class="tile" 
       *ngFor="let tile of tileData" 
-      (click)="navigate(tile.url)">
+      (click)="navigate(tile.url)"
+      [ngClass]="{ active: getTabFromUrl(tile.url) === currentTab }"
+      >
       {{ tile.label }}
-    </span>
+    </div>
   </div>
 
-  <!-- Profile on right -->
   <div class="profile-section">
     <div class="profile-icon" (click)="toggleDropdown()">
       <!-- Replace emoji with SVG icon -->

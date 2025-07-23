@@ -12,8 +12,8 @@ import { VmemoDataType } from '../../../shared/types/vendor-memo-data.types';
 export class VendorFinanceMemoComponent {
 
   titles: string[] = [
-    'memoDoc', 'docYear', 'postingDate', 'entryDate', 'vendorId',
-    'memoType', 'amount', 'currency', 'referenceDocNo', 'docType', 'companyCode'
+    'Memo Doc', 'Doc Year', 'Posting Date', 'Entry Date', 'Vendor ID',
+    'Memory Type', 'Amount', 'Currency', 'Reference Doc No', 'Doc Type', 'Company Code'
   ];
   keys: string[] = [
     'memoDoc', 'docYear', 'postingDate', 'entryDate', 'vendorId',

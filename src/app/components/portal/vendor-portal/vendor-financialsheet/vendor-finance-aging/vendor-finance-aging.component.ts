@@ -11,8 +11,8 @@ import { VagingDataType } from '../../../shared/types/vendor-aging-data-types';
 })
 export class VendorFinanceAgingComponent {
   titles: string[] = [
-    'paymentDoc', 'docYear', 'paymentDate', 'enrtyDate', 'vendorId',
-    'amountPaid', 'currency', 'clearingDoc', 'refDocNo', 'dueDate', 'aging'
+    'Payment Doc', 'Doc Year', 'Payment Date', 'Entry Date', 'Vendor ID',
+    'Amount Paid', 'Currency', 'Clearing Doc', 'Ref Doc No', 'Due Date', 'Aging'
   ];
   keys: string[] = [
     'paymentDoc', 'docYear', 'paymentDate', 'enrtyDate', 'vendorId',
