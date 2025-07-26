@@ -1,11 +1,15 @@
 export type custInquiryDatatype={
-  vbeln: string;  // Sales document number (e.g., inquiry number)
-  erdat: string;  // Creation date, usually in 'YYYYMMDD'
-  ernam: string;  // Creator username
-  netwr: string;  // Net value (amount), often a string like '1234.56'
-  waerk: string;  // Currency (e.g., 'USD', 'INR')
-  matnr: string;  // Material number
-  arktx: string;  // Material description
+      vbeln: string,
+      erdat: string,
+      auart: string,
+      netwr: string,
+      waerk: string,
+      vdatu: string,
+      posnr: string,
+      matnr: string,
+      arktx:string,
+      kwmeng:string,
+      vrkme: string,
 
 }
 

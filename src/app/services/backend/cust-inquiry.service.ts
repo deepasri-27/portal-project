@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class CustInquiryService {
-  private apiUrl = 'http://localhost:3000/api/inquiry'; // Adjust as needed
+  private apiUrl = 'http://localhost:3001/api/inquiry'; // Adjust as needed
 
   constructor(private http: HttpClient) {}
 

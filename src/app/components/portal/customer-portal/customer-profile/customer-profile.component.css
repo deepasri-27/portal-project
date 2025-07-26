@@ -1,0 +1,140 @@
+.profile-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(44, 83, 100, 0.13);
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #e0e7ef 60%, #c9e7fa 100%);
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
+  box-shadow: 0 4px 16px rgba(44, 83, 100, 0.10);
+  border-bottom: 1px solid #e6eaf0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.customer-icon {
+  background: #fff;
+  border-radius: 16px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  color: #3a4a5d;
+  box-shadow: 0 2px 8px rgba(44, 83, 100, 0.10);
+}
+
+.header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.profile-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.profile-status {
+  display: inline-block;
+  background: #e6f9ed;
+  color: #1abc9c;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 0.2rem 0.9rem;
+  margin-left: 0.5rem;
+}
+
+.profile-id {
+  color: #6c7a89;
+  font-size: 1rem;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.edit-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(90deg, #7f9cf5 0%, #5eead4 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(44, 83, 100, 0.10);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.edit-btn:hover {
+  background: linear-gradient(90deg, #5eead4 0%, #7f9cf5 100%);
+}
+
+.edit-icon {
+  font-size: 1.2rem;
+}
+
+.profile-details {
+  padding: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 2.5rem;
+  background: #f7fafd;
+}
+
+.detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(44, 83, 100, 0.04);
+  padding: 1.2rem 1.3rem;
+}
+
+.detail-icon {
+  font-size: 1.5rem;
+  color: #7f9cf5;
+  margin-top: 0.1rem;
+}
+
+.detail-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-title {
+  font-size: 1.01rem;
+  color: #7b8a99;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.detail-value {
+  font-size: 1.15rem;
+  color: #2c3e50;
+  font-weight: 500;
+  word-break: break-word;
+}

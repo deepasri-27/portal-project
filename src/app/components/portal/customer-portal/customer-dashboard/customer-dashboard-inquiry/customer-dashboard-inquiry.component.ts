@@ -9,14 +9,14 @@ import { custInquiryDatatype } from '../../../shared/types/customer-inquiry-data
   styleUrl: './customer-dashboard-inquiry.component.css'
 })
 export class CustomerDashboardInquiryComponent implements OnInit {
- titles: string[] = ['vbeln', 'erdat', 'ernam', 'netwr', 'waerk', 'matnr', 'arktx'];
-  keys: string[] = ['vbeln', 'erdat', 'ernam', 'netwr', 'waerk', 'matnr', 'arktx'];
+ titles: string[] = ['vbeln','erdat','auart','netwr','waerk','vdatu','posnr','matnr','arktx','kwmeng','vrkme'];
+  keys: string[] = ['vbeln','erdat','auart','netwr','waerk','vdatu','posnr','matnr','arktx','kwmeng','vrkme'];
   data: custInquiryDatatype[] = [];
 
   constructor(private inquiryService: CustInquiryService) {}
 
   ngOnInit(): void {
-    const customerId = '0000100000'; // Replace with dynamic value later
+    const customerId = '0000000002'; // Replace with dynamic value later
 
     this.inquiryService.getInquiriesByCustomerId(customerId).subscribe({
       next: (res) => {
