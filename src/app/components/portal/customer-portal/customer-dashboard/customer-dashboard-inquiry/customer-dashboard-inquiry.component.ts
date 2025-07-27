@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataTableComponent } from '../../../shared/data-table/data-table.component';
 import { CustInquiryService } from '../../../../../services/backend/cust-inquiry.service';
 import { custInquiryDatatype } from '../../../shared/types/customer-inquiry-data.types';
+import { CustomerContextService } from '../../../../../services/context/customerContext.context';
 @Component({
   selector: 'app-customer-dashboard-inquiry',
   imports: [DataTableComponent],
@@ -13,10 +14,13 @@ export class CustomerDashboardInquiryComponent implements OnInit {
   keys: string[] = ['vbeln','erdat','auart','netwr','waerk','vdatu','posnr','matnr','arktx','kwmeng','vrkme'];
   data: custInquiryDatatype[] = [];
 
-  constructor(private inquiryService: CustInquiryService) {}
+  constructor(
+    private inquiryService: CustInquiryService,
+    private customerContextService: CustomerContextService
+  ) {}
 
   ngOnInit(): void {
-    const customerId = '0000000002'; // Replace with dynamic value later
+    const customerId = this.customerContextService.getCustomerId() || '';
 
     this.inquiryService.getInquiriesByCustomerId(customerId).subscribe({
       next: (res) => {

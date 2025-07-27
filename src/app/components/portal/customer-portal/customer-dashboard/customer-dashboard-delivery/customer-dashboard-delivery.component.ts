@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataTableComponent } from '../../../shared/data-table/data-table.component';
 import { CustDeliveryService } from '../../../../../services/backend/cust-delivery.service';
 import { CustDeliveryItem } from '../../../shared/types/customer-delivery-data.type';
+import { CustomerContextService } from '../../../../../services/context/customerContext.context';
 @Component({
   selector: 'app-customer-dashboard-delivery',
   imports: [DataTableComponent],
@@ -13,10 +14,13 @@ export class CustomerDashboardDeliveryComponent {
   keys: string[] = ['vbeln', 'erdat', 'vstel', 'vkorg', 'lfart', 'lfdat', 'posnr', 'matnr', 'arktx', 'lfimg'];
   data: CustDeliveryItem[] = [];
 
-  constructor(private deliveryService: CustDeliveryService) {}
+  constructor(
+    private deliveryService: CustDeliveryService,
+    private customerContextService: CustomerContextService
+  ) {}
 
   ngOnInit(): void {
-    const customerId = '0000000002'; // Replace with dynamic value if needed
+    const customerId = this.customerContextService.getCustomerId() || '';
 
     this.deliveryService.getDeliveriesByCustomerId(customerId).subscribe({
       next: (res) => {

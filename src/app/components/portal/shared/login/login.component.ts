@@ -8,6 +8,10 @@ import {
 } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { CustomerContextService } from '../../../../services/context/customerContext.context';
+import { EmployeeContextService } from '../../../../services/context/employeeContext.context';
+import { VendorContextService } from '../../../../services/context/vendorContext.context';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +32,11 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private customerContextService: CustomerContextService,
+    private employeeContextService: EmployeeContextService,
+    private vendorContextService: VendorContextService,
+    private cookieService : CookieService
   ) {
     this.loginForm = this.fb.group({
       id: ['', Validators.required],
@@ -67,7 +75,19 @@ export class LoginComponent {
           if (res.status === 'success'||res.status===true) {
             //  localStorage.setItem('VendorId', lifnr);
  
-            this.loginSuccess.emit(); // Notify parent on success
+            this.loginSuccess.emit();
+            if(this.actor === 'customer'){
+              this.customerContextService.setCustomerId(username);
+              this.cookieService.set("customerId", username);
+            }
+            else if(this.actor === 'employee'){
+              this.employeeContextService.setEmployeeId(username);
+              this.cookieService.set("employeeId", username);
+            }
+            else if(this.actor === 'vendor'){
+              this.vendorContextService.setVendorId(username);
+              this.cookieService.set("vendorId", username);
+            }
             this.router.navigate([`portal/${this.actor}`]);
           } else {
             this.errorMessage = res.message || 'Invalid credentials';

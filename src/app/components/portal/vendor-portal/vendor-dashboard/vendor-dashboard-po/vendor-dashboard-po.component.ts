@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { DataTableComponent } from '../../../shared/data-table/data-table.component';
 import { VpoDataType } from '../../../shared/types/vendor-po-data.types';
 import { VendorPoService } from '../../../../../services/backend/vendor-po.service';
+import { VendorContextService } from '../../../../../services/context/vendorContext.context';
 @Component({
   selector: 'app-vendor-dashboard-po',
   imports: [DataTableComponent],
@@ -15,10 +16,13 @@ titles: string[] = [
   keys :string[]=['vendorId','deliveryDate','docDate','material','unit', 'poNumber','itemNumber'];
   data: VpoDataType[] = [];
 
-  constructor(private poService: VendorPoService) {}
+  constructor(
+    private poService: VendorPoService,
+    private vendorContextService: VendorContextService
+  ) {}
 
   ngOnInit(): void {
-    const vendorId = '0000100000'; // Replace with dynamic vendor ID if needed
+    const vendorId = this.vendorContextService.getVendorId() || '';
 
     this.poService.getPoByVendorId(vendorId).subscribe({
       next: (res) => {

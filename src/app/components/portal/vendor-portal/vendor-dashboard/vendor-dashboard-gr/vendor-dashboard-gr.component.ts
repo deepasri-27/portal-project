@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataTableComponent } from '../../../shared/data-table/data-table.component';
 import { VendorGoodsService } from '../../../../../services/backend/vendor-goods.service';
 import { VgoodsDataType } from '../../../shared/types/vendor-gr-data.types';
+import { VendorContextService } from '../../../../../services/context/vendorContext.context';
 
 
 @Component({
@@ -16,10 +17,13 @@ titles: string[] = ['Material Doc', 'Doc Year', 'Post Date', 'Entry Date', 'PO N
   keys: string[] = ['materialDoc', 'docYear', 'postDate', 'entryDate', 'poNumber', 'poItem', 'material','quantity','unit','vendorId'];
   data: VgoodsDataType[] = [];
 
-  constructor(private goodsService: VendorGoodsService) {}
+  constructor(
+    private goodsService: VendorGoodsService,
+    private vendorContextService: VendorContextService
+  ) {}
 
   ngOnInit(): void {
-    const vendorId = '0000100000'; // Replace with dynamic vendor ID
+    const vendorId = this.vendorContextService.getVendorId() || '';
 
     this.goodsService.getGoodsByVendorId(vendorId).subscribe({
       next: (res) => {

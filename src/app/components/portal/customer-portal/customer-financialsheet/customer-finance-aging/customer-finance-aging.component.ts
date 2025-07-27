@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustPaymentAgingService } from '../../../../../services/backend/cust-paymentaging.service';
 import { DataTableComponent } from '../../../shared/data-table/data-table.component';
 import { CustAgingDataType } from '../../../shared/types/customer-paymentaging-data.type';
+import { CustomerContextService } from '../../../../../services/context/customerContext.context';
 @Component({
   selector: 'app-customer-finance-aging',
   imports: [DataTableComponent],
@@ -19,10 +20,13 @@ export class CustomerFinanceAgingComponent {
 
   data: CustAgingDataType[] = [];
 
-  constructor(private agingService: CustPaymentAgingService) {}
+  constructor(
+    private agingService: CustPaymentAgingService,
+    private customerContextService : CustomerContextService
+  ) {}
 
   ngOnInit(): void {
-    const customerId = '0000000002'; // Replace this with dynamic logic if needed
+    const customerId = this.customerContextService.getCustomerId() || '';
 
     this.agingService.getAgingByCustomerId(customerId).subscribe({
       next: (res) => {

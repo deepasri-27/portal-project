@@ -4,7 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { LoginComponent } from '../shared/login/login.component';
 import { TopNavComponent } from '../shared/top-nav/top-nav.component';
 import { TileData } from '../shared/types/tile-data.types';
-
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-vendor-portal',
@@ -13,7 +13,7 @@ import { TileData } from '../shared/types/tile-data.types';
   templateUrl: 'vendor-portal.component.html'
 })
 export class VendorPortalComponent {
-  isVendorLoggedIn: boolean;
+  isVendorLoggedIn = false;
 
   profileUrl: string = 'portal/vendor/profile';
 
@@ -21,28 +21,19 @@ export class VendorPortalComponent {
     { label: 'Dashboard', url: '/portal/vendor/dashboard' },
     { label: 'Financial Sheet', url: '/portal/vendor/financial-sheet' }
   ];
-   portal:string='vendor';
 
-  constructor() {
-    const cookie = this.getCookie('vendor');
-    this.isVendorLoggedIn = cookie === 'true';
+  portal: string = 'vendor';
+
+  constructor(private cookieService: CookieService) {
+    this.isVendorLoggedIn = this.cookieService.get('vendor') === 'true';
   }
 
-  // ✅ Read cookie
-  getCookie(name: string): string | null {
-    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-
-  // ✅ Write cookie (optional helper)
-  setCookie(name: string, value: string, days = 1) {
-    const expires = new Date(Date.now() + days * 864e5).toUTCString();
-    document.cookie = `${name}=${value}; expires=${expires}; path=/`;
-  }
-
-  // ✅ Handle login success (called from <app-login>)
   handleLoginSuccess() {
-    this.setCookie('vendor', 'true');
+    const expireDays = 1;
+    const expireDate = new Date();
+    expireDate.setDate(expireDate.getDate() + expireDays);
+
+    this.cookieService.set('vendor', 'true', expireDate, '/');
     this.isVendorLoggedIn = true;
   }
 }

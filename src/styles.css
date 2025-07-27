@@ -9,15 +9,18 @@
   --accent-hover: #E65A71;        /* darker coral on hover */
 
   /* Neutrals */
-  --dark-color: #34495E;          /* deep slate blue-gray */
+  --dark-color: #34495E; 
+  --dark-color-alpha: #34495E33;         /* deep slate blue-gray */
   --primary-white: #ffffff;
   --primary-black: #1A1A1A;
 
   /* Backgrounds and Borders */
   --background-hover-white: #f0f0f0;
+  --background-dull: #f7fafd;
   --background-light: #FAFCFD;
   --border-color: #DDE6ED;
-  --shadow-color: rgba(0, 0, 0, 0.06);
+  --shadow-color: rgba(0, 0, 0, 0.16);
+  --portal-bar-shadow: #000000;
 
   /* Text Colors */
   --text-color: #2C3E50;          /* soft navy */

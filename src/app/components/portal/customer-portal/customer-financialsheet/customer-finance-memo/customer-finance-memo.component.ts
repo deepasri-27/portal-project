@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataTableComponent } from '../../../shared/data-table/data-table.component';
 import { CustMemoService } from '../../../../../services/backend/cust-memo.service';
 import { MemoItem } from '../../../shared/types/customer-memo-data.type';
+import { CustomerContextService } from '../../../../../services/context/customerContext.context';
 @Component({
   selector: 'app-customer-finance-memo',
   imports: [DataTableComponent],
@@ -23,10 +24,13 @@ export class CustomerFinanceMemoComponent {
 
   data: MemoItem[] = [];
 
-  constructor(private memoService: CustMemoService) {}
+  constructor(
+    private memoService: CustMemoService,
+    private customerContextService: CustomerContextService
+  ) {}
 
   ngOnInit(): void {
-    const customerId = '0000000002'; // Replace with dynamic logic later
+    const customerId = this.customerContextService.getCustomerId() || '';
 
     this.memoService.getMemosByCustomerId(customerId).subscribe({
       next: (res) => {

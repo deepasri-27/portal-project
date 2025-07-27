@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { DataTableComponent } from '../../../shared/data-table/data-table.component';
 import { VendorMemoService } from '../../../../../services/backend/vendor-memo.service';
 import { VmemoDataType } from '../../../shared/types/vendor-memo-data.types';
+import { VendorContextService } from '../../../../../services/context/vendorContext.context';
 
 @Component({
   selector: 'app-vendor-finance-memo',
@@ -21,10 +22,13 @@ export class VendorFinanceMemoComponent {
   ];
   data: VmemoDataType[] = [];
 
-  constructor(private memoService: VendorMemoService) {}
+  constructor(
+    private memoService: VendorMemoService,
+    private vendorContextService: VendorContextService
+  ) {}
 
   ngOnInit(): void {
-    const vendorId = '0000100000'; // Replace with dynamic vendor ID
+    const vendorId = this.vendorContextService.getVendorId() || '';
 
     this.memoService.getMemosByVendorId(vendorId).subscribe({
       next: (res) => {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataTableComponent } from '../../../shared/data-table/data-table.component';
 import { VendorPaymentAgingService } from '../../../../../services/backend/vendor-paymentaging.service';
 import { VagingDataType } from '../../../shared/types/vendor-aging-data-types';
+import { VendorContextService } from '../../../../../services/context/vendorContext.context';
 @Component({
   selector: 'app-vendor-finance-aging',
   standalone: true,
@@ -20,10 +21,13 @@ export class VendorFinanceAgingComponent {
   ];
   data: VagingDataType[] = [];
 
-  constructor(private agingService: VendorPaymentAgingService) {}
+  constructor(
+    private agingService: VendorPaymentAgingService,
+    private vendorContextService: VendorContextService
+  ) {}
 
   ngOnInit(): void {
-    const vendorId = '0000100000'; // Replace with dynamic vendor ID
+    const vendorId = this.vendorContextService.getVendorId() || '';
 
     this.agingService.getAgingByVendorId(vendorId).subscribe({
       next: (res) => {

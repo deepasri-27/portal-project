@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataTableComponent } from '../../../shared/data-table/data-table.component';
 import { VinvoiceDataType } from '../../../shared/types/vendor-invoice-data.types';
 import { VendorInvoiceService } from '../../../../../services/backend/vendor-invoices.service';
+import { VendorContextService } from '../../../../../services/context/vendorContext.context';
 @Component({
   selector: 'app-vendor-finance-invoice',
   imports: [DataTableComponent],
@@ -21,10 +22,13 @@ export class VendorFinanceInvoiceComponent {
   ];
   data: VinvoiceDataType[] = [];
 
-  constructor(private invoiceService: VendorInvoiceService) {}
+  constructor(
+    private invoiceService: VendorInvoiceService,
+    private vendorContextService: VendorContextService
+  ) {}
 
   ngOnInit(): void {
-    const vendorId = '0000100000'; // Replace with dynamic ID later
+    const vendorId = this.vendorContextService.getVendorId() || '';
 
     this.invoiceService.getInvoicesByVendorId(vendorId).subscribe({
       next: (res) => {

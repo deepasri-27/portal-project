@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataTableComponent } from '../../../shared/data-table/data-table.component';
 import { CustInvoiceDataType } from '../../../shared/types/customer-invoice-data.type';
 import { CustInvoiceService } from '../../../../../services/backend/cust-invoice.service';
+import { CustomerContextService } from '../../../../../services/context/customerContext.context';
 @Component({
   selector: 'app-customer-finance-invoice',
   imports: [DataTableComponent],
@@ -23,10 +24,13 @@ export class CustomerFinanceInvoiceComponent {
   
   data: CustInvoiceDataType[] = [];
 
-  constructor(private invoiceService: CustInvoiceService) {}
+  constructor(
+    private invoiceService: CustInvoiceService,
+    private customerContextService: CustomerContextService
+  ) {}
 
   ngOnInit(): void {
-    const customerId = '0000000002'; // Replace with dynamic logic later
+    const customerId = this.customerContextService.getCustomerId() || '';
 
     this.invoiceService.getInvoicesByCustomerId(customerId).subscribe({
       next: (res) => {

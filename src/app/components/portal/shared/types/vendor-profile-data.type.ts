@@ -5,5 +5,4 @@ export type VprofileDataType={
         country: string,
         postcode: string,
         street: string,
-
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataTableComponent } from '../../../shared/data-table/data-table.component';
 import { CustSalesDataType } from '../../../shared/types/customer-sales-data.type';
 import { CustSalesService } from '../../../../../services/backend/cust-sales.service';
+import { CustomerContextService } from '../../../../../services/context/customerContext.context';
 @Component({
   selector: 'app-customer-dashboard-sales',
   imports: [DataTableComponent],
@@ -13,10 +14,13 @@ export class CustomerDashboardSalesComponent {
   keys: string[] = ['vbeln', 'erdat', 'auart', 'netwr','waerk','vdat','ernam', 'posnr','matnr','arktx','kwmeng', 'vrkme'];
   data: CustSalesDataType[] = [];
 
-  constructor(private salesService: CustSalesService) {}
+  constructor(
+    private salesService: CustSalesService,
+    private customerContextService: CustomerContextService
+  ) {}
 
   ngOnInit(): void {
-    const customerId = '0000000002'; // Replace with dynamic logic later
+    const customerId = this.customerContextService.getCustomerId() || '';
 
     this.salesService.getSalesByCustomerId(customerId).subscribe({
       next: (res) => {
