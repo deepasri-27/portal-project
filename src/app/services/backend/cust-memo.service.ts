@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class CustMemoService {
-  private apiUrl = 'http://localhost:3000/api/cdmemo'; // Update this to your backend route
+  private apiUrl = 'http://localhost:3001/api/memo'; // Update this to your backend route
 
   constructor(private http: HttpClient) {}
 

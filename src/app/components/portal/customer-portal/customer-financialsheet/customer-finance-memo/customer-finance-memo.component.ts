@@ -10,15 +10,15 @@ import { MemoItem } from '../../../shared/types/customer-memo-data.type';
 })
 export class CustomerFinanceMemoComponent {
  titles: string[] = [
-    'memoId', 'memoType', 'referenceDoc', 'customerId', 'customerName',
-    'billingDate', 'createdDate', 'createdBy', 'currency', 'netValue',
-    'taxAmount', 'salesOrg', 'distChannel', 'division'
+     'memoId', 'memoType','referenceDoc', 'customerId','customerName',
+     'billingDate','createdDate','createdBy','currency','netValue','taxAmount','salesOrg',
+     'distChannel','division','direction'
   ];
 
   keys: string[] = [
     'memoId', 'memoType', 'referenceDoc', 'customerId', 'customerName',
     'billingDate', 'createdDate', 'createdBy', 'currency', 'netValue',
-    'taxAmount', 'salesOrg', 'distChannel', 'division'
+    'taxAmount', 'salesOrg', 'distChannel', 'division','direction'
   ];
 
   data: MemoItem[] = [];
@@ -26,7 +26,7 @@ export class CustomerFinanceMemoComponent {
   constructor(private memoService: CustMemoService) {}
 
   ngOnInit(): void {
-    const customerId = '0000100000'; // Replace with dynamic logic later
+    const customerId = '0000000002'; // Replace with dynamic logic later
 
     this.memoService.getMemosByCustomerId(customerId).subscribe({
       next: (res) => {

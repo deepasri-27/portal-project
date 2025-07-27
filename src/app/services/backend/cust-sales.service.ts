@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class CustSalesService {
-  private apiUrl = 'http://localhost:3000/api/sales'; // Adjust this as per your backend route
+  private apiUrl = 'http://localhost:3001/api/sales'; // Adjust this as per your backend route
 
   constructor(private http: HttpClient) {}
 

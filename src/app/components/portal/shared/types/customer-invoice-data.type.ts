@@ -14,4 +14,6 @@ export type CustInvoiceDataType = {
   vrkme: string;         // Sales unit
   item_netwr: number;    // Net value at item level
   prsdt: string;         // Pricing date
+  erdat:string,
+  ernam:string
 };

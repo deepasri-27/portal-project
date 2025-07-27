@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataTableComponent } from '../../../shared/data-table/data-table.component';
 import { CustOverallSalesService } from '../../../../../services/backend/cust-overallsales.services';
 import { OverallSalesDataType } from '../../../shared/types/customer-overallsales-data.type';
+
 @Component({
   selector: 'app-customer-finance-osales',
   imports: [DataTableComponent],
@@ -24,8 +25,7 @@ export class CustomerFinanceOsalesComponent {
   constructor(private overallSalesService: CustOverallSalesService) {}
 
   ngOnInit(): void {
-    const customerId = '0000100000'; // Replace with actual dynamic logic
-
+    const customerId = '0000000002'; // Replace with actual dynamic logic
     this.overallSalesService.getOverallSalesByCustomerId(customerId).subscribe({
       next: (res) => {
         if (res?.success) {

@@ -1,9 +1,14 @@
 export type CustSalesDataType = {
-  vbeln: string;  // Sales document number
-  erdat: string;  // Creation date (format: 'YYYYMMDD')
-  ernam: string;  // Created by (username)
-  netwr: string;  // Net value (amount as string)
-  waerk: string;  // Currency (e.g., 'USD')
-  matnr: string;  // Material number
-  arktx: string;  // Material description
+  vbeln: string;    // Sales document number
+  erdat: string;    // Creation date (format: 'YYYYMMDD')
+  auart: string;    // Sales document type
+  netwr: string;    // Net value
+  waerk: string;    // Currency
+  vdat: string;     // Requested delivery date
+  ernam: string;    // Created by
+  posnr: string;    // Item number
+  matnr: string;    // Material number
+  arktx: string;    // Material description
+  kwmeng: string;   // Order quantity
+  vrkme: string;    // Sales unit
 };

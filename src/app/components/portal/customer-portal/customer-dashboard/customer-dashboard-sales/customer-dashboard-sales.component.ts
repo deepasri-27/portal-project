@@ -9,14 +9,14 @@ import { CustSalesService } from '../../../../../services/backend/cust-sales.ser
   styleUrl: './customer-dashboard-sales.component.css'
 })
 export class CustomerDashboardSalesComponent {
-  titles: string[] = ['vbeln', 'erdat', 'ernam', 'netwr', 'waerk', 'matnr', 'arktx'];
-  keys: string[] = ['vbeln', 'erdat', 'ernam', 'netwr', 'waerk', 'matnr', 'arktx'];
+  titles: string[] = ['vbeln', 'erdat', 'auart', 'netwr','waerk','vdat','ernam', 'posnr','matnr','arktx','kwmeng', 'vrkme'];
+  keys: string[] = ['vbeln', 'erdat', 'auart', 'netwr','waerk','vdat','ernam', 'posnr','matnr','arktx','kwmeng', 'vrkme'];
   data: CustSalesDataType[] = [];
 
   constructor(private salesService: CustSalesService) {}
 
   ngOnInit(): void {
-    const customerId = '0000100000'; // Replace with dynamic logic later
+    const customerId = '0000000002'; // Replace with dynamic logic later
 
     this.salesService.getSalesByCustomerId(customerId).subscribe({
       next: (res) => {

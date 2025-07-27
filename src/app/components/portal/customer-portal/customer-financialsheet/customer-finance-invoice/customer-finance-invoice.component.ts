@@ -12,13 +12,13 @@ export class CustomerFinanceInvoiceComponent {
  titles: string[] = [
     'vbeln', 'fkdat', 'netwr', 'waerk', 'kunag', 'vkorg',
     'knumv', 'fkart', 'posnr', 'matnr', 'arktx',
-    'fkimg', 'vrkme', 'item_netwr', 'prsdt'
+    'fkimg', 'vrkme', 'item_netwr', 'prsdt','erdat','ernam'
   ];
   
   keys: string[] = [
     'vbeln', 'fkdat', 'netwr', 'waerk', 'kunag', 'vkorg',
     'knumv', 'fkart', 'posnr', 'matnr', 'arktx',
-    'fkimg', 'vrkme', 'item_netwr', 'prsdt'
+    'fkimg', 'vrkme', 'item_netwr', 'prsdt','erdat','ernam'
   ];
   
   data: CustInvoiceDataType[] = [];
@@ -26,7 +26,7 @@ export class CustomerFinanceInvoiceComponent {
   constructor(private invoiceService: CustInvoiceService) {}
 
   ngOnInit(): void {
-    const customerId = '0000100000'; // Replace with dynamic logic later
+    const customerId = '0000000002'; // Replace with dynamic logic later
 
     this.invoiceService.getInvoicesByCustomerId(customerId).subscribe({
       next: (res) => {

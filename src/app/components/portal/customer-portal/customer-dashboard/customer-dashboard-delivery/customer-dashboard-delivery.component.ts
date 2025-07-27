@@ -16,7 +16,7 @@ export class CustomerDashboardDeliveryComponent {
   constructor(private deliveryService: CustDeliveryService) {}
 
   ngOnInit(): void {
-    const customerId = '0000100000'; // Replace with dynamic value if needed
+    const customerId = '0000000002'; // Replace with dynamic value if needed
 
     this.deliveryService.getDeliveriesByCustomerId(customerId).subscribe({
       next: (res) => {
