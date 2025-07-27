@@ -1,21 +1,63 @@
-<div class="login-container">
-  <h2>{{ heading }}</h2>
-
-  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-    <div class="form-group">
-      <label>{{ placeholder }}</label>
-      <input type="text" formControlName="id" placeholder="{{ placeholder }}" />
+<div class="login-page">
+  <div class="login-container">
+    <!-- Left Side - Portal Image and Text -->
+    <div class="portal-section">
+      <div class="portal-content">
+        <div class="portal-image-container">
+          <img 
+            [src]="getPortalImage()" 
+            [alt]="actor + ' portal'" 
+            class="portal-image"
+          />
+        </div>
+        <div class="portal-text">
+          <h3 class="portal-title">{{ getPortalTitle() }}</h3>
+          <p class="portal-description">{{ getPortalDescription() }}</p>
+        </div>
+      </div>
     </div>
 
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" formControlName="password" placeholder="Enter Password" />
-    </div>
+    <!-- Right Side - Login Form -->
+    <div class="login-form-section">
+      <div class="login-card">
+        <h2 class="login-title">{{ heading }}</h2>
+        <p class="login-subtitle">Sign in to access your account</p>
 
-    <div class="error-message" *ngIf="errorMessage">
-      {{ errorMessage }}
-    </div>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
+          <div class="form-group">
+            <label class="form-label">{{ placeholder }}</label>
+            <input 
+              type="text" 
+              formControlName="id" 
+              placeholder="{{ placeholder }}"
+              class="form-input"
+            />
+          </div>
 
-    <button type="submit" [disabled]="loginForm.invalid">Login</button>
-  </form>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input 
+              type="password" 
+              formControlName="password" 
+              placeholder="Enter Password"
+              class="form-input"
+            />
+          </div>
+
+          <div class="error-message" *ngIf="errorMessage">
+            {{ errorMessage }}
+          </div>
+
+          <button type="submit" [disabled]="loginForm.invalid" class="login-button">
+            <svg class="login-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10 17L15 12L10 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15 12H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

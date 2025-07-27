@@ -44,6 +44,44 @@ export class LoginComponent {
     });
   }
 
+  getPortalImage(): string {
+    switch (this.actor.toLowerCase()) {
+      case 'customer':
+        return 'assets/images/customer-portal.svg';
+      case 'vendor':
+        return 'assets/images/vendor-portal.svg';
+      case 'employee':
+        return 'assets/images/employee-portal.svg';
+      default:
+        return 'assets/images/kaar-logo.png';
+    }
+  }
+
+  getPortalTitle(): string {
+    switch (this.actor.toLowerCase()) {
+      case 'customer':
+        return 'Customer Portal';
+      case 'vendor':
+        return 'Vendor Portal';
+      case 'employee':
+        return 'Employee Portal';
+      default:
+        return 'Portal Access';
+    }
+  }
+
+  getPortalDescription(): string {
+    switch (this.actor.toLowerCase()) {
+      case 'customer':
+        return 'Access your orders, invoices, and customer services with ease. Manage your account and track your business activities.';
+      case 'vendor':
+        return 'Manage your vendor account, view purchase orders, and track payments. Streamline your business operations.';
+      case 'employee':
+        return 'Access your employee dashboard, manage leave requests, and view payslips. Stay connected with your workplace.';
+      default:
+        return 'Welcome to the integrated portal. Please sign in to continue.';
+    }
+  }
   onLogin() {
     this.errorMessage = '';
 
