@@ -5,7 +5,14 @@
   <span class="table-title">{{ tableTitle }}</span>
 </div>
 
-<div class="table-wrapper">
+<div class="table-loader" *ngIf="data.length === 0">
+  <div class="spinner-container">
+    <div class="loader"></div>
+    <div class="loading-text">Loading data ...</div>
+  </div>
+</div>
+
+<div class="table-wrapper" *ngIf="data.length !== 0">
   <div class="table-scrollable">
     <table class="custom-table">
     <thead>
