@@ -10,8 +10,21 @@ import { CustomerContextService } from '../../../../../services/context/customer
   styleUrl: './customer-dashboard-sales.component.css'
 })
 export class CustomerDashboardSalesComponent {
-  titles: string[] = ['vbeln', 'erdat', 'auart', 'netwr','waerk','vdat','ernam', 'posnr','matnr','arktx','kwmeng', 'vrkme'];
-  keys: string[] = ['vbeln', 'erdat', 'auart', 'netwr','waerk','vdat','ernam', 'posnr','matnr','arktx','kwmeng', 'vrkme'];
+titles: string[] = [
+  'Sales Document Number',   
+  'Created Date',            
+  'Sales Document Type',     
+  'Net Value',               
+  'Currency',                
+  'Requested Delivery Date',   
+  'Created By',              
+  'Item Number',             
+  'Material Number',         
+  'Material Description',    
+  'Order Quantity',          
+  'Sales Unit'               
+];
+ keys:string[] = ['vbeln', 'erdat', 'auart', 'netwr','waerk','vdat','ernam', 'posnr','matnr','arktx','kwmeng', 'vrkme'];
   data: CustSalesDataType[] = [];
 
   constructor(

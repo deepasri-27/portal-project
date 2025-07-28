@@ -10,7 +10,18 @@ import { CustomerContextService } from '../../../../../services/context/customer
   styleUrl: './customer-dashboard-delivery.component.css'
 })
 export class CustomerDashboardDeliveryComponent {
- titles: string[] = ['vbeln', 'erdat', 'vstel', 'vkorg', 'lfart', 'lfdat', 'posnr', 'matnr', 'arktx', 'lfimg'];
+ titles: string[] = [
+  'Delivery Number',         
+  'Created Date',            
+  'Shipping Point',         
+  'Sales Organization',      
+  'Delivery Type',           
+  'Delivery Date',           
+  'Item Number',             
+  'Material Number',         
+  'Material Description',    
+  'Delivered Quantity'       
+];
   keys: string[] = ['vbeln', 'erdat', 'vstel', 'vkorg', 'lfart', 'lfdat', 'posnr', 'matnr', 'arktx', 'lfimg'];
   data: CustDeliveryItem[] = [];
 
