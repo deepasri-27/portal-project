@@ -1,13 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// import { VrfqDataType } from '../types/vendor-rfq-data.types';
-// import { VagingDataType } from '../types/vendor-aging-data-types';
-// import { VgoodsDataType } from '../types/vendor-qr-data.types';
-// import { VinvoiceDataType } from '../types/vendor-invoice-data.types';
-// import { VmemoDataType } from '../types/vendor-memo-data.types';
-// import { VpoDataType } from '../types/vendor-po-data.types';
-
-// type AllTypes = VrfqDataType | VagingDataType | VinvoiceDataType | VmemoDataType | VpoDataType | VgoodsDataType;
 
 @Component({
   selector: 'app-data-table',
@@ -19,13 +11,19 @@ import { CommonModule } from '@angular/common';
 export class DataTableComponent implements OnChanges {
   @Input() titles: string[] = [];
   @Input() data: any[] = [];
-  @Input() keys:string[]=[];
+  @Input() keys: string[] = [];
+
   page: number = 1;
   itemsPerPage: number = 5;
   paginatedData: any[] = [];
 
+  // Sorting state
+  sortedKey: string | null = null;
+  sortDirection: 'asc' | 'desc' | null = null;
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['data'] || changes['itemsPerPage']) {
+      this.applySorting();
       this.updatePaginatedData();
     }
   }
@@ -52,4 +50,36 @@ export class DataTableComponent implements OnChanges {
   get totalPages(): number {
     return Math.ceil(this.data.length / this.itemsPerPage);
   }
+
+  sortByColumn(key: string) {
+    if (this.sortedKey === key) {
+      // Toggle direction
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+      // New column clicked
+      this.sortedKey = key;
+      this.sortDirection = 'asc';
+    }
+
+    this.applySorting();
+    this.updatePaginatedData();
+  }
+
+  applySorting() {
+    if (!this.sortedKey || !this.sortDirection) return;
+
+    this.data.sort((a, b) => {
+      const valA = a[this.sortedKey!];
+      const valB = b[this.sortedKey!];
+
+      const comparison = (valA > valB) ? 1 : (valA < valB) ? -1 : 0;
+      return this.sortDirection === 'asc' ? comparison : -comparison;
+    });
+  }
+
+  getSortIcon(key: string): string {
+    if (key !== this.sortedKey) return '';
+    return this.sortDirection === 'asc' ? 'fa-solid fa-arrow-up' : 'fa-solid fa-arrow-down';
+  }
+
 }

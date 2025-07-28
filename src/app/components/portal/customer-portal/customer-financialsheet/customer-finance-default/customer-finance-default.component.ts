@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { TilesComponent } from '../../../shared/tiles/tiles.component';
+import { CustProfileService } from '../../../../../services/backend/cust-profile.service';
+import { CustomerContextService } from '../../../../../services/context/customerContext.context';
 
 @Component({
   selector: 'app-customer-finance-default',
@@ -8,6 +10,23 @@ import { TilesComponent } from '../../../shared/tiles/tiles.component';
   styleUrl: './customer-finance-default.component.css'
 })
 export class CustomerFinanceDefaultComponent {
+  
+  constructor(
+    private profileService: CustProfileService,
+    private customerContextService: CustomerContextService,
+  ){
+      this.profileService.getCustomerProfile(customerContextService.getCustomerId() || '').subscribe({
+      next: (response:any) => {
+        this.customerName = response.data.name1;
+        console.log(this.customerName);
+      },
+      error: (err) => {
+        console.error('Error fetching vendor profile:', err);
+      }
+    });
+  }
+  
+  customerName = '';
   portalName = "Customer Financial Sheet";
   customerFinanceTiles = [
   {

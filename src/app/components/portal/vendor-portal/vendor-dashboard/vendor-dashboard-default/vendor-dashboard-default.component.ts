@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { TilesComponent } from '../../../shared/tiles/tiles.component';
+import { VendorContextService } from '../../../../../services/context/vendorContext.context';
+import { VendorProfileService } from '../../../../../services/backend/vendor-profile.service';
 
 @Component({
   selector: 'app-vendor-dashboard-default',
@@ -8,6 +10,23 @@ import { TilesComponent } from '../../../shared/tiles/tiles.component';
   styleUrl: './vendor-dashboard-default.component.css'
 })
 export class VendorDashboardDefaultComponent {
+
+  constructor(
+    private profileService: VendorProfileService,
+    private vendorContextService: VendorContextService,
+  ){
+      this.profileService.getVendorProfile(vendorContextService.getVendorId() || '').subscribe({
+      next: (data:any) => {
+        this.vendorName = data.profile.name;
+        console.log(this.vendorName);
+      },
+      error: (err) => {
+        console.error('Error fetching vendor profile:', err);
+      }
+    });
+  }
+
+  vendorName = '';
   portalName = "Vendor Dashboard";
   vendorDashboardTiles = [
     {

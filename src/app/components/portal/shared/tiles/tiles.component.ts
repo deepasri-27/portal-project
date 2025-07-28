@@ -12,6 +12,7 @@ import { PageTile } from '../types/page-tile.types';
 })
 export class TilesComponent {
   constructor(private router: Router) {}
+  @Input() userName: string = '';
   @Input() portalName: string = '';
   @Input() tiles: Array<PageTile> = [];
 
