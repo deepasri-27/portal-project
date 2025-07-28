@@ -20,6 +20,7 @@ export class VendorDashboardRfqComponent implements OnInit {
     'unit', 'description', 'deliveryDate'];
 
   data: VrfqDataType[] = [];
+  tableTitle: string = "Request For Quotation";
 
   constructor(
     private rfqService: VendorRfqService,

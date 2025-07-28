@@ -15,6 +15,7 @@ titles: string[] = [
   ];
   keys :string[]=['vendorId','deliveryDate','docDate','material','unit', 'poNumber','itemNumber'];
   data: VpoDataType[] = [];
+  tableTitle: string = "Purchase Order";
 
   constructor(
     private poService: VendorPoService,

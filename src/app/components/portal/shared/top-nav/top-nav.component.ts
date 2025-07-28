@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription, filter } from 'rxjs';
 import { TileData } from '../types/tile-data.types';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-top-nav',
@@ -21,7 +22,10 @@ export class TopNavComponent implements OnInit, OnDestroy {
 
   private routerSubscription!: Subscription;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private cookieService: CookieService
+  ) {}
 
   ngOnInit(): void {
     this.updateTabFromUrl(this.router.url);
@@ -65,7 +69,8 @@ export class TopNavComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    document.cookie = `${this.portal}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    this.cookieService.set(this.portal, "");
+    this.cookieService.set(this.portal + "Id", "");
     console.log('logout: ' + this.portal);
     this.router.navigate(['/']);
   }

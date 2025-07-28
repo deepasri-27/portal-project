@@ -23,6 +23,7 @@ export class CustomerFinanceMemoComponent {
   ];
 
   data: MemoItem[] = [];
+  tableTitle: string = "Credit / Debit Memo";
 
   constructor(
     private memoService: CustMemoService,

@@ -138,3 +138,33 @@ button:disabled {
 .custom-table th.sorted .fa-arrow-down {
   transform: translateY(2px) rotate(180deg);
 }
+
+.table-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem auto 0.5rem auto;
+  width: 80vw;
+  max-width: 80vw;
+  padding-left: 1rem;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: var(--dark-color);
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+.back-button:hover {
+  background: none !important;
+}
+
+.table-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--dark-color);
+}

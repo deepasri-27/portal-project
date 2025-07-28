@@ -20,6 +20,7 @@ export class VendorFinanceAgingComponent {
     'amountPaid', 'currency', 'clearingDoc', 'refDocNo', 'dueDate', 'aging'
   ];
   data: VagingDataType[] = [];
+  tableTitle: string = "Payments and Aging";
 
   constructor(
     private agingService: VendorPaymentAgingService,

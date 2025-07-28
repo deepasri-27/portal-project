@@ -21,6 +21,7 @@ export class VendorFinanceInvoiceComponent {
     'quantity', 'unitPrice', 'unit'
   ];
   data: VinvoiceDataType[] = [];
+  tableTitle:string = "Invoice";
 
   constructor(
     private invoiceService: VendorInvoiceService,

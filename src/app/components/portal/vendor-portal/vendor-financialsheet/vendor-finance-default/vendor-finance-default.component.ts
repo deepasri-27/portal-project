@@ -25,7 +25,7 @@ export class VendorFinanceDefaultComponent {
     });
   }
 
-  vendorName = '';
+  vendorName = 'User';
   portalName = "Vendor Financial Sheet";
   vendorFinancialTiles = [
   {

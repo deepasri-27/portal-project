@@ -26,7 +26,7 @@ export class CustomerDashboardDefaultComponent {
     });
   }
 
-  customerName = '';
+  customerName = 'User';
   portalName = "Customer Dashboard";
   customerDashboardTiles = [
   {

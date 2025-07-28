@@ -12,17 +12,17 @@ import { CustomerContextService } from '../../../../../services/context/customer
 })
 export class CustomerFinanceOsalesComponent {
   titles: string[] = [
-  'Currency',                 
-  'Sales Document Type',      
-  'Customer Number',         
-  'Sales Organization',      
-  'Record Type',             
-  'Document Number',         
-  'Document Date',           
-  'Total Orders',            
-  'Total Order Value',       
-  'Total Billed Amount'      
-];
+    'Currency',                 
+    'Sales Document Type',      
+    'Customer Number',         
+    'Sales Organization',      
+    'Record Type',             
+    'Document Number',         
+    'Document Date',           
+    'Total Orders',            
+    'Total Order Value',       
+    'Total Billed Amount'      
+  ];
 
 
   keys: string[] = [
@@ -31,6 +31,7 @@ export class CustomerFinanceOsalesComponent {
   ];
 
   data: OverallSalesDataType[] = [];
+  tableTitle: string = "Overall Sales Data";
 
   constructor(
     private overallSalesService: CustOverallSalesService,

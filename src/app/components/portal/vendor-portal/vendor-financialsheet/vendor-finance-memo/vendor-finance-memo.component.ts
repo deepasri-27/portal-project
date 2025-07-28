@@ -21,6 +21,7 @@ export class VendorFinanceMemoComponent {
     'memoType', 'amount', 'currency', 'referenceDocNo', 'docType', 'companyCode'
   ];
   data: VmemoDataType[] = [];
+  tableTitle: string = "Credit / Debit Memo";
 
   constructor(
     private memoService: VendorMemoService,

@@ -12,6 +12,7 @@ export class DataTableComponent implements OnChanges {
   @Input() titles: string[] = [];
   @Input() data: any[] = [];
   @Input() keys: string[] = [];
+  @Input() tableTitle: string = 'Data Table'; // Default fallback
 
   page: number = 1;
   itemsPerPage: number = 5;
@@ -80,6 +81,10 @@ export class DataTableComponent implements OnChanges {
   getSortIcon(key: string): string {
     if (key !== this.sortedKey) return '';
     return this.sortDirection === 'asc' ? 'fa-solid fa-arrow-up' : 'fa-solid fa-arrow-down';
+  }
+
+  goBack() {
+    history.back(); // Pops the current page from history stack 
   }
 
 }

@@ -26,7 +26,7 @@ export class CustomerFinanceDefaultComponent {
     });
   }
   
-  customerName = '';
+  customerName = 'User';
   portalName = "Customer Financial Sheet";
   customerFinanceTiles = [
   {

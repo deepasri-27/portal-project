@@ -26,7 +26,7 @@ export class VendorDashboardDefaultComponent {
     });
   }
 
-  vendorName = '';
+  vendorName = 'User';
   portalName = "Vendor Dashboard";
   vendorDashboardTiles = [
     {

@@ -16,6 +16,7 @@ export class VendorDashboardGrComponent {
 titles: string[] = ['Material Doc', 'Doc Year', 'Post Date', 'Entry Date', 'PO Number', 'Po Item', 'Material','Quantity','Unit','Vendor ID'];
   keys: string[] = ['materialDoc', 'docYear', 'postDate', 'entryDate', 'poNumber', 'poItem', 'material','quantity','unit','vendorId'];
   data: VgoodsDataType[] = [];
+  tableTitle: string = "Good Request";
 
   constructor(
     private goodsService: VendorGoodsService,

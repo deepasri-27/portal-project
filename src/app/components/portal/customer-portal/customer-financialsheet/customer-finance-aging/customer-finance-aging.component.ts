@@ -10,20 +10,21 @@ import { CustomerContextService } from '../../../../../services/context/customer
   styleUrl: './customer-finance-aging.component.css'
 })
 export class CustomerFinanceAgingComponent {
-titles: string[] = [
-  'Invoice Number',        
-  'Billing Date',          
-  'Due Date',              
-  'Net Amount',            
-  'Currency',              
-  'Aging (Days)',          
-  'Aging Bucket'           
-];
+  titles: string[] = [
+    'Invoice Number',        
+    'Billing Date',          
+    'Due Date',              
+    'Net Amount',            
+    'Currency',              
+    'Aging (Days)',          
+    'Aging Bucket'           
+  ];
 
   keys: string[] = [
     'vbeln', 'fkdat', 'due_dt', 'netwr', 'waerk', 'aging', 'meaning'
   ];
   data:CustAgingDataType[] = [];
+  tableTitle: string = "Payments and Aging";
 
   constructor(
     private agingService: CustPaymentAgingService,
