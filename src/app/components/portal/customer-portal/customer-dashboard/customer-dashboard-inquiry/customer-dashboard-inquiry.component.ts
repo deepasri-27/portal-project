@@ -10,7 +10,20 @@ import { CustomerContextService } from '../../../../../services/context/customer
   styleUrl: './customer-dashboard-inquiry.component.css'
 })
 export class CustomerDashboardInquiryComponent implements OnInit {
- titles: string[] = ['vbeln','erdat','auart','netwr','waerk','vdatu','posnr','matnr','arktx','kwmeng','vrkme'];
+ titles: string[] =  [
+  'Inquiry Number',         
+  'Created Date',           
+  'Inquiry Type',           
+  'Net Value',              
+  'Currency',               
+  'Requested Date',         
+  'Item Number',            
+  'Material Number',        
+  'Material Description',   
+  'Order Quantity',         
+  'Sales Unit'              
+];
+
   keys: string[] = ['vbeln','erdat','auart','netwr','waerk','vdatu','posnr','matnr','arktx','kwmeng','vrkme'];
   data: custInquiryDatatype[] = [];
 

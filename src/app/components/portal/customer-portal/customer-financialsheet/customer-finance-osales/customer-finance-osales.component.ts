@@ -11,10 +11,19 @@ import { CustomerContextService } from '../../../../../services/context/customer
   styleUrl: './customer-finance-osales.component.css'
 })
 export class CustomerFinanceOsalesComponent {
-   titles: string[] = [
-    'waerk', 'auart', 'kunnr', 'vkorg', 'record_type',
-    'document_no', 'doc_date', 'total_orders', 'total_order_value', 'total_billed'
-  ];
+  titles: string[] = [
+  'Currency',                 
+  'Sales Document Type',      
+  'Customer Number',         
+  'Sales Organization',      
+  'Record Type',             
+  'Document Number',         
+  'Document Date',           
+  'Total Orders',            
+  'Total Order Value',       
+  'Total Billed Amount'      
+];
+
 
   keys: string[] = [
     'waerk', 'auart', 'kunnr', 'vkorg', 'record_type',
