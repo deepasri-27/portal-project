@@ -3,8 +3,12 @@ import { DataTableComponent } from '../../../shared/data-table/data-table.compon
 import { VinvoiceDataType } from '../../../shared/types/vendor-invoice-data.types';
 import { VendorInvoiceService } from '../../../../../services/backend/vendor-invoices.service';
 import { VendorContextService } from '../../../../../services/context/vendorContext.context';
+import { VendorInvoicePdfService } from '../../../../../services/backend/vendor-invoicepdf.service';
+import { saveAs } from 'file-saver';
+
 @Component({
   selector: 'app-vendor-finance-invoice',
+   standalone: true,
   imports: [DataTableComponent],
   templateUrl: './vendor-finance-invoice.component.html',
   styleUrl: './vendor-finance-invoice.component.css'
@@ -21,11 +25,12 @@ export class VendorFinanceInvoiceComponent {
     'quantity', 'unitPrice', 'unit'
   ];
   data: VinvoiceDataType[] = [];
-  tableTitle:string = "Invoice";
+  tableTitle:string = "Vendor Invoice";
 
   constructor(
     private invoiceService: VendorInvoiceService,
-    private vendorContextService: VendorContextService
+    private vendorContextService: VendorContextService,
+    private invoicePdfService: VendorInvoicePdfService
   ) {}
 
   ngOnInit(): void {
@@ -43,7 +48,30 @@ export class VendorFinanceInvoiceComponent {
       }
     });
   }
+   
+  onDownload(invoiceId: string): void {
+    this.invoicePdfService.downloadInvoicePdf(invoiceId).subscribe({
+      next: (binaryData) => {
+        // console.log(invoiceId);
+        // const url = window.URL.createObjectURL(blob);
+        // const link = document.createElement('a');
+        // link.href = url;
+         console.log(binaryData);
+        // link.download = `Invoice_${invoiceId}.pdf`;
+        // link.click();
+        // window.URL.revokeObjectURL(url);
+        const byteCharacters = atob(binaryData.pdfBase64); // Decode base64 string--get from backend
+        const byteNumbers = new Array(byteCharacters.length).fill(0).map((_, i) => byteCharacters.charCodeAt(i));
+        const byteArray = new Uint8Array(byteNumbers);
+        const blob = new Blob([byteArray], { type: 'application/pdf' });
 
+        saveAs(blob, 'invoice-'+invoiceId+'.pdf');
+      },
+      error: (err) => {
+        console.error('PDF download failed:', err);
+      }
+    });
+  }
 }
 
 

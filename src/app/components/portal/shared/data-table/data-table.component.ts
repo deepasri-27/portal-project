@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,6 +13,9 @@ export class DataTableComponent implements OnChanges {
   @Input() data: any[] = [];
   @Input() keys: string[] = [];
   @Input() tableTitle: string = 'Data Table'; // Default fallback
+  @Input() isInvoicePage: boolean = false;
+  @Output() invoiceDownload = new EventEmitter<string>(); // emits invoice ID
+
 
   page: number = 1;
   itemsPerPage: number = 5;
@@ -85,6 +88,12 @@ export class DataTableComponent implements OnChanges {
 
   goBack() {
     history.back(); // Pops the current page from history stack 
+  }
+
+  downloadInvoice(invoiceId: string) {
+    console.log("invoice");
+    console.log(invoiceId);
+    this.invoiceDownload.emit(invoiceId);
   }
 
 }

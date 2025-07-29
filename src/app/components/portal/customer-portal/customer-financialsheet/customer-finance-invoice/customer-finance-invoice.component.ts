@@ -3,6 +3,9 @@ import { DataTableComponent } from '../../../shared/data-table/data-table.compon
 import { CustInvoiceDataType } from '../../../shared/types/customer-invoice-data.type';
 import { CustInvoiceService } from '../../../../../services/backend/cust-invoice.service';
 import { CustomerContextService } from '../../../../../services/context/customerContext.context';
+import { CustInvoicePdfService } from '../../../../../services/backend/cust-invoicepdf.service';
+// import { VendorInvoicePdfService } from '../../../../../services/backend/vendor-invoicepdf.service';
+
 @Component({
   selector: 'app-customer-finance-invoice',
   imports: [DataTableComponent],
@@ -41,7 +44,8 @@ export class CustomerFinanceInvoiceComponent {
 
   constructor(
     private invoiceService: CustInvoiceService,
-    private customerContextService: CustomerContextService
+    private customerContextService: CustomerContextService,
+    private invoicePdfService: CustInvoicePdfService
   ) {}
 
   ngOnInit(): void {
@@ -57,6 +61,19 @@ export class CustomerFinanceInvoiceComponent {
       error: (err) => {
         console.error('Error fetching invoice data:', err);
       }
+    });
+  }
+  onDownload(invoiceId: string) {
+    this.invoicePdfService.downloadInvoicePdf(invoiceId).subscribe({
+      next: (blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `Invoice_${invoiceId}.pdf`;
+        link.click();
+        window.URL.revokeObjectURL(url);
+      },
+      error: (err) => console.error('PDF download failed:', err)
     });
   }
 }
