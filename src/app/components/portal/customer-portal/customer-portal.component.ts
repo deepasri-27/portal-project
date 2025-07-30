@@ -26,11 +26,10 @@ export class CustomerPortalComponent {
   portal: string = 'customer';
 
   constructor(private cookieService: CookieService) {
-    this.isCustomerLoggedIn = this.cookieService.get('customer') === 'true';
+    this.isCustomerLoggedIn = !(!(this.cookieService.get('customerId')));
   }
 
   handleLoginSuccess() {
-    this.cookieService.set('customer', 'true', 1); // 1 = expires in 1 day
     this.isCustomerLoggedIn = true;
   }
 }
