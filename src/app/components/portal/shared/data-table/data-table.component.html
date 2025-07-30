@@ -15,24 +15,30 @@
 <div class="table-wrapper" *ngIf="data.length !== 0">
   <div class="table-scrollable">
     <table class="custom-table">
-    <thead>
-      <tr>
-        <th 
-          class="theader"
-          *ngFor="let title of titles; let i = index" 
-          (click)="sortByColumn(keys[i])"
-          [class.sorted]="keys[i] === sortedKey"
-          style="cursor: pointer"
-        >
-          {{ title }}
-          <i *ngIf="keys[i] === sortedKey" [class]="getSortIcon(keys[i])" class="sort-icon"></i>
-        </th>
-      </tr>
-    </thead>
+      <thead>
+        <tr>
+          <th
+            class="theader"
+            *ngFor="let title of titles; let i = index"
+            (click)="sortByColumn(keys[i])"
+            [class.sorted]="keys[i] === sortedKey"
+            style="cursor: pointer"
+          >
+            {{ title }}
+            <i *ngIf="keys[i] === sortedKey" [class]="getSortIcon(keys[i])" class="sort-icon"></i>
+          </th>
+          <th *ngIf="isInvoicePage" class="theader">Actions</th>
+        </tr>
+      </thead>
 
       <tbody>
         <tr *ngFor="let row of paginatedData">
           <td *ngFor="let key of keys">{{ row[key] }}</td>
+          <td *ngIf="isInvoicePage">
+            <button (click)="downloadInvoice(row['invoiceNo'])" class="download-button" aria-label="Download Invoice">
+              <i class="fa fa-file-pdf"></i> Download
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>

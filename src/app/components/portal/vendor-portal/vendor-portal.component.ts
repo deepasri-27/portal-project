@@ -6,6 +6,7 @@ import { TopNavComponent } from '../shared/top-nav/top-nav.component';
 import { TileData } from '../shared/types/tile-data.types';
 import { CookieService } from 'ngx-cookie-service';
 
+
 @Component({
   selector: 'app-vendor-portal',
   standalone: true,

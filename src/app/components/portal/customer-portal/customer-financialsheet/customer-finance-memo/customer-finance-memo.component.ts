@@ -10,11 +10,24 @@ import { CustomerContextService } from '../../../../../services/context/customer
   styleUrl: './customer-finance-memo.component.css'
 })
 export class CustomerFinanceMemoComponent {
- titles: string[] = [
-     'memoId', 'memoType','referenceDoc', 'customerId','customerName',
-     'billingDate','createdDate','createdBy','currency','netValue','taxAmount','salesOrg',
-     'distChannel','division','direction'
-  ];
+titles: string[] = [
+  'Memo ID',                
+  'Memo Type',              
+  'Reference Document',     
+  'Customer ID',            
+  'Customer Name',          
+  'Billing Date',           
+  'Created Date',          
+  'Created By',            
+  'Currency',              
+  'Net Value',             
+  'Tax Amount',            
+  'Sales Organization',    
+  'Distribution Channel',  
+  'Division',              
+  'Direction'              
+];
+
 
   keys: string[] = [
     'memoId', 'memoType', 'referenceDoc', 'customerId', 'customerName',

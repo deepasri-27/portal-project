@@ -46,7 +46,7 @@ export class LoginComponent {
 
   getPortalImage(): string {
     switch (this.actor.toLowerCase()) {
-      case 'customer':
+       case 'customer':
         return 'assets/images/customer-portal.svg';
       case 'vendor':
         return 'assets/images/vendor-portal.svg';
