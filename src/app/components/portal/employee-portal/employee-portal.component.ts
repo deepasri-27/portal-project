@@ -24,13 +24,10 @@ export class EmployeePortalComponent {
   portal: string = 'employee';
 
   constructor(private cookieService: CookieService) {
-    this.isEmployeeLoggedIn = this.cookieService.get('employee') === 'true';
+    this.isEmployeeLoggedIn = !(!(this.cookieService.get('employeeId')));
   }
 
   handleLoginSuccess() {
-    const expiry = new Date();
-    expiry.setDate(expiry.getDate() + 1); // 1 day expiry
-    this.cookieService.set('employee', 'true', expiry);
     this.isEmployeeLoggedIn = true;
   }
 }

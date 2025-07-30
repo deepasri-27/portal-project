@@ -25,15 +25,10 @@ export class VendorPortalComponent {
   portal: string = 'vendor';
 
   constructor(private cookieService: CookieService) {
-    this.isVendorLoggedIn = this.cookieService.get('vendor') === 'true';
+    this.isVendorLoggedIn = !(!(this.cookieService.get('vendorId')));
   }
 
   handleLoginSuccess() {
-    const expireDays = 1;
-    const expireDate = new Date();
-    expireDate.setDate(expireDate.getDate() + expireDays);
-
-    this.cookieService.set('vendor', 'true', expireDate, '/');
     this.isVendorLoggedIn = true;
   }
 }

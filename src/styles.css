@@ -34,6 +34,13 @@
   /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-medium: 0.35s ease;
+
+  --scrollbar-bg: #f0f0f0;
+  --scrollbar-thumb: #999999;
+  --scrollbar-thumb-hover: #666666;
+  --scrollbar-track: #e0e0e0;
+  --scrollbar-button: #cccccc;
+  --scrollbar-button-hover: #aaaaaa;
 }
 
 body {

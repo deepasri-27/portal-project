@@ -111,26 +111,35 @@ export class LoginComponent {
       .subscribe({
         next: (res) => {
           if (res.status === 'success'||res.status===true) {
-            //  localStorage.setItem('VendorId', lifnr);
- 
+
             this.loginSuccess.emit();
+            const hundredYearsFromNow = new Date();
+            hundredYearsFromNow.setFullYear(hundredYearsFromNow.getFullYear() + 100);
+
             if(this.actor === 'customer'){
               this.customerContextService.setCustomerId(username);
-              this.cookieService.set("customerId", username);
+              this.cookieService.set("customerId", username, {
+                expires: hundredYearsFromNow,
+                path: '/',
+              });
             }
             else if(this.actor === 'employee'){
               this.employeeContextService.setEmployeeId(username);
-              this.cookieService.set("employeeId", username);
+              this.cookieService.set("employeeId", username, {
+                expires: hundredYearsFromNow,
+                path: '/',
+              });
             }
             else if(this.actor === 'vendor'){
               this.vendorContextService.setVendorId(username);
-              this.cookieService.set("vendorId", username);
+              this.cookieService.set("vendorId", username, {
+                expires: hundredYearsFromNow,
+                path: '/',
+              });
             }
             this.router.navigate([`portal/${this.actor}`]);
           } else {
             this.errorMessage = res.message || 'Invalid credentials';
-            // this.loginSuccess.emit();
-            // this.router.navigate([`portal/${this.actor}`]);
           }
         },
         error: (err) => {
