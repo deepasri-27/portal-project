@@ -1,10 +1,10 @@
 export type VinvoiceDataType={
-        vendorId : string,
+        // vendorId : string,
         invoiceNo : string,
         invoiceDate : Date,
         totalAmount : number,
         currency : string,
-        paymentTerms : string,
+        // paymentTerms : string,
         poNo : string,
         poItem :  string,
         materialNo :  string,

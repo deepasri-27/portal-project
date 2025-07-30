@@ -14,11 +14,15 @@ export class VendorFinanceMemoComponent {
 
   titles: string[] = [
     'Memo Doc', 'Doc Year', 'Posting Date', 'Entry Date', 'Vendor ID',
-    'Memory Type', 'Amount', 'Currency', 'Reference Doc No', 'Doc Type', 'Company Code'
+    'Memory Type', 'Amount', 'Currency', 
+    // 'Reference Doc No', 
+    'Doc Type', 'Company Code'
   ];
   keys: string[] = [
     'memoDoc', 'docYear', 'postingDate', 'entryDate', 'vendorId',
-    'memoType', 'amount', 'currency', 'referenceDocNo', 'docType', 'companyCode'
+    'memoType', 'amount', 'currency', 
+    // 'referenceDocNo', 
+    'docType', 'companyCode'
   ];
   data: VmemoDataType[] = [];
   tableTitle: string = "Credit / Debit Memo";

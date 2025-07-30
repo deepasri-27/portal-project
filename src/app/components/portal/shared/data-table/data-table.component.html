@@ -36,7 +36,7 @@
           <td *ngFor="let key of keys">{{ row[key] }}</td>
           <td *ngIf="isInvoicePage">
             <button (click)="downloadInvoice(row['invoiceNo'])" class="download-button" aria-label="Download Invoice">
-              <i class="fa fa-file-pdf"></i> Download
+              <i class="fas fa-download"></i> Download
             </button>
           </td>
         </tr>

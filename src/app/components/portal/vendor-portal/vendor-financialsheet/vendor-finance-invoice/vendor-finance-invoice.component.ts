@@ -15,13 +15,17 @@ import { saveAs } from 'file-saver';
 })
 export class VendorFinanceInvoiceComponent {
    titles: string[] = [
-    'Vendor ID', 'Invoice No', 'Invoice Date', 'Total Amount', 'Currency',
-    'Payment Terms', 'PO No', 'PO Item', 'Material No', 'Description',
+    // 'Vendor ID',
+     'Invoice No', 'Invoice Date', 'Total Amount', 'Currency',
+    // 'Payment Terms',
+     'PO No', 'PO Item', 'Material No', 'Description',
     'Quantity', 'Unit Price', 'Unit'
   ];
   keys: string[] = [
-    'vendorId', 'invoiceNo', 'invoiceDate', 'totalAmount', 'currency',
-    'paymentTerms', 'poNo', 'poItem', 'materialNo', 'description',
+    // 'vendorId', 
+    'invoiceNo', 'invoiceDate', 'totalAmount', 'currency',
+    // 'paymentTerms', 
+    'poNo', 'poItem', 'materialNo', 'description',
     'quantity', 'unitPrice', 'unit'
   ];
   data: VinvoiceDataType[] = [];

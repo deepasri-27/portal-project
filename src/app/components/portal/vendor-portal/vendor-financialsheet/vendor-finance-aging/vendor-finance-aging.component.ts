@@ -13,11 +13,15 @@ import { VendorContextService } from '../../../../../services/context/vendorCont
 export class VendorFinanceAgingComponent {
   titles: string[] = [
     'Payment Doc', 'Doc Year', 'Payment Date', 'Entry Date', 'Vendor ID',
-    'Amount Paid', 'Currency', 'Clearing Doc', 'Ref Doc No', 'Due Date', 'Aging'
+    'Amount Paid', 'Currency', 
+    // 'Clearing Doc', 'Ref Doc No',
+     'Due Date', 'Aging'
   ];
   keys: string[] = [
     'paymentDoc', 'docYear', 'paymentDate', 'enrtyDate', 'vendorId',
-    'amountPaid', 'currency', 'clearingDoc', 'refDocNo', 'dueDate', 'aging'
+    'amountPaid', 'currency', 
+    // 'clearingDoc', 'refDocNo',
+     'dueDate', 'aging'
   ];
   data: VagingDataType[] = [];
   tableTitle: string = "Payments and Aging";
