@@ -14,7 +14,7 @@ export class VendorFinanceMemoComponent {
 
   titles: string[] = [
     'Memo Doc', 'Doc Year', 'Posting Date', 'Entry Date', 'Vendor ID',
-    'Memory Type', 'Amount', 'Currency', 
+    'Memo Type', 'Amount', 'Currency', 
     // 'Reference Doc No', 
     'Doc Type', 'Company Code'
   ];

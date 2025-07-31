@@ -83,11 +83,17 @@ export class CustomerProfileComponent {
       fieldName: 'Street',
       fieldValue: this.rawCustomerProfileData.street
     });
+    
     this.customerProfile.profileDetails.push({
       iconClass: 'fa-hashtag',
       fieldName: 'Customer ID',
       fieldValue: this.customerContextService.getCustomerId() || ''
     });
+    for(let i = 0; i < this.customerProfile.profileDetails.length;i++){
+      if(this.customerProfile.profileDetails[i].fieldValue === ''){
+        this.customerProfile.profileDetails[i].fieldValue = "No Data";
+      }
+    }
   }
 }
 

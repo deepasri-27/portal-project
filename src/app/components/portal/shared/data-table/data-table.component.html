@@ -13,6 +13,50 @@
 </div>
 
 <div class="table-wrapper" *ngIf="data.length !== 0">
+  <div class="filter-bar" *ngIf="filters.length">
+    <div *ngFor="let filter of filters" class="filter-field">
+      <label>{{ filter.label || filter.field }}</label>
+
+      <!-- Search -->
+      <input
+        *ngIf="filter.filterType === 'search'"
+        type="text"
+        [(ngModel)]="filterValues[filter.field]"
+        placeholder="Search..."
+      />
+
+      <!-- Type -->
+      <select
+        *ngIf="filter.filterType === 'type'"
+        [(ngModel)]="filterValues[filter.field]"
+        placeholder = "Select"
+      >
+        <option value="" disabled selected>Select a category</option>
+        <option *ngFor="let opt of filter.options" [value]="opt">{{ opt }}</option>
+      </select>
+
+      <!-- Date Range -->
+      <div *ngIf="filter.filterType === 'dateRange'" class="date-range-inputs">
+        <input
+          type="date"
+          [ngModel]="getDateFilterValue(filter.field, 'from')"
+          (ngModelChange)="setDateFilterValue(filter.field, 'from', $event)"
+        />
+        <span>to</span>
+        <input
+          type="date"
+          [ngModel]="getDateFilterValue(filter.field, 'to')"
+          (ngModelChange)="setDateFilterValue(filter.field, 'to', $event)"
+        />
+      </div>
+    </div>
+
+    <div class="filter-actions">
+      <button class="apply-btn" (click)="onApplyFilter()">Apply Filter</button>
+      <button class="clear-btn" (click)="onClearFilter()">Clear Filter</button>
+    </div>
+  </div>
+
   <div class="table-scrollable">
     <table class="custom-table">
       <thead>

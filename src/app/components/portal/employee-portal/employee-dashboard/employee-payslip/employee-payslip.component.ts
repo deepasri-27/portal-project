@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DataTableComponent } from '../../shared/data-table/data-table.component';
-import { EmployeePayslipDataType } from '../../shared/types/employee-payslip-data.type';
-import { EmployeePayslipService } from '../../../../services/backend/employee-payslip.service';
-import { EmployeeContextService } from '../../../../services/context/employeeContext.context';
-import { EmployeePayslipPdfService } from '../../../../services/backend/employee-payslippdf.service';
+import { DataTableComponent } from '../../../shared/data-table/data-table.component';
+import { EmployeePayslipDataType } from '../../../shared/types/employee-payslip-data.type';
+import { EmployeePayslipService } from '../../../../../services/backend/employee-payslip.service';
+import { EmployeeContextService } from '../../../../../services/context/employeeContext.context';
+import { EmployeePayslipPdfService } from '../../../../../services/backend/employee-payslippdf.service';
 import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-employee-payslip',

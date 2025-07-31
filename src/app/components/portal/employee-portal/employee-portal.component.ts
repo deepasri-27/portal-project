@@ -17,8 +17,7 @@ export class EmployeePortalComponent {
   profileUrl: string = '/portal/employee/profile';
 
   tileData: Array<TileData> = [
-    { label: 'Leave Request', url: '/portal/employee/leave-request' },
-    { label: 'Payslip', url: '/portal/employee/payslip' }
+    { label: 'Dashboard', url: '/portal/employee/dashboard' },
   ];
 
   portal: string = 'employee';

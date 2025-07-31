@@ -11,8 +11,6 @@ import { CustomerProfileComponent } from './components/portal/customer-portal/cu
 import { CustomerDashboardComponent } from './components/portal/customer-portal/customer-dashboard/customer-dashboard.component';
 import { CustomerFinancialsheetComponent } from './components/portal/customer-portal/customer-financialsheet/customer-financialsheet.component';
 import { EmployeeProfileComponent } from './components/portal/employee-portal/employee-profile/employee-profile.component';
-import { EmployeeLeaveRequestComponent } from './components/portal/employee-portal/employee-leave-request/employee-leave-request.component';
-import { EmployeePayslipComponent } from './components/portal/employee-portal/employee-payslip/employee-payslip.component';
 import { CustomerDashboardInquiryComponent } from './components/portal/customer-portal/customer-dashboard/customer-dashboard-inquiry/customer-dashboard-inquiry.component';
 import { CustomerDashboardSalesComponent } from './components/portal/customer-portal/customer-dashboard/customer-dashboard-sales/customer-dashboard-sales.component';
 import { CustomerDashboardDeliveryComponent } from './components/portal/customer-portal/customer-dashboard/customer-dashboard-delivery/customer-dashboard-delivery.component';
@@ -30,6 +28,10 @@ import { VendorDashboardDefaultComponent } from './components/portal/vendor-port
 import { VendorFinanceDefaultComponent } from './components/portal/vendor-portal/vendor-financialsheet/vendor-finance-default/vendor-finance-default.component';
 import { CustomerDashboardDefaultComponent } from './components/portal/customer-portal/customer-dashboard/customer-dashboard-default/customer-dashboard-default.component';
 import { CustomerFinanceDefaultComponent } from './components/portal/customer-portal/customer-financialsheet/customer-finance-default/customer-finance-default.component';
+import { EmployeeDashboardComponent } from './components/portal/employee-portal/employee-dashboard/employee-dashboard.component';
+import { EmployeeDefaultComponent } from './components/portal/employee-portal/employee-dashboard/employee-default/employee-default.component';
+import { EmployeePayslipComponent } from './components/portal/employee-portal/employee-dashboard/employee-payslip/employee-payslip.component';
+import { EmployeeLeaveRequestComponent } from './components/portal/employee-portal/employee-dashboard/employee-leave-request/employee-leave-request.component';
 export const routes: Routes = [
   // Route to WelcomeComponent at root path
  
@@ -90,11 +92,16 @@ export const routes: Routes = [
        },
       { path: 'employee', component: EmployeePortalComponent,
         children:[
-         {path:'profile',component:EmployeeProfileComponent},
-          {path:'leave-request',component:EmployeeLeaveRequestComponent},
-          {path:'payslip',component:EmployeePayslipComponent},
-          { path: '**', redirectTo: 'leave-request', pathMatch: 'full' }
-
+         {path:'dashboard',component:EmployeeDashboardComponent,
+            children:[
+              {path:'leave-request',component:EmployeeLeaveRequestComponent},
+              {path:'payslip',component:EmployeePayslipComponent},
+              {path: 'default', component: EmployeeDefaultComponent},
+              {path:'**',redirectTo:'default',pathMatch:'full'}
+            ]
+         },
+         {path:'profile', component:EmployeeProfileComponent},
+         { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
         ]
        },
       { path: 'welcome', component: WelcomeComponent},

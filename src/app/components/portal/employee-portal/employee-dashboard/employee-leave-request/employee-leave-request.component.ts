@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DataTableComponent } from '../../shared/data-table/data-table.component';
-import { EmployeeLeaveDataType } from '../../shared/types/employee-leave-data.type';
-import { EmployeeLeaveService } from '../../../../services/backend/employee-leave.service';
-import { EmployeeContextService } from '../../../../services/context/employeeContext.context';
+import { DataTableComponent } from '../../../shared/data-table/data-table.component';
+import { EmployeeLeaveDataType } from '../../../shared/types/employee-leave-data.type';
+import { EmployeeLeaveService } from '../../../../../services/backend/employee-leave.service';
+import { EmployeeContextService } from '../../../../../services/context/employeeContext.context';
 
 @Component({
   selector: 'app-employee-leave-request',

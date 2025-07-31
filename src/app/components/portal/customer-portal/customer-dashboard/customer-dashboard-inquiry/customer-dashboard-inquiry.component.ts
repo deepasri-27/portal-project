@@ -27,6 +27,9 @@ export class CustomerDashboardInquiryComponent implements OnInit {
   keys: string[] = ['vbeln','erdat','auart','netwr','waerk','vdatu','posnr','matnr','arktx','kwmeng','vrkme'];
   data: custInquiryDatatype[] = [];
   tableTitle = "Inquiry Data";
+  filters:any = {
+
+  };
 
   constructor(
     private inquiryService: CustInquiryService,

@@ -5,11 +5,12 @@ import { CustInvoiceService } from '../../../../../services/backend/cust-invoice
 import { CustomerContextService } from '../../../../../services/context/customerContext.context';
 import { CustInvoicePdfService } from '../../../../../services/backend/cust-invoicepdf.service';
 import { saveAs } from 'file-saver';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-customer-finance-invoice',
-  imports: [DataTableComponent],
+  imports: [DataTableComponent, CommonModule],
   templateUrl: './customer-finance-invoice.component.html',
   styleUrl: './customer-finance-invoice.component.css'
 })
@@ -69,7 +70,7 @@ export class CustomerFinanceInvoiceComponent {
   onDownload(invoiceId: string): void {
     this.invoicePdfService.downloadInvoicePdf(invoiceId).subscribe({
       next: (binaryData) => {
-        const base64 = binaryData?.pdfBase64;
+        const base64 = binaryData?.base64;
         console.log("binary data value");
         console.log(binaryData);
         if (!base64 || typeof base64 !== 'string') {

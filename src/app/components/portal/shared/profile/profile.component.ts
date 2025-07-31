@@ -11,10 +11,10 @@ import { CommonModule } from '@angular/common';
 export class ProfileComponent {
   @Input() profileData: ProfileData = {
     headerData: {
-      name: '',
-      id: '',
-      idFieldName: '',
-      headerIcon: ''
+      name: 'No Data',
+      id: 'No Data',
+      idFieldName: 'No Data',
+      headerIcon: 'No Data'
     },
     profileDetails: []
   };

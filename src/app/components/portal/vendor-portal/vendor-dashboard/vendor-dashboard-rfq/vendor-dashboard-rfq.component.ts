@@ -3,6 +3,7 @@ import { DataTableComponent } from '../../../shared/data-table/data-table.compon
 import { VendorRfqService } from '../../../../../services/backend/vendor-rfq.service';
 import { VrfqDataType } from '../../../shared/types/vendor-rfq-data.types';
 import { VendorContextService } from '../../../../../services/context/vendorContext.context';
+import { FilterType } from '../../../shared/types/filter.types';
 
 @Component({
   selector: 'app-vendor-dashboard-rfq',
@@ -21,6 +22,18 @@ export class VendorDashboardRfqComponent implements OnInit {
 
   data: VrfqDataType[] = [];
   tableTitle: string = "Request For Quotation";
+  filters: FilterType[] = [
+    {
+      filterType: 'search',
+      field: 'vendorId',
+      label: 'Search by Vendor ID'
+    },
+    {
+      filterType: 'dateRange',
+      field: 'docDate',
+      label: 'Filter by Doc Date'
+    }
+  ];
 
   constructor(
     private rfqService: VendorRfqService,

@@ -84,5 +84,10 @@ export class VendorProfileComponent implements OnInit {
       fieldName: 'Vendor ID',
       fieldValue: this.rawVendorProfileData.vendorId
     });
+    for(let i = 0; i < this.vendorProfile.profileDetails.length;i++){
+      if(this.vendorProfile.profileDetails[i].fieldValue === ''){
+        this.vendorProfile.profileDetails[i].fieldValue = "No Data";
+      }
+    }
   }
 }
