@@ -1,1 +1,10 @@
-<p>employee-payslip works!</p>
+<!-- <app-data-table [tableTitle] = "tableTitle" [titles]="titles" [data]="data" [keys]="keys"></app-data-table> -->
+
+<app-data-table
+  [tableTitle]="tableTitle"
+  [titles]="titles"
+  [data]="data"
+  [keys]="keys"
+  [isPayslipPage]="true"
+  (invoiceDownload)="onDownload($event)">
+</app-data-table>

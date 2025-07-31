@@ -4,7 +4,8 @@ import { CustInvoiceDataType } from '../../../shared/types/customer-invoice-data
 import { CustInvoiceService } from '../../../../../services/backend/cust-invoice.service';
 import { CustomerContextService } from '../../../../../services/context/customerContext.context';
 import { CustInvoicePdfService } from '../../../../../services/backend/cust-invoicepdf.service';
-// import { VendorInvoicePdfService } from '../../../../../services/backend/vendor-invoicepdf.service';
+import { saveAs } from 'file-saver';
+
 
 @Component({
   selector: 'app-customer-finance-invoice',
@@ -14,33 +15,33 @@ import { CustInvoicePdfService } from '../../../../../services/backend/cust-invo
 })
 export class CustomerFinanceInvoiceComponent {
   titles: string[] = [
-    'Invoice Number',           
-    'Billing Date',            
-    'Total Net Amount',        
-    'Currency',                 
-    'Customer Number',         
-    'Sales Organization',      
-    'Pricing Document',         
-    'Billing Type',             
-    'Item Number',              
-    'Material Number',          
-    'Material Description',     
-    'Billed Quantity',          
-    'Sales Unit',               
-    'Item Net Value',           
-    'Pricing Date',             
-    'Created Date',             
-    'Created By'                
+    'Invoice Number',
+    'Billing Date',
+    'Total Net Amount',
+    'Currency',
+    'Customer Number',
+    'Sales Organization',
+    'Pricing Document',
+    'Billing Type',
+    'Item Number',
+    'Material Number',
+    'Material Description',
+    'Billed Quantity',
+    'Sales Unit',
+    'Item Net Value',
+    'Pricing Date',
+    'Created Date',
+    'Created By'
   ];
-  
+
   keys: string[] = [
     'vbeln', 'fkdat', 'netwr', 'waerk', 'kunag', 'vkorg',
     'knumv', 'fkart', 'posnr', 'matnr', 'arktx',
-    'fkimg', 'vrkme', 'item_netwr', 'prsdt','erdat','ernam'
+    'fkimg', 'vrkme', 'item_netwr', 'prsdt', 'erdat', 'ernam'
   ];
-  
+
   data: CustInvoiceDataType[] = [];
-  tableTitle: string = "Invoice Data";
+  tableTitle: string = "Customer Invoice";
 
   constructor(
     private invoiceService: CustInvoiceService,
@@ -54,31 +55,46 @@ export class CustomerFinanceInvoiceComponent {
     this.invoiceService.getInvoicesByCustomerId(customerId).subscribe({
       next: (res) => {
         if (res?.success) {
+  
           this.data = res.data;
           console.log(this.data);
         }
       },
       error: (err) => {
-        console.error('Error fetching invoice data:', err);
+        console.error('Error fetching customer invoice data:', err);
       }
     });
   }
-  onDownload(invoiceId: string) {
+
+  onDownload(invoiceId: string): void {
     this.invoicePdfService.downloadInvoicePdf(invoiceId).subscribe({
-      next: (blob) => {
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `Invoice_${invoiceId}.pdf`;
-        link.click();
-        window.URL.revokeObjectURL(url);
+      next: (binaryData) => {
+        const base64 = binaryData?.pdfBase64;
+        console.log("binary data value");
+        console.log(binaryData);
+        if (!base64 || typeof base64 !== 'string') {
+          console.error('Invalid or missing base64 data');
+          return;
+        }
+
+        try {
+          const cleanedBase64 = base64.replace(/\s/g, '');
+          const byteCharacters = atob(cleanedBase64);
+          const byteNumbers = Array.from(byteCharacters, c => c.charCodeAt(0));
+          const byteArray = new Uint8Array(byteNumbers);
+          const blob = new Blob([byteArray], { type: 'application/pdf' });
+
+          saveAs(blob, `invoice-${invoiceId}.pdf`);
+        } catch (error) {
+          console.error('Base64 decoding failed:', error);
+        }
       },
-      error: (err) => console.error('PDF download failed:', err)
+      error: (err) => {
+        console.error('PDF download failed:', err);
+      }
     });
   }
 }
-
-
 
 
 

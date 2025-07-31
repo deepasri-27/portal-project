@@ -75,6 +75,8 @@
 
 /* Details Section */
 .profile-details {
+  max-height: 50vh;
+  overflow-y: scroll;
   padding: 2.5rem;
   display: grid;
   grid-template-columns: 1fr 1fr;

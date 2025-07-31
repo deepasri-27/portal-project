@@ -9,9 +9,15 @@ export class CustInvoicePdfService {
   constructor(private http: HttpClient) {}
 
   // ✅ Method to download customer invoice PDF
-  downloadInvoicePdf(invoiceId: string): Observable<Blob> {
+  downloadInvoicePdf(invoiceId: string): Observable<any> {
+    console.log("invoiceId");
+    console.log(invoiceId);
     return this.http.get(`${this.apiUrl}/${invoiceId}`, {
-      responseType: 'blob'
+      responseType: 'json'
     });
   }
 }
+
+
+
+

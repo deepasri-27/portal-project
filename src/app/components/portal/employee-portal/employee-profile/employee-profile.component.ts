@@ -2,7 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ProfileComponent } from '../../shared/profile/profile.component';
 import { ProfileData } from '../../shared/types/profile-data.types';
-import { VprofileDataType } from '../../shared/types/vendor-profile-data.type';
+import { EmployeeProfileDataType } from '../../shared/types/employee-profile-data.type';
+import { EmployeeProfileService } from '../../../../services/backend/employee-profile.service';
+import { EmployeeContextService } from '../../../../services/context/employeeContext.context';
 
 @Component({
   selector: 'app-employee-profile',
@@ -11,13 +13,17 @@ import { VprofileDataType } from '../../shared/types/vendor-profile-data.type';
   styleUrl: './employee-profile.component.css'
 })
 export class EmployeeProfileComponent implements OnInit {
-    rawEmployeeProfileData: VprofileDataType = {
-        vendorId: '',
-        name: '',
-        city: '',
-        country: '',
-        postcode: '',
-        street: '',
+    rawEmployeeProfileData: EmployeeProfileDataType = {
+        fullName: '',
+        gender: '',
+        dob: '',
+        orgUnit: '',
+        position: '',
+        department: '',
+        compCode: '',
+        email: '',
+        phone: '',
+        address: '',
     };
     employeeProfile: ProfileData = {
       headerData: {
@@ -28,59 +34,85 @@ export class EmployeeProfileComponent implements OnInit {
       },
     profileDetails: []
     };
-    /// @tobeDone
-    // constructor(private profileService: employeeProfileService) {}
+
+    constructor(
+      private profileService: EmployeeProfileService,
+      private employeeContext: EmployeeContextService
+    ) {}
   
-    // ngOnInit(): void {
-    //   const vendorId = '0000100000'; // You can get this from route params or auth token
-    //   this.profileService.getemployeeProfile(vendorId).subscribe({
-    //     next: (data:any) => {
-    //       this.employeeProfile = data.profile;
-        
-    //     },
-    //     error: (err) => {
-    //       console.error('Error fetching vendor profile:', err);
-    //     }
-    //   });
-    // @toBeRemoved
-  ngOnInit(): void {
-      
+    ngOnInit(): void {
+      const employeeId = this.employeeContext.getEmployeeId();
+      if (employeeId) {
+        this.profileService.getEmployeeProfile(employeeId).subscribe({
+          next: (profileData) => {
+            this.rawEmployeeProfileData = profileData;
+            this.configEmployeeProfile();
+          },
+          error: (err) => {
+            console.error('Error fetching employee profile:', err);
+          }
+        });
+      }
   }
 
   configEmployeeProfile(): void {
     this.employeeProfile.headerData.headerIcon = 'fas fa-id-card';
-    this.employeeProfile.headerData.name = this.rawEmployeeProfileData.name;
-    this.employeeProfile.headerData.id = this.rawEmployeeProfileData.vendorId;
-    this.employeeProfile.headerData.idFieldName = 'Vendor ID';
+    this.employeeProfile.headerData.name = this.rawEmployeeProfileData.fullName;
+    this.employeeProfile.headerData.id = this.employeeContext.getEmployeeId() || '';
+    this.employeeProfile.headerData.idFieldName = 'Employee ID';
+    
+    // Clear existing details
+    this.employeeProfile.profileDetails = [];
+    
     this.employeeProfile.profileDetails.push({
-      iconClass: 'fa-id-card',
-      fieldName: 'Vendor Name',
-      fieldValue: this.rawEmployeeProfileData.name
+      iconClass: 'fa-user',
+      fieldName: 'Full Name',
+      fieldValue: this.rawEmployeeProfileData.fullName
+    });
+    this.employeeProfile.profileDetails.push({
+      iconClass: 'fa-venus-mars',
+      fieldName: 'Gender',
+      fieldValue: this.rawEmployeeProfileData.gender
+    });
+    this.employeeProfile.profileDetails.push({
+      iconClass: 'fa-calendar',
+      fieldName: 'Date of Birth',
+      fieldValue: this.rawEmployeeProfileData.dob
+    });
+    this.employeeProfile.profileDetails.push({
+      iconClass: 'fa-building',
+      fieldName: 'Organization Unit',
+      fieldValue: this.rawEmployeeProfileData.orgUnit
+    });
+    this.employeeProfile.profileDetails.push({
+      iconClass: 'fa-briefcase',
+      fieldName: 'Position',
+      fieldValue: this.rawEmployeeProfileData.position
+    });
+    this.employeeProfile.profileDetails.push({
+      iconClass: 'fa-users',
+      fieldName: 'Department',
+      fieldValue: this.rawEmployeeProfileData.department
+    });
+    this.employeeProfile.profileDetails.push({
+      iconClass: 'fa-building',
+      fieldName: 'Company Code',
+      fieldValue: this.rawEmployeeProfileData.compCode
+    });
+    this.employeeProfile.profileDetails.push({
+      iconClass: 'fa-envelope',
+      fieldName: 'Email',
+      fieldValue: this.rawEmployeeProfileData.email
+    });
+    this.employeeProfile.profileDetails.push({
+      iconClass: 'fa-phone',
+      fieldName: 'Phone',
+      fieldValue: this.rawEmployeeProfileData.phone
     });
     this.employeeProfile.profileDetails.push({
       iconClass: 'fa-map-marker-alt',
-      fieldName: 'City',
-      fieldValue: this.rawEmployeeProfileData.city
-    });
-    this.employeeProfile.profileDetails.push({
-      iconClass: 'fa-flag',
-      fieldName: 'Country',
-      fieldValue: this.rawEmployeeProfileData.country
-    });
-    this.employeeProfile.profileDetails.push({
-      iconClass: 'fa-mail-bulk',
-      fieldName: 'Postcode',
-      fieldValue: this.rawEmployeeProfileData.postcode
-    });
-    this.employeeProfile.profileDetails.push({
-      iconClass: 'fa-road',
-      fieldName: 'Street Address',
-      fieldValue: this.rawEmployeeProfileData.street
-    });
-    this.employeeProfile.profileDetails.push({
-      iconClass: 'fa-hashtag',
-      fieldName: 'Vendor ID',
-      fieldValue: this.rawEmployeeProfileData.vendorId
+      fieldName: 'Address',
+      fieldValue: this.rawEmployeeProfileData.address
     });
   }
 }

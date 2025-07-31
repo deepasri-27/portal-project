@@ -93,24 +93,33 @@ export class LoginComponent {
       return;
     }
 
-    const payload = {
-      username: username,
-      password: password.trim(),
-    };
-
-    let port: string='';
+    let payload: any;
+    let port: string = '';
+    
     if (this.actor === 'vendor') {
       port = '3000';
+      payload = {
+        username: username,
+        password: password.trim(),
+      };
     } else if (this.actor === 'customer') {
       port = '3001';
+      payload = {
+        username: username,
+        password: password.trim(),
+      };
     } else if (this.actor === 'employee') {
       port = '3002';
+      payload = {
+        employeeId: username,  // Backend expects employeeId, not username
+        password: password.trim(),
+      };
     }
     this.http
       .post<any>(`http://localhost:${port}/api/${this.actor}-login`, payload)
       .subscribe({
         next: (res) => {
-          if (res.status === 'success'||res.status===true) {
+          if (res.status === 'success'||res.status===true ||res.status=='Login Successful') {
 
             this.loginSuccess.emit();
             const hundredYearsFromNow = new Date();
@@ -124,8 +133,10 @@ export class LoginComponent {
               });
             }
             else if(this.actor === 'employee'){
-              this.employeeContextService.setEmployeeId(username);
-              this.cookieService.set("employeeId", username, {
+              // Use employeeId from response instead of username
+              const employeeId = res.employeeId || username;
+              this.employeeContextService.setEmployeeId(employeeId);
+              this.cookieService.set("employeeId", employeeId, {
                 expires: hundredYearsFromNow,
                 path: '/',
               });
@@ -144,7 +155,7 @@ export class LoginComponent {
         },
         error: (err) => {
           this.errorMessage = err.error?.message || 'Server error during login';
-          //  this.loginSuccess.emit();
+          //   this.loginSuccess.emit();
           //  this.router.navigate([`portal/${this.actor}`]);
         },
       });
