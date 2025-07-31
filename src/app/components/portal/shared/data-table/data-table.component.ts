@@ -15,6 +15,7 @@ export class DataTableComponent implements OnChanges {
   @Input() tableTitle: string = 'Data Table'; // Default fallback
   @Input() isInvoicePage: boolean = false;
   @Input() isPayslipPage:boolean = false;
+  @Input() actionColumn:string ='';
   @Output() invoiceDownload = new EventEmitter<string>(); // emits invoice ID
 
 

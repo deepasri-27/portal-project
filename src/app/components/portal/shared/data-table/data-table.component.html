@@ -35,7 +35,7 @@
         <tr *ngFor="let row of paginatedData">
           <td *ngFor="let key of keys">{{ row[key] }}</td>
           <td *ngIf="isInvoicePage || isPayslipPage">
-            <button (click)="downloadInvoice(row['invoiceNo'])" class="download-button" aria-label="Download Invoice">
+            <button (click)="downloadInvoice(row[actionColumn])" class="download-button" aria-label="Download Invoice">
               <i class="fas fa-download"></i> Download
             </button>
           </td>
