@@ -16,9 +16,7 @@ export class EmployeeDefaultComponent {
     ){
         this.employeeService.getEmployeeProfile(employeeContextService.getEmployeeId() || '').subscribe({
         next: (response:any) => {
-          // to be configured
-          this.customerName = response.data.name1;
-          console.log(this.customerName);
+          this.customerName = response.fullName;
         },
         error: (err) => {
           console.error('Error fetching vendor profile:', err);

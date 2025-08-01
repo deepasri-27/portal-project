@@ -114,5 +114,10 @@ export class EmployeeProfileComponent implements OnInit {
       fieldName: 'Address',
       fieldValue: this.rawEmployeeProfileData.address
     });
+    for(let i = 0; i < this.employeeProfile.profileDetails.length;i++){
+      if(this.employeeProfile.profileDetails[i].fieldValue === ''){
+        this.employeeProfile.profileDetails[i].fieldValue = "No Data";
+      }
+    }
   }
 }

@@ -1,18 +1,43 @@
 <div class="login-page">
   <div class="login-container">
-    <!-- Left Side - Portal Image and Text -->
+    <!-- Left Side - Portal Information Card -->
     <div class="portal-section">
-      <div class="portal-content">
-        <div class="portal-image-container">
-          <img 
-            [src]="getPortalImage()" 
-            [alt]="actor + ' portal'" 
-            class="portal-image"
-          />
+      <div class="portal-info-card">
+        <div class="icon-container">
+          <div class="card-icon" [ngClass]="getPortalIconClass()">
+            <svg *ngIf="actor.toLowerCase() === 'customer'" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M7 18C7 18.5304 7.21071 19.0391 7.58579 19.4142C7.96086 19.7893 8.46957 20 9 20H20C20.5304 20 21.0391 19.7893 21.4142 19.4142C21.7893 19.0391 22 18.5304 22 18V8C22 7.46957 21.7893 6.96086 21.4142 6.58579C21.0391 6.21071 20.5304 6 20 6H9C8.46957 6 7.96086 6.21071 7.58579 6.58579C7.21071 6.96086 7 7.46957 7 8V18Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="2" fill="currentColor"/>
+              <path d="M9 2L15 2C15.5523 2 16 2.44772 16 3V5H8V3C8 2.44772 8.44772 2 9 2Z" fill="currentColor"/>
+            </svg>
+            <svg *ngIf="actor.toLowerCase() === 'vendor'" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="7" r="1" fill="currentColor"/>
+              <circle cx="12" cy="12" r="1" fill="currentColor"/>
+              <circle cx="12" cy="17" r="1" fill="currentColor"/>
+            </svg>
+            <svg *ngIf="actor.toLowerCase() === 'employee'" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 21L16 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 15V11" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+            <svg *ngIf="actor.toLowerCase() !== 'customer' && actor.toLowerCase() !== 'vendor' && actor.toLowerCase() !== 'employee'" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 7V3H2V21H22V7H12ZM6 19H4V17H6V19ZM6 15H4V13H6V15ZM6 11H4V9H6V11ZM6 7H4V5H6V7ZM10 19H8V17H10V19ZM10 15H8V13H10V15ZM10 11H8V9H10V11ZM10 7H8V5H10V7ZM20 19H12V17H20V19ZM20 15H12V13H20V15ZM20 11H12V9H20V11Z"/>
+            </svg>
+          </div>
         </div>
-        <div class="portal-text">
-          <h3 class="portal-title">{{ getPortalTitle() }}</h3>
-          <p class="portal-description">{{ getPortalDescription() }}</p>
+        <div class="card-content">
+          <p class="portal-tagline">{{ getPortalDescription() }}</p>
+          <div class="features-container">
+            <h4 class="features-title">Key Features</h4>
+            <ul class="feature-list">
+              <li *ngFor="let feature of getPortalFeatures()">{{ feature }}</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -26,22 +51,46 @@
         <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
           <div class="form-group">
             <label class="form-label">{{ placeholder }}</label>
-            <input 
-              type="text" 
-              formControlName="id" 
-              placeholder="{{ placeholder }}"
-              class="form-input"
-            />
+            <div class="input-container">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none">
+                <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <input 
+                type="text" 
+                formControlName="id" 
+                placeholder="{{ placeholder }}"
+                class="form-input"
+              />
+            </div>
           </div>
 
           <div class="form-group">
             <label class="form-label">Password</label>
-            <input 
-              type="password" 
-              formControlName="password" 
-              placeholder="Enter Password"
-              class="form-input"
-            />
+            <div class="input-container">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                <path d="M7 11V7C7 5.67392 7.52678 4.40215 8.46447 3.46447C9.40215 2.52678 10.6739 2 12 2C13.3261 2 14.5979 2.52678 15.5355 3.46447C16.4732 4.40215 17 5.67392 17 7V11" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              <input 
+                [type]="showPassword ? 'text' : 'password'" 
+                formControlName="password" 
+                placeholder="Enter Password"
+                class="form-input"
+              />
+              <button type="button" class="password-toggle" (click)="togglePasswordVisibility()">
+                <svg *ngIf="!showPassword" viewBox="0 0 24 24" fill="none">
+                  <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <svg *ngIf="showPassword" viewBox="0 0 24 24" fill="none">
+                  <path d="M17.94 17.94C16.2306 19.243 14.1491 19.9649 12 20C5 20 1 12 1 12C2.24389 9.68192 4.028 7.66607 6.17 6.17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M9.9 4.24C10.5883 4.0789 11.2931 3.99836 12 4C19 4 23 12 23 12C22.393 13.1356 21.6691 14.2048 20.84 15.19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
           </div>
 
           <div class="error-message" *ngIf="errorMessage">
