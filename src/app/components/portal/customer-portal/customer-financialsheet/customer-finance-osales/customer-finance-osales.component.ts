@@ -3,7 +3,7 @@ import { DataTableComponent } from '../../../shared/data-table/data-table.compon
 import { CustOverallSalesService } from '../../../../../services/backend/cust-overallsales.services';
 import { OverallSalesDataType } from '../../../shared/types/customer-overallsales-data.type';
 import { CustomerContextService } from '../../../../../services/context/customerContext.context';
-
+import { FilterType } from '../../../shared/types/filter.types';
 @Component({
   selector: 'app-customer-finance-osales',
   imports: [DataTableComponent],
@@ -32,6 +32,25 @@ export class CustomerFinanceOsalesComponent {
 
   data: OverallSalesDataType[] = [];
   tableTitle: string = "Overall Sales Data";
+  filters:FilterType[]=[
+{
+      filterType: 'search',
+      field: 'document_no',
+      label: 'Search by Document No '
+    },
+    {
+      filterType: 'dateRange',
+      field: 'doc_date',
+      label: 'Filter by Document Date'
+    },
+    {
+     filterType:'type',
+     field:'auart',
+     label:'Filter by Sales Type',
+     options:['TA']
+    }
+   
+]
 
   constructor(
     private overallSalesService: CustOverallSalesService,

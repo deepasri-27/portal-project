@@ -3,6 +3,7 @@ import { DataTableComponent } from '../../../shared/data-table/data-table.compon
 import { VendorPaymentAgingService } from '../../../../../services/backend/vendor-paymentaging.service';
 import { VagingDataType } from '../../../shared/types/vendor-aging-data-types';
 import { VendorContextService } from '../../../../../services/context/vendorContext.context';
+import { FilterType } from '../../../shared/types/filter.types';
 @Component({
   selector: 'app-vendor-finance-aging',
   standalone: true,
@@ -25,6 +26,20 @@ export class VendorFinanceAgingComponent {
   ];
   data: VagingDataType[] = [];
   tableTitle: string = "Payments and Aging";
+  filters:FilterType[]=[
+{
+      filterType: 'search',
+      field: 'Payment Doc',
+      label: 'Search by Payment Doc '
+    },
+    {
+      filterType: 'dateRange',
+      field: 'dueDate',
+      label: 'Filter by Due Date'
+    },
+   
+]
+
 
   constructor(
     private agingService: VendorPaymentAgingService,

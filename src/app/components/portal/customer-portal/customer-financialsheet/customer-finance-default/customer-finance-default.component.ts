@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { TilesComponent } from '../../../shared/tiles/tiles.component';
 import { CustProfileService } from '../../../../../services/backend/cust-profile.service';
 import { CustomerContextService } from '../../../../../services/context/customerContext.context';
-
 @Component({
   selector: 'app-customer-finance-default',
   imports: [TilesComponent],

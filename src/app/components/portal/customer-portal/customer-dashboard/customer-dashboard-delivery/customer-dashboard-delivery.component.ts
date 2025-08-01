@@ -3,6 +3,7 @@ import { DataTableComponent } from '../../../shared/data-table/data-table.compon
 import { CustDeliveryService } from '../../../../../services/backend/cust-delivery.service';
 import { CustDeliveryItem } from '../../../shared/types/customer-delivery-data.type';
 import { CustomerContextService } from '../../../../../services/context/customerContext.context';
+import { FilterType } from '../../../shared/types/filter.types';
 @Component({
   selector: 'app-customer-dashboard-delivery',
   imports: [DataTableComponent],
@@ -25,6 +26,24 @@ export class CustomerDashboardDeliveryComponent {
   keys: string[] = ['vbeln', 'erdat', 'vstel', 'vkorg', 'lfart', 'lfdat', 'posnr', 'matnr', 'arktx', 'lfimg'];
   data: CustDeliveryItem[] = [];
   tableTitle = "List of Delivery";
+  filters:FilterType[]=[
+      {
+        filterType: 'search',
+        field: 'vbeln',
+        label: 'Search by Delivery No '
+      },
+      {
+        filterType: 'dateRange',
+        field: 'lfdat',
+        label: 'Filter by Delivery Date'
+      },
+      {
+       filterType:'type',
+       field:'lfart',
+       label:'Filter by Delivery Type',
+       options:['LF']
+      } 
+  ]
 
   constructor(
     private deliveryService: CustDeliveryService,

@@ -3,6 +3,7 @@ import { DataTableComponent } from '../../../shared/data-table/data-table.compon
 import { CustInquiryService } from '../../../../../services/backend/cust-inquiry.service';
 import { custInquiryDatatype } from '../../../shared/types/customer-inquiry-data.types';
 import { CustomerContextService } from '../../../../../services/context/customerContext.context';
+import { FilterType } from '../../../shared/types/filter.types';
 @Component({
   selector: 'app-customer-dashboard-inquiry',
   imports: [DataTableComponent],
@@ -27,9 +28,25 @@ export class CustomerDashboardInquiryComponent implements OnInit {
   keys: string[] = ['vbeln','erdat','auart','netwr','waerk','vdatu','posnr','matnr','arktx','kwmeng','vrkme'];
   data: custInquiryDatatype[] = [];
   tableTitle = "Inquiry Data";
-  filters:any = {
-
-  };
+  
+filters:FilterType[]=[
+    {
+      filterType: 'search',
+      field: 'vbeln',
+      label: 'Search by Inquiry No '
+    },
+    {
+      filterType: 'dateRange',
+      field: 'erdat',
+      label: 'Filter by Date'
+    },
+    {
+     filterType:'type',
+     field:'auart',
+     label:'Filter by Inquiry Type',
+     options:['AF']
+    } 
+]
 
   constructor(
     private inquiryService: CustInquiryService,

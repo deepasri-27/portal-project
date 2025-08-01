@@ -4,6 +4,7 @@ import { VinvoiceDataType } from '../../../shared/types/vendor-invoice-data.type
 import { VendorInvoiceService } from '../../../../../services/backend/vendor-invoices.service';
 import { VendorContextService } from '../../../../../services/context/vendorContext.context';
 import { VendorInvoicePdfService } from '../../../../../services/backend/vendor-invoicepdf.service';
+import { FilterType } from '../../../shared/types/filter.types';
 import { saveAs } from 'file-saver';
 
 @Component({
@@ -30,7 +31,18 @@ export class VendorFinanceInvoiceComponent {
   ];
   data: VinvoiceDataType[] = [];
   tableTitle:string = "Vendor Invoice";
-
+  filters:FilterType[]=[
+{
+      filterType: 'search',
+      field: 'invoiceNo',
+      label: 'Search by Invoice No '
+    },
+    {
+      filterType: 'dateRange',
+      field: 'invoiceDate',
+      label: 'Filter by Invoice Date'
+    }
+]
   constructor(
     private invoiceService: VendorInvoiceService,
     private vendorContextService: VendorContextService,

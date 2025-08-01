@@ -3,7 +3,7 @@ import { DataTableComponent } from '../../../shared/data-table/data-table.compon
 import { VendorMemoService } from '../../../../../services/backend/vendor-memo.service';
 import { VmemoDataType } from '../../../shared/types/vendor-memo-data.types';
 import { VendorContextService } from '../../../../../services/context/vendorContext.context';
-
+import { FilterType } from '../../../shared/types/filter.types';
 @Component({
   selector: 'app-vendor-finance-memo',
   imports: [DataTableComponent],
@@ -26,6 +26,24 @@ export class VendorFinanceMemoComponent {
   ];
   data: VmemoDataType[] = [];
   tableTitle: string = "Credit / Debit Memo";
+  filters:FilterType[]=[
+{
+      filterType: 'search',
+      field: 'memoDoc',
+      label: 'Search by Memo Id '
+    },
+    {
+      filterType: 'dateRange',
+      field: 'postingDate',
+      label: 'Filter by Posting Date'
+    },
+    {
+     filterType:'type',
+     field:'memoType',
+     label:'Filter by Memo Type',
+     options:['RE']
+    }
+]
 
   constructor(
     private memoService: VendorMemoService,

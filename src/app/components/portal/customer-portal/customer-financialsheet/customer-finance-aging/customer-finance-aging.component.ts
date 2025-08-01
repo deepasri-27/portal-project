@@ -3,6 +3,7 @@ import { CustPaymentAgingService } from '../../../../../services/backend/cust-pa
 import { DataTableComponent } from '../../../shared/data-table/data-table.component';
 import { CustAgingDataType } from '../../../shared/types/customer-paymentaging-data.type';
 import { CustomerContextService } from '../../../../../services/context/customerContext.context';
+import { FilterType } from '../../../shared/types/filter.types';
 @Component({
   selector: 'app-customer-finance-aging',
   imports: [DataTableComponent],
@@ -25,6 +26,20 @@ export class CustomerFinanceAgingComponent {
   ];
   data:CustAgingDataType[] = [];
   tableTitle: string = "Payments and Aging";
+  filters:FilterType[]=[
+{
+      filterType: 'search',
+      field: 'vbeln',
+      label: 'Search by Invoice No '
+    },
+    {
+      filterType: 'dateRange',
+      field: 'due_dt',
+      label: 'Filter by Due Date'
+    },
+
+   
+]
 
   constructor(
     private agingService: CustPaymentAgingService,

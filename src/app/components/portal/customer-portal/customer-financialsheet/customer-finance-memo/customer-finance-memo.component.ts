@@ -3,6 +3,7 @@ import { DataTableComponent } from '../../../shared/data-table/data-table.compon
 import { CustMemoService } from '../../../../../services/backend/cust-memo.service';
 import { MemoItem } from '../../../shared/types/customer-memo-data.type';
 import { CustomerContextService } from '../../../../../services/context/customerContext.context';
+import { FilterType } from '../../../shared/types/filter.types';
 @Component({
   selector: 'app-customer-finance-memo',
   imports: [DataTableComponent],
@@ -37,6 +38,25 @@ titles: string[] = [
 
   data: MemoItem[] = [];
   tableTitle: string = "Credit / Debit Memo";
+filters:FilterType[]=[
+{
+      filterType: 'search',
+      field: 'memoId',
+      label: 'Search by Memo Id '
+    },
+    {
+      filterType: 'dateRange',
+      field: 'billingDate',
+      label: 'Filter by Billing Date'
+    },
+    {
+     filterType:'type',
+     field:'memoType',
+     label:'Filter by Memo Type',
+     options:['L2','G2']
+    }
+   
+]
 
   constructor(
     private memoService: CustMemoService,

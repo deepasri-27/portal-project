@@ -3,6 +3,7 @@ import { DataTableComponent } from '../../../shared/data-table/data-table.compon
 import { CustSalesDataType } from '../../../shared/types/customer-sales-data.type';
 import { CustSalesService } from '../../../../../services/backend/cust-sales.service';
 import { CustomerContextService } from '../../../../../services/context/customerContext.context';
+import { FilterType } from '../../../shared/types/filter.types';
 @Component({
   selector: 'app-customer-dashboard-sales',
   imports: [DataTableComponent],
@@ -27,6 +28,25 @@ export class CustomerDashboardSalesComponent {
   keys:string[] = ['vbeln', 'erdat', 'auart', 'netwr','waerk','vdat','ernam', 'posnr','matnr','arktx','kwmeng', 'vrkme'];
   data: CustSalesDataType[] = [];
   tableTitle = "Sales Order Data";
+  filters:FilterType[]=[
+{
+      filterType: 'search',
+      field: 'vbeln',
+      label: 'Search by Sales No '
+    },
+    {
+      filterType: 'dateRange',
+      field: 'erdat',
+      label: 'Filter by Sales Created Date'
+    },
+    {
+     filterType:'type',
+     field:'auart',
+     label:'Filter by Sales Type',
+     options:['TA']
+    }
+   
+]
 
   constructor(
     private salesService: CustSalesService,

@@ -4,6 +4,7 @@ import { CustInvoiceDataType } from '../../../shared/types/customer-invoice-data
 import { CustInvoiceService } from '../../../../../services/backend/cust-invoice.service';
 import { CustomerContextService } from '../../../../../services/context/customerContext.context';
 import { CustInvoicePdfService } from '../../../../../services/backend/cust-invoicepdf.service';
+import { FilterType } from '../../../shared/types/filter.types';
 import { saveAs } from 'file-saver';
 import { CommonModule } from '@angular/common';
 
@@ -43,6 +44,24 @@ export class CustomerFinanceInvoiceComponent {
 
   data: CustInvoiceDataType[] = [];
   tableTitle: string = "Customer Invoice";
+  filters:FilterType[]=[
+{
+      filterType: 'search',
+      field: 'vbeln',
+      label: 'Search by Invoice No '
+    },
+    {
+      filterType: 'dateRange',
+      field: 'fkdat',
+      label: 'Filter by Invoice Date'
+    },
+    {
+     filterType:'type',
+     field:'fkart',
+     label:'Filter by Billing Type',
+     options:['F2']
+    }
+]
 
   constructor(
     private invoiceService: CustInvoiceService,

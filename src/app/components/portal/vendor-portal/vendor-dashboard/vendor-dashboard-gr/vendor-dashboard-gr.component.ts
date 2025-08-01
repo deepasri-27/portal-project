@@ -3,7 +3,7 @@ import { DataTableComponent } from '../../../shared/data-table/data-table.compon
 import { VendorGoodsService } from '../../../../../services/backend/vendor-goods.service';
 import { VgoodsDataType } from '../../../shared/types/vendor-gr-data.types';
 import { VendorContextService } from '../../../../../services/context/vendorContext.context';
-
+import { FilterType } from '../../../shared/types/filter.types';
 
 @Component({
   selector: 'app-vendor-dashboard-gr',
@@ -17,6 +17,19 @@ titles: string[] = ['Material Doc', 'Doc Year', 'Post Date', 'Entry Date', 'PO N
   keys: string[] = ['materialDoc', 'docYear', 'postDate', 'entryDate', 'poNumber', 'poItem', 'material','quantity','unit','vendorId'];
   data: VgoodsDataType[] = [];
   tableTitle: string = "Good Request";
+  filters:FilterType[]=[
+{
+      filterType: 'search',
+      field: 'materialDoc',
+      label: 'Search by Material No '
+    },
+    {
+      filterType: 'dateRange',
+      field: 'entryDate',
+      label: 'Filter by Entry Date'
+    }
+]
+
 
   constructor(
     private goodsService: VendorGoodsService,

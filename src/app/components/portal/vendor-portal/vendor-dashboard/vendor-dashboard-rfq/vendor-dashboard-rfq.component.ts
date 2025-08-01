@@ -25,8 +25,8 @@ export class VendorDashboardRfqComponent implements OnInit {
   filters: FilterType[] = [
     {
       filterType: 'search',
-      field: 'vendorId',
-      label: 'Search by Vendor ID'
+      field: 'poNumber',
+      label: 'Search by Purchase Order Number'
     },
     {
       filterType: 'dateRange',

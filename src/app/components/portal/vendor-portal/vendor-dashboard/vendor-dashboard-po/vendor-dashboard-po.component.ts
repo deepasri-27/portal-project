@@ -3,6 +3,7 @@ import { DataTableComponent } from '../../../shared/data-table/data-table.compon
 import { VpoDataType } from '../../../shared/types/vendor-po-data.types';
 import { VendorPoService } from '../../../../../services/backend/vendor-po.service';
 import { VendorContextService } from '../../../../../services/context/vendorContext.context';
+import { FilterType } from '../../../shared/types/filter.types';
 @Component({
   selector: 'app-vendor-dashboard-po',
   imports: [DataTableComponent],
@@ -16,6 +17,19 @@ titles: string[] = [
   keys :string[]=['vendorId','deliveryDate','docDate','material','unit', 'poNumber','itemNumber'];
   data: VpoDataType[] = [];
   tableTitle: string = "Purchase Order";
+  filters:FilterType[]=[
+{
+      filterType: 'search',
+      field: 'poNumber',
+      label: 'Search by Purchase Order Number'
+    },
+    {
+      filterType: 'dateRange',
+      field: 'docDate',
+      label: 'Filter by Doc Date'
+    }
+
+]
 
   constructor(
     private poService: VendorPoService,
