@@ -1,13 +1,13 @@
 <div class="profile-container" *ngIf="profileData">
   <!-- Header Section -->
   <div class="profile-header">
-    <div class="header-left">
+      <div class="header-left">
       <div class="main-icon">
-        <i class="fas {{profileData.headerData.headerIcon}}"></i>
-      </div>
-      <div class="header-info">
-        <div class="profile-title">
-          {{profileData.headerData.name}}
+            <i class="fas {{profileData.headerData.headerIcon}}"></i>
+          </div>
+        <div class="header-info">
+          <div class="profile-title">
+            {{profileData.headerData.name}}
         </div>
         <div class="profile-id" *ngIf="profileData.headerData.id">{{profileData.headerData.idFieldName}}: {{ profileData.headerData.id }}</div>
       </div>
@@ -15,11 +15,11 @@
   </div>
 
   <!-- Details Section -->
-<div class="profile-details">
+  <div class="profile-details">
   <div class="detail-item" *ngFor="let detail of profileData.profileDetails">
     <span class="detail-icon"><i class="fas {{ detail.iconClass }}"></i></span>
     <div class="detail-content">
-      <div class="detail-title">{{ detail.fieldName }}</div>
+          <div class="detail-title">{{ detail.fieldName }}</div>
       <div class="detail-value">{{ detail.fieldValue }}</div>
     </div>
   </div>

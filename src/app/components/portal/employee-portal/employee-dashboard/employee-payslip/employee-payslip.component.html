@@ -1,9 +1,257 @@
-<app-data-table
-  [tableTitle]="tableTitle"
-  [titles]="titles"
-  [data]="data"
-  [keys]="keys"
-  [isPayslipPage]="true"
-  actionColumn="employeeId"
-  (invoiceDownload)="onDownload($event)">
-</app-data-table>
+<div class="payslip-container">
+  <!-- Header Section -->
+  <div class="page-header">
+    <div class="header-content">
+      <h1 class="page-title">
+        <i class="fas fa-file-invoice-dollar"></i>
+        Payslip Management
+      </h1>
+      <p class="page-subtitle">View and download your monthly payslips</p>
+    </div>
+    <div class="header-actions">
+      <button class="action-btn primary" (click)="downloadAllPayslips()">
+        <i class="fas fa-download"></i>
+        <span>Download All</span>
+      </button>
+      <button class="action-btn secondary" (click)="refreshData()">
+        <i class="fas fa-sync-alt"></i>
+        <span>Refresh</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Payslip Summary Cards -->
+  <div class="payslip-summary-section">
+    <div class="summary-card">
+      <div class="summary-icon">
+        <i class="fas fa-calendar-alt"></i>
+      </div>
+      <div class="summary-content">
+        <h3 class="summary-number">{{ payslipSummary.currentMonth }}</h3>
+        <p class="summary-label">Current Month</p>
+        <span class="summary-sublabel">{{ getCurrentMonthName() }}</span>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <div class="summary-icon">
+        <i class="fas fa-money-bill-wave"></i>
+      </div>
+      <div class="summary-content">
+        <h3 class="summary-number">₹{{ payslipSummary.grossSalary | number:'1.2-2' }}</h3>
+        <p class="summary-label">Gross Salary</p>
+        <span class="summary-sublabel">This month</span>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <div class="summary-icon">
+        <i class="fas fa-hand-holding-usd"></i>
+      </div>
+      <div class="summary-content">
+        <h3 class="summary-number">₹{{ payslipSummary.netSalary | number:'1.2-2' }}</h3>
+        <p class="summary-label">Net Salary</p>
+        <span class="summary-sublabel">After deductions</span>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <div class="summary-icon">
+        <i class="fas fa-chart-line"></i>
+      </div>
+      <div class="summary-content">
+        <h3 class="summary-number">₹{{ payslipSummary.ytdEarnings | number:'1.2-2' }}</h3>
+        <p class="summary-label">YTD Earnings</p>
+        <span class="summary-sublabel">Year to date</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Current Payslip Details -->
+  <div class="current-payslip-section" *ngIf="currentPayslip">
+    <div class="payslip-card">
+      <div class="payslip-header">
+        <h2 class="payslip-title">
+          <i class="fas fa-receipt"></i>
+          Current Month Payslip - {{ getCurrentMonthName() }}
+        </h2>
+        <button class="download-btn" (click)="onDownload(currentPayslip.employeeId)">
+          <i class="fas fa-download"></i>
+          Download PDF
+        </button>
+      </div>
+      
+      <div class="payslip-content">
+        <div class="payslip-grid">
+          <!-- Employee Information -->
+          <div class="payslip-section">
+            <h3 class="section-title">Employee Information</h3>
+            <div class="info-grid">
+              <div class="info-item">
+                <span class="info-label">Employee ID</span>
+                <span class="info-value">{{ currentPayslip.employeeId }}</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Name</span>
+                <span class="info-value">{{ currentPayslip.name }}</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Position</span>
+                <span class="info-value">{{ currentPayslip.position }}</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Department</span>
+                <span class="info-value">{{ currentPayslip.costCenter }}</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Pay Scale</span>
+                <span class="info-value">{{ currentPayslip.payScaleGroup }} - {{ currentPayslip.payScaleLevel }}</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Working Hours</span>
+                <span class="info-value">{{ currentPayslip.workingHours }} hrs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Earnings Breakdown -->
+          <div class="payslip-section">
+            <h3 class="section-title">Earnings Breakdown</h3>
+            <div class="earnings-list">
+              <div class="earning-item">
+                <span class="earning-label">Basic Salary</span>
+                <span class="earning-amount">₹{{ (currentPayslip.amount * 0.6) | number:'1.2-2' }}</span>
+              </div>
+              <div class="earning-item">
+                <span class="earning-label">House Rent Allowance</span>
+                <span class="earning-amount">₹{{ (currentPayslip.amount * 0.2) | number:'1.2-2' }}</span>
+              </div>
+              <div class="earning-item">
+                <span class="earning-label">Transport Allowance</span>
+                <span class="earning-amount">₹{{ (currentPayslip.amount * 0.1) | number:'1.2-2' }}</span>
+              </div>
+              <div class="earning-item">
+                <span class="earning-label">Other Allowances</span>
+                <span class="earning-amount">₹{{ (currentPayslip.amount * 0.1) | number:'1.2-2' }}</span>
+              </div>
+              <div class="earning-item total">
+                <span class="earning-label">Gross Salary</span>
+                <span class="earning-amount">₹{{ currentPayslip.amount | number:'1.2-2' }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Deductions -->
+          <div class="payslip-section">
+            <h3 class="section-title">Deductions</h3>
+            <div class="deductions-list">
+              <div class="deduction-item">
+                <span class="deduction-label">Provident Fund</span>
+                <span class="deduction-amount">₹{{ (currentPayslip.amount * 0.12) | number:'1.2-2' }}</span>
+              </div>
+              <div class="deduction-item">
+                <span class="deduction-label">Professional Tax</span>
+                <span class="deduction-amount">₹{{ (currentPayslip.amount * 0.02) | number:'1.2-2' }}</span>
+              </div>
+              <div class="deduction-item">
+                <span class="deduction-label">Income Tax</span>
+                <span class="deduction-amount">₹{{ (currentPayslip.amount * 0.1) | number:'1.2-2' }}</span>
+              </div>
+              <div class="deduction-item total">
+                <span class="deduction-label">Total Deductions</span>
+                <span class="deduction-amount">₹{{ (currentPayslip.amount * 0.24) | number:'1.2-2' }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Net Pay -->
+          <div class="payslip-section net-pay-section">
+            <h3 class="section-title">Net Pay</h3>
+            <div class="net-pay-amount">
+              <span class="net-pay-label">Amount Credited</span>
+              <span class="net-pay-value">₹{{ (currentPayslip.amount * 0.76) | number:'1.2-2' }}</span>
+            </div>
+            <p class="net-pay-note">Amount will be credited to your registered bank account</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payslip History Table -->
+  <div class="payslip-history-section">
+    <div class="section-header">
+      <h2 class="section-title">
+        <i class="fas fa-history"></i>
+        Payslip History
+      </h2>
+      <div class="section-filters">
+        <select class="filter-select" [(ngModel)]="yearFilter" (change)="applyFilters()">
+          <option value="">All Years</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+        </select>
+        <input type="month" class="filter-select" [(ngModel)]="monthFilter" (change)="applyFilters()">
+      </div>
+    </div>
+
+    <div class="table-container">
+      <div class="custom-table" *ngIf="filteredData.length > 0">
+        <div class="table-header">
+          <div class="table-row header-row">
+            <div class="table-cell">Employee ID</div>
+            <div class="table-cell">Month/Year</div>
+            <div class="table-cell">Position</div>
+            <div class="table-cell">Gross Amount</div>
+            <div class="table-cell">Currency</div>
+            <div class="table-cell">Working Hours</div>
+            <div class="table-cell">Status</div>
+            <div class="table-cell">Actions</div>
+          </div>
+        </div>
+        
+        <div class="table-body">
+          <div class="table-row" *ngFor="let payslip of filteredData; let i = index" [class.even]="i % 2 === 0">
+            <div class="table-cell">
+              <span class="employee-id">{{ payslip.employeeId }}</span>
+            </div>
+            <div class="table-cell">
+              <span class="payslip-month">{{ getPayslipMonth(payslip) }}</span>
+            </div>
+            <div class="table-cell">{{ payslip.position }}</div>
+            <div class="table-cell">
+              <span class="amount-value">₹{{ payslip.amount | number:'1.2-2' }}</span>
+            </div>
+            <div class="table-cell">{{ payslip.currency }}</div>
+            <div class="table-cell">{{ payslip.workingHours }} hrs</div>
+            <div class="table-cell">
+              <span class="status-badge processed">Processed</span>
+            </div>
+            <div class="table-cell">
+              <div class="action-buttons">
+                <button class="action-btn-small view" (click)="viewPayslip(payslip)" title="View Details">
+                  <i class="fas fa-eye"></i>
+                </button>
+                <button class="action-btn-small download" (click)="onDownload(payslip.employeeId)" title="Download PDF">
+                  <i class="fas fa-download"></i>
+                </button>
+                <button class="action-btn-small print" (click)="printPayslip(payslip)" title="Print Payslip">
+                  <i class="fas fa-print"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="no-data" *ngIf="filteredData.length === 0">
+        <div class="no-data-icon">
+          <i class="fas fa-file-invoice"></i>
+        </div>
+        <h3>No Payslips Found</h3>
+        <p>No payslips match your current filters, or payslips haven't been generated yet.</p>
+      </div>
+    </div>
+  </div>
+</div>

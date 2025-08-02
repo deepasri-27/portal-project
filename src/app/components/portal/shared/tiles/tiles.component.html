@@ -1,17 +1,53 @@
-<div class="welcome-banner">
-   Hi <span>{{userName}}</span> 👋, Welcome to {{ portalName }} !!! 
+<!-- Welcome Section -->
+<div class="welcome-section">
+  <div class="welcome-content">
+    <h1 class="welcome-title">Welcome back, <span class="username">{{ userName }}</span>!</h1>
+    <p class="welcome-date">{{ getCurrentDate() }}</p>
+  </div>
+  <div class="welcome-actions">
+    <button class="action-btn view-payslip">
+      <i class="fas fa-file-invoice-dollar"></i>
+      View Payslip
+    </button>
+    <button class="action-btn request-leave">
+      <i class="fas fa-calendar-plus"></i>
+      Request Leave
+    </button>
+  </div>
 </div>
 
-<div class="tile-container">
-  <div 
-    class="tile" 
-    *ngFor="let item of tiles" 
-    (click)="navigateTo(item.route)"
-  >
-    <div class="icon-container">
-      <i class="{{ item.icon }}"></i>
+<!-- Cumulative Data Section -->
+<div class="cumulative-data-section" *ngIf="cumulativeData.length > 0">
+  <div class="cumulative-grid">
+    <div 
+      class="cumulative-card" 
+      *ngFor="let item of cumulativeData"
+    >
+      <div class="cumulative-icon">
+        <i [class]="item.icon"></i>
+      </div>
+      <div class="cumulative-content">
+        <h3 class="cumulative-data">{{ item.data }}</h3>
+        <p class="cumulative-label1">{{ item.label1 }}</p>
+        <span class="cumulative-label2">{{ item.label2 }}</span>
+      </div>
     </div>
-    <h3>{{ item.title }}</h3>
-    <p>{{ item.description }}</p>
+  </div>
+</div>
+
+<!-- Tiles Section -->
+<div class="tiles-section" *ngIf="tiles.length > 0">
+  <div class="tiles-grid">
+    <div 
+      class="tile-card" 
+      *ngFor="let tile of tiles" 
+      (click)="navigateTo(tile.route)"
+    >
+      <div class="tile-icon">
+        <i [class]="tile.icon"></i>
+      </div>
+      <h3 class="tile-title">{{ tile.title }}</h3>
+      <p class="tile-description">{{ tile.description }}</p>
+    </div>
   </div>
 </div>

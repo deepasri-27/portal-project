@@ -12,6 +12,7 @@ import { filter, Subscription } from 'rxjs';
 })
 export class PortalBarComponent implements OnInit, OnDestroy {
   currentPortal: string = '';
+  isWelcomePage: boolean = false;
   private routerSubscription!: Subscription;
 
   constructor(private router: Router) {}
@@ -30,6 +31,7 @@ export class PortalBarComponent implements OnInit, OnDestroy {
   updatePortalFromUrl(url: string): void {
     const match = url.match(/portal\/(\w+)/);
     this.currentPortal = match ? match[1] : '';
+    this.isWelcomePage = url.includes('/portal/welcome') || url.endsWith('/portal');
   }
 
   navigateTo(portal: string): void {
