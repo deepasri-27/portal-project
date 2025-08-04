@@ -26,9 +26,13 @@ export class CustomerContextService {
   }
 
   loadCustomerFromCookie(): void {
+    console.log("1:" + this.customerIdSubject.value);
     const savedCustomerId = this.cookieService.get('customerId');
     if (savedCustomerId) {
+      console.log("2:" + this.customerIdSubject.value);
       this.customerIdSubject.next(savedCustomerId);
+      console.log("3:" + this.customerIdSubject.value);
     }
+    console.log("4:" + this.customerIdSubject.value);
   }
 }

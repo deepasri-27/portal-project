@@ -18,6 +18,7 @@ export class EmployeeLeaveRequestComponent implements OnInit {
   keys: string[] = ['employeeId','startDate','endDate', 'absenceType','absenceDays','reason','quotaNumber','quotaStart','quotaEnd'];
   data: EmployeeLeaveDataType[] = [];
   tableTitle = "Employee Leave Request Data";
+  isLoading: boolean = true;
   filters: FilterType[] = [
     {
       filterType: 'type',
@@ -49,10 +50,12 @@ export class EmployeeLeaveRequestComponent implements OnInit {
   loadLeaveData(): void {
     const employeeId = this.employeeContext.getEmployeeId();
     if (employeeId) {
+      this.isLoading = true;
       this.leaveService.getEmployeeLeaves(employeeId).subscribe({
         next: (response) => {
           this.data = response.leaves || [];
           this.updateFilterOptions();
+          this.isLoading = false;
         },
         error: (err) => {
           console.error('Error fetching employee leaves:', err);
@@ -60,8 +63,11 @@ export class EmployeeLeaveRequestComponent implements OnInit {
             this.data = [];
             console.log('No leave data found for this employee');
           }
+          this.isLoading = false;
         }
       });
+    } else {
+      this.isLoading = false;
     }
   }
 

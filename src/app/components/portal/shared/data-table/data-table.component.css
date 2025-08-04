@@ -668,3 +668,42 @@ button {
     font-size: 1rem;
   }
 }
+
+/* No Data Message */
+.no-data-message {
+  width: 75vw;
+  max-width: 75vw;
+  margin: 0.8rem auto;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-white);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border-color);
+}
+
+.no-data-container {
+  text-align: center;
+  color: var(--text-light);
+}
+
+.no-data-icon {
+  font-size: 48px;
+  color: var(--border-color);
+  margin-bottom: 16px;
+}
+
+.no-data-container h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0 0 8px 0;
+}
+
+.no-data-container p {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin: 0;
+}

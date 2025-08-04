@@ -44,22 +44,29 @@
 }
 
 .card-icon {
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  background: rgba(255, 255, 255, 0.15);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  margin-bottom: 1.5rem;
   position: relative;
+  overflow: hidden;
+  transition: all var(--transition-medium);
 }
 
 .card-icon svg {
-  width: 45px;
-  height: 45px;
-  fill: white;
+  width: 40px;
+  height: 40px;
+  transition: all var(--transition-medium);
+}
+
+.portal-svg-icon {
+  width: 40px;
+  height: 40px;
+  transition: all var(--transition-medium);
+  filter: brightness(0) invert(1);
 }
 
 

@@ -18,6 +18,7 @@ export class DataTableComponent implements OnChanges {
   @Input() isInvoicePage: boolean = false;
   @Input() isPayslipPage:boolean = false;
   @Input() actionColumn:string ='';
+  @Input() isLoading: boolean = false; // New loading state input
   @Output() invoiceDownload = new EventEmitter<string>(); // emits invoice ID
   @Input() filters: FilterType[] = [];
 

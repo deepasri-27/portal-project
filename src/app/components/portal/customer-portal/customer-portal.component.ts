@@ -10,11 +10,10 @@ import { CookieService } from 'ngx-cookie-service';
   selector: 'app-customer-portal',
   standalone: true,
   imports: [CommonModule, RouterOutlet, LoginComponent, TopNavComponent],
-  templateUrl: './customer-portal.component.html',
-  providers: [CookieService] // Required if using standalone component
+  templateUrl: './customer-portal.component.html'
 })
 export class CustomerPortalComponent {
-  isCustomerLoggedIn: boolean;
+  isCustomerLoggedIn: boolean = false;
 
   profileUrl: string = '/portal/customer/profile';
 
@@ -26,7 +25,14 @@ export class CustomerPortalComponent {
   portal: string = 'customer';
 
   constructor(private cookieService: CookieService) {
-    this.isCustomerLoggedIn = !(!(this.cookieService.get('customerId')));
+    this.checkAuthenticationStatus();
+  }
+
+  private checkAuthenticationStatus(): void {
+    const customerId = this.cookieService.get('customerId');
+    console.log("Main: " + this.cookieService.get('customerId'));
+    this.isCustomerLoggedIn = !!customerId;
+    console.log("Main: " + this.isCustomerLoggedIn);
   }
 
   handleLoginSuccess() {

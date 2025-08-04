@@ -13,7 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
   templateUrl: './employee-portal.component.html',
 })
 export class EmployeePortalComponent {
-  isEmployeeLoggedIn: boolean;
+  isEmployeeLoggedIn: boolean = false;
   profileUrl: string = '/portal/employee/profile';
 
   tileData: Array<TileData> = [
@@ -23,7 +23,12 @@ export class EmployeePortalComponent {
   portal: string = 'employee';
 
   constructor(private cookieService: CookieService) {
-    this.isEmployeeLoggedIn = !(!(this.cookieService.get('employeeId')));
+    this.checkAuthenticationStatus();
+  }
+
+  private checkAuthenticationStatus(): void {
+    const employeeId = this.cookieService.get('employeeId');
+    this.isEmployeeLoggedIn = !!employeeId;
   }
 
   handleLoginSuccess() {

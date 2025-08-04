@@ -21,6 +21,7 @@ export class EmployeePayslipComponent implements OnInit {
   keys: string[] = ['employeeId','companyCode','costCenter','position','name','gender','dateOfBirth','nationality','payScaleGroup','payScaleLevel','amount','wageType','currency','workingHours'];
   data: EmployeePayslipDataType[] = [];
   tableTitle = "Employee Payslip Data";
+  isLoading: boolean = true;
   filters: FilterType[] = [
     {
       filterType: 'type',
@@ -55,10 +56,12 @@ export class EmployeePayslipComponent implements OnInit {
   loadPayslipData(): void {
     const employeeId = this.employeeContext.getEmployeeId();
     if (employeeId) {
+      this.isLoading = true;
       this.payslipService.getEmployeePayslips(employeeId).subscribe({
         next: (response) => {
           this.data = response.payslip || [];
           this.updateFilterOptions();
+          this.isLoading = false;
         },
         error: (err) => {
           console.error('Error fetching employee payslips:', err);
@@ -66,8 +69,11 @@ export class EmployeePayslipComponent implements OnInit {
             this.data = [];
             console.log('No payslip data found for this employee');
           }
+          this.isLoading = false;
         }
       });
+    } else {
+      this.isLoading = false;
     }
   }
 

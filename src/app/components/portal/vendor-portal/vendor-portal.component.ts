@@ -26,7 +26,12 @@ export class VendorPortalComponent {
   portal: string = 'vendor';
 
   constructor(private cookieService: CookieService) {
-    this.isVendorLoggedIn = !(!(this.cookieService.get('vendorId')));
+    this.checkAuthenticationStatus();
+  }
+
+  private checkAuthenticationStatus(): void {
+    const vendorId = this.cookieService.get('vendorId');
+    this.isVendorLoggedIn = !!vendorId;
   }
 
   handleLoginSuccess() {

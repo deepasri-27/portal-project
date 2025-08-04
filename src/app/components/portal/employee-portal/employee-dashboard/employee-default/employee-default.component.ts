@@ -41,7 +41,7 @@ export class EmployeeDefaultComponent implements OnInit {
     // Load profile data
     this.employeeService.getEmployeeProfile(employeeId).subscribe({
       next: (response: any) => {
-        this.userName = response.data.name1 || 'User';
+        this.userName = response.fullName
       },
       error: (err) => {
         console.error('Error fetching employee profile:', err);
