@@ -9,7 +9,7 @@ export class EmployeePayslipPdfService {
   constructor(private http: HttpClient) {}
 
   downloadPayslipPdf(employeeId: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${employeeId}`, {
+    return this.http.post(`${this.apiUrl}/${employeeId}`, {
       responseType: 'json'
     });
   }

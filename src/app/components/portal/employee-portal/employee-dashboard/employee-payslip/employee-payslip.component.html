@@ -1,1 +1,1 @@
-<app-data-table [filters]="filters" [tableTitle]="tableTitle" [titles]="titles" [data]="data" [keys]="keys" [isLoading]="isLoading"></app-data-table>
+<app-data-table [filters]="filters" [tableTitle]="tableTitle" [titles]="titles" [data]="data" [keys]="keys" [isLoading]="isLoading" [isPayslipPage]="true" actionColumn="employeeId" (invoiceDownload)="onDownload($event)"></app-data-table>

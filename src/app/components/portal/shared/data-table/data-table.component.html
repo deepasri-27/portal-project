@@ -79,7 +79,7 @@
             {{ title }}
             <i *ngIf="keys[i] === sortedKey" [class]="getSortIcon(keys[i])" class="sort-icon"></i>
           </th>
-          <th *ngIf="isInvoicePage" class="theader">Actions</th>
+          <th *ngIf="isInvoicePage || isPayslipPage" class="theader">Actions</th>
         </tr>
       </thead>
 

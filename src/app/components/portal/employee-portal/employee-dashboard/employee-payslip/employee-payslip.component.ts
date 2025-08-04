@@ -88,4 +88,25 @@ export class EmployeePayslipComponent implements OnInit {
     this.filters[2].options = payScaleGroups;
   }
 
+  onDownload(employeeId: string): void {
+
+
+    this.payslipPdfService.downloadPayslipPdf(employeeId).subscribe({
+      next: (binaryData) => {
+        // Convert base64 to binary
+        const byteCharacters = atob(binaryData.base64); 
+        const byteNumbers = Array.from(byteCharacters, char => char.charCodeAt(0));
+        const byteArray = new Uint8Array(byteNumbers);
+        const blob = new Blob([byteArray], { type: 'application/pdf' });
+
+        // Save the PDF
+        saveAs(blob, `payslip-${employeeId}.pdf`);
+      },
+      error: (err) => {
+        console.error('PDF download failed:', err);
+      }
+    });
+  }
+
+
 }
