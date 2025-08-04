@@ -1,42 +1,101 @@
 :host {
   display: block;
-  width: 100%;
+  position: fixed;
+  top: 0;
+  left: calc(100vw / 9);
+  right: 0;
+  z-index: 1000;
 }
 
 .top-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color:var(--dark-color); 
+  background: linear-gradient(135deg, var(--sidebar-primary) 0%, var(--sidebar-secondary) 100%);
   color: white;
-  height: 60px;
-  font-family: Arial, sans-serif;
+  height: 70px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 4px 20px var(--sidebar-shadow);
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.top-nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="topNavPattern" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="5" cy="5" r="0.5" fill="rgba(255,255,255,0.03)"/><circle cx="15" cy="15" r="0.5" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23topNavPattern)"/></svg>');
+  opacity: 0.4;
+  z-index: 1;
 }
 
 .tiles {
   display: flex;
   height: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 .tile {
   display: grid;
   place-items: center;
   cursor: pointer;
-  height: 100%;
-  padding: 0 40px;
+  height: 70%;
+  padding: 0 32px;
   font-weight: 500;
-  font-size:1rem;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  transition: all var(--transition-medium);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 8px 4px;
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.tile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left var(--transition-medium);
+}
+
+.tile:hover::before {
+  left: 100%;
+}
+
+.tile:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .tile.active {
-  background-color: var(--accent-color);
-  /* color: var(--dark-color); */
-  font-weight:700;
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+  border-color: var(--accent-color);
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(255, 107, 129, 0.3);
+  transform: translateY(-1px);
+}
+
+.tile.active:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 129, 0.4);
 }
 
 .profile-section {
   position: relative;
+  z-index: 2;
 }
 
 .profile-icon {
@@ -44,40 +103,136 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  margin: 0 20px;
+  transition: all var(--transition-medium);
+  backdrop-filter: blur(5px);
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-medium);
+}
+
+.profile-icon:hover::before {
+  opacity: 1;
+}
+
+.profile-icon:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .profile-icon svg {
-  margin: 0 20px;
-  width: 2rem;
-  height: 2rem;
+  width: 24px;
+  height: 24px;
   fill: white;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: all var(--transition-medium);
+  position: relative;
+  z-index: 1;
+}
+
+.profile-icon:hover svg {
+  transform: scale(1.1);
 }
 
 .dropdown {
   position: absolute;
-  right: 0;
-  top: 50px;
-  margin: 0 20px;
-  background-color: #ffffff;
-  color: #333;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  right: 20px;
+  top: 60px;
+  background: #ffffff;
+  color: var(--text-color);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
   overflow: hidden;
-  z-index: 10;
-  min-width: 160px;
+  z-index: 9999;
+  min-width: 180px;
+  border: 1px solid var(--border-color);
+  animation: dropdownSlideIn 0.3s ease-out;
+}
+
+@keyframes dropdownSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .dropdown div {
-  padding: 12px 16px;
+  padding: 16px 20px;
   cursor: pointer;
-  border-bottom: 1px solid #eee;
-  transition: background-color 0.3s ease;
+  transition: all var(--transition-fast);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
 }
 
-.dropdown div:last-child {
-  border-bottom: none;
+.dropdown div::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--accent-color);
+  transform: scaleY(0);
+  transition: transform var(--transition-fast);
+}
+
+.dropdown div:hover::before {
+  transform: scaleY(1);
 }
 
 .dropdown div:hover {
-  background-color: var(--background-hover-white);
+  background: var(--background-dull);
+  color: var(--accent-color);
+  padding-left: 24px;
+}
+
+.dropdown div:first-child {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.dropdown div:last-child {
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.dropdown div:not(:last-child) {
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Style dropdown icons */
+.dropdown div i {
+  font-size: 16px;
+  color: var(--primary-color);
+  transition: all var(--transition-fast);
+}
+
+.dropdown div:hover i {
+  color: var(--accent-color);
+  transform: scale(1.1);
 }

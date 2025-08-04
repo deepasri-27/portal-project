@@ -8,7 +8,7 @@ import { EmployeeContextService } from '../../../../../services/context/employee
 
 @Component({
   selector: 'app-employee-leave-request',
-  imports: [CommonModule, FormsModule, DataTableComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './employee-leave-request.component.html',
   styleUrl: './employee-leave-request.component.css'
 })

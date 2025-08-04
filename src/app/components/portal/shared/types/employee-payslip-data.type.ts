@@ -9,7 +9,7 @@ export type EmployeePayslipDataType = {
   nationality: string;
   payScaleGroup: string;
   payScaleLevel: string;
-  amount: string;
+  amount: number;
   wageType: string;
   currency: string;
   workingHours: string;

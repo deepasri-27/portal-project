@@ -54,12 +54,12 @@ export class CustomerProfileComponent {
   }
 
   configCustomerProfile(): void {
-    this.customerProfile.headerData.headerIcon = 'fas fa-user-tie';
+    this.customerProfile.headerData.headerIcon = 'fas fa-user-circle';
     this.customerProfile.headerData.name = this.rawCustomerProfileData.name1;
     this.customerProfile.headerData.id = this.customerContextService.getCustomerId() || '';
     this.customerProfile.headerData.idFieldName = 'Customer ID';
     this.customerProfile.profileDetails.push({
-      iconClass: 'fa-user',
+      iconClass: 'fa-user-circle',
       fieldName: 'Name',
       fieldValue: this.rawCustomerProfileData.name1
     });
@@ -69,23 +69,23 @@ export class CustomerProfileComponent {
       fieldValue: this.rawCustomerProfileData.city
     });
     this.customerProfile.profileDetails.push({
-      iconClass: 'fa-flag',
+      iconClass: 'fa-globe-americas',
       fieldName: 'Country',
       fieldValue: this.rawCustomerProfileData.country
     });
     this.customerProfile.profileDetails.push({
-      iconClass: 'fa-mail-bulk',
+      iconClass: 'fa-envelope',
       fieldName: 'Postcode',
       fieldValue: this.rawCustomerProfileData.postcode
     });
     this.customerProfile.profileDetails.push({
-      iconClass: 'fa-road',
+      iconClass: 'fa-home',
       fieldName: 'Street',
       fieldValue: this.rawCustomerProfileData.street
     });
     
     this.customerProfile.profileDetails.push({
-      iconClass: 'fa-hashtag',
+      iconClass: 'fa-id-badge',
       fieldName: 'Customer ID',
       fieldValue: this.customerContextService.getCustomerId() || ''
     });
@@ -96,6 +96,3 @@ export class CustomerProfileComponent {
     }
   }
 }
-
-
-

@@ -56,7 +56,7 @@ export class EmployeeProfileComponent implements OnInit {
   }
 
   configEmployeeProfile(): void {
-    this.employeeProfile.headerData.headerIcon = 'fas fa-id-card';
+    this.employeeProfile.headerData.headerIcon = 'fas fa-user-tie';
     this.employeeProfile.headerData.name = this.rawEmployeeProfileData.fullName;
     this.employeeProfile.headerData.id = this.employeeContext.getEmployeeId() || '';
     this.employeeProfile.headerData.idFieldName = 'Employee ID';
@@ -65,32 +65,32 @@ export class EmployeeProfileComponent implements OnInit {
     this.employeeProfile.profileDetails = [];
     
     this.employeeProfile.profileDetails.push({
-      iconClass: 'fa-user',
+      iconClass: 'fa-user-circle',
       fieldName: 'Full Name',
       fieldValue: this.rawEmployeeProfileData.fullName
     });
     this.employeeProfile.profileDetails.push({
-      iconClass: 'fa-venus-mars',
+      iconClass: 'fa-user-friends',
       fieldName: 'Gender',
       fieldValue: this.rawEmployeeProfileData.gender
     });
     this.employeeProfile.profileDetails.push({
-      iconClass: 'fa-calendar',
+      iconClass: 'fa-birthday-cake',
       fieldName: 'Date of Birth',
       fieldValue: this.rawEmployeeProfileData.dob
     });
     this.employeeProfile.profileDetails.push({
-      iconClass: 'fa-building',
+      iconClass: 'fa-sitemap',
       fieldName: 'Organization Unit',
       fieldValue: this.rawEmployeeProfileData.orgUnit
     });
     this.employeeProfile.profileDetails.push({
-      iconClass: 'fa-briefcase',
+      iconClass: 'fa-user-tie',
       fieldName: 'Position',
       fieldValue: this.rawEmployeeProfileData.position
     });
     this.employeeProfile.profileDetails.push({
-      iconClass: 'fa-users',
+      iconClass: 'fa-users-cog',
       fieldName: 'Department',
       fieldValue: this.rawEmployeeProfileData.department
     });
@@ -100,17 +100,17 @@ export class EmployeeProfileComponent implements OnInit {
       fieldValue: this.rawEmployeeProfileData.compCode
     });
     this.employeeProfile.profileDetails.push({
-      iconClass: 'fa-envelope',
+      iconClass: 'fa-envelope-open',
       fieldName: 'Email',
       fieldValue: this.rawEmployeeProfileData.email
     });
     this.employeeProfile.profileDetails.push({
-      iconClass: 'fa-phone',
+      iconClass: 'fa-mobile-alt',
       fieldName: 'Phone',
       fieldValue: this.rawEmployeeProfileData.phone
     });
     this.employeeProfile.profileDetails.push({
-      iconClass: 'fa-map-marker-alt',
+      iconClass: 'fa-home',
       fieldName: 'Address',
       fieldValue: this.rawEmployeeProfileData.address
     });

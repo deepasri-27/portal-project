@@ -11,7 +11,7 @@ import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-employee-payslip',
   standalone: true,
-  imports: [CommonModule, FormsModule, DataTableComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './employee-payslip.component.html',
   styleUrl: './employee-payslip.component.css'
 })
@@ -27,7 +27,22 @@ export class EmployeePayslipComponent implements OnInit {
   monthFilter = '';
 
   // Current payslip (most recent)
-  currentPayslip: EmployeePayslipDataType | null = null;
+  currentPayslip: EmployeePayslipDataType  = {
+  employeeId: '',
+  companyCode: '',
+  costCenter: '',
+  position: '',
+  name: '',
+  gender: '',
+  dateOfBirth: '',
+  nationality: '',
+  payScaleGroup: '',
+  payScaleLevel: '',
+  amount: 0,
+  wageType: '',
+  currency: '',
+  workingHours: ''
+  };
 
   // Payslip summary data
   payslipSummary = {
@@ -79,12 +94,12 @@ export class EmployeePayslipComponent implements OnInit {
   calculateSummary(): void {
     if (this.data.length > 0) {
       const currentPayslip = this.data[0];
-      const grossAmount = parseFloat(currentPayslip.amount) || 0;
+      const grossAmount = currentPayslip.amount || 0;
       this.payslipSummary = {
         currentMonth: new Date().getMonth() + 1,
         grossSalary: grossAmount,
         netSalary: grossAmount * 0.76, // After 24% deductions
-        ytdEarnings: this.data.reduce((total, payslip) => total + (parseFloat(payslip.amount) || 0), 0)
+        ytdEarnings: this.data.reduce((total, payslip) => total + (payslip.amount || 0), 0)
       };
     }
   }

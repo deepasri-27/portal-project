@@ -71,7 +71,7 @@ export class TopNavComponent implements OnInit, OnDestroy {
   logout() {
     this.cookieService.set(this.portal + "Id", "");
     console.log('logout: ' + this.portal);
-    this.router.navigate(['/']);
+    this.router.navigate(['/portal/' + this.portal]);
   }
 
   ngOnDestroy(): void {

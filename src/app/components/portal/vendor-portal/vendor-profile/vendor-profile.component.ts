@@ -50,12 +50,12 @@ export class VendorProfileComponent implements OnInit {
   }
 
   configVendorProfile(): void {
-    this.vendorProfile.headerData.headerIcon = 'fas fa-id-card';
+    this.vendorProfile.headerData.headerIcon = 'fas fa-store';
     this.vendorProfile.headerData.name = this.rawVendorProfileData.name;
     this.vendorProfile.headerData.id = this.rawVendorProfileData.vendorId;
     this.vendorProfile.headerData.idFieldName = 'Vendor ID';
     this.vendorProfile.profileDetails.push({
-      iconClass: 'fa-id-card',
+      iconClass: 'fa-store-alt',
       fieldName: 'Vendor Name',
       fieldValue: this.rawVendorProfileData.name
     });
@@ -65,22 +65,22 @@ export class VendorProfileComponent implements OnInit {
       fieldValue: this.rawVendorProfileData.city
     });
     this.vendorProfile.profileDetails.push({
-      iconClass: 'fa-flag',
+      iconClass: 'fa-globe-americas',
       fieldName: 'Country',
       fieldValue: this.rawVendorProfileData.country
     });
     this.vendorProfile.profileDetails.push({
-      iconClass: 'fa-mail-bulk',
+      iconClass: 'fa-envelope',
       fieldName: 'Postcode',
       fieldValue: this.rawVendorProfileData.postcode
     });
     this.vendorProfile.profileDetails.push({
-      iconClass: 'fa-road',
+      iconClass: 'fa-home',
       fieldName: 'Street Address',
       fieldValue: this.rawVendorProfileData.street
     });
     this.vendorProfile.profileDetails.push({
-      iconClass: 'fa-hashtag',
+      iconClass: 'fa-id-badge',
       fieldName: 'Vendor ID',
       fieldValue: this.rawVendorProfileData.vendorId
     });

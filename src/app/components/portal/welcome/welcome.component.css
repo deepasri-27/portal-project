@@ -1,6 +1,6 @@
 .welcome-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--primary-white) 0%, var(--tertiary-color) 100%);
+  background: linear-gradient(135deg, var(--welcome-bg-primary) 0%, var(--welcome-bg-secondary) 100%);
   overflow: hidden;
   position: relative;
 }
@@ -9,7 +9,7 @@
 .hero-section {
   padding: 4rem 2rem;
   text-align: center;
-  background: linear-gradient(135deg, var(--dark-color) 0%, var(--primary-color) 100%);
+  background: linear-gradient(135deg, var(--welcome-hero-primary) 0%, var(--welcome-hero-secondary) 100%);
   color: var(--primary-white);
   position: relative;
   overflow: hidden;
