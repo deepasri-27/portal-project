@@ -48,11 +48,11 @@ export class LoginComponent {
   getPortalImage(): string {
     switch (this.actor.toLowerCase()) {
        case 'customer':
-        return 'assets/images/customer-portal.svg';
+        return 'assets/images/customer.svg';
       case 'vendor':
-        return 'assets/images/vendor-portal.svg';
+        return 'assets/images/vendor.svg';
       case 'employee':
-        return 'assets/images/employee-portal.svg';
+        return 'assets/images/employee.svg';
       default:
         return 'assets/images/kaar-logo.png';
     }

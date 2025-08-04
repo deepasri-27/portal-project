@@ -1,73 +1,54 @@
 /* Main Container */
 .table-wrapper {
-  width: 85vw;
-  max-width: 85vw;
-  margin: 1rem auto;
+  width: 75vw;
+  max-width: 75vw;
+  margin: 0.8rem auto;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.2rem;
   background: var(--primary-white);
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: var(--radius-lg);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
   border: 1px solid var(--border-color);
   color: var(--text-color);
   position: relative;
   overflow: hidden;
 }
 
-.table-wrapper::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-}
+
 
 /* Header Section */
 .table-header {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  margin: 1rem auto 0.5rem auto;
-  width: 85vw;
-  max-width: 85vw;
-  padding: 1.5rem 2rem;
+  gap: 1.2rem;
+  margin: 0.8rem auto 0.4rem auto;
+  width: 75vw;
+  max-width: 75vw;
+  padding: 1.2rem 1.5rem;
   color: var(--text-color);
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 700;
   background: var(--primary-white);
   border-radius: var(--radius-lg);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
   border: 1px solid var(--border-color);
-  position: relative;
   overflow: hidden;
 }
 
-.table-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-}
+
 
 .back-button {
   background: var(--background-light);
   border: 2px solid var(--border-color);
   color: var(--primary-color);
   cursor: pointer;
-  font-size: 1.1rem;
-  padding: 0.75rem;
+  font-size: 1rem;
+  padding: 0.6rem;
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,11 +81,11 @@
 }
 
 .table-title {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: var(--dark-color);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -113,17 +94,17 @@
 
 /* Loading State */
 .table-loader {
-  width: 85vw;
-  max-width: 85vw;
-  margin: 1rem auto;
-  height: 50vh;
+  width: 75vw;
+  max-width: 75vw;
+  margin: 0.8rem auto;
+  height: 45vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, var(--background-light), var(--primary-white));
   border-radius: var(--radius-lg);
   color: var(--text-color);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
   border: 1px solid var(--border-color);
   position: relative;
   overflow: hidden;
@@ -197,26 +178,16 @@
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 1.5rem;
-  padding: 2rem;
+  gap: 1.2rem;
+  padding: 1rem;
   background: linear-gradient(135deg, var(--background-light), var(--primary-white));
   border-radius: var(--radius-lg);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
   border: 1px solid var(--border-color);
   position: relative;
   overflow: hidden;
 }
 
-.filter-bar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-}
 
 .filter-field {
   display: flex;
@@ -424,7 +395,7 @@
 
 .custom-table th,
 .custom-table td {
-  padding: 1rem 1.25rem;
+  padding: 0.8rem 1rem;
   text-align: center;
   border-bottom: 1px solid var(--border-color);
   transition: all var(--transition-fast);
@@ -513,13 +484,13 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  padding: 1.5rem 0;
+  gap: 1.2rem;
+  padding: 1.2rem 0;
   border-top: 1px solid var(--border-color);
   background: linear-gradient(135deg, var(--background-light), var(--primary-white));
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-  margin: 0 -2rem -2rem -2rem;
-  padding: 1.5rem 2rem;
+  margin: 0 -1.5rem -1.5rem -1.5rem;
+  padding: 1.2rem 1.5rem;
 }
 
 .items-per-page {
@@ -639,16 +610,16 @@ button {
 @media (max-width: 1200px) {
   .table-wrapper,
   .table-header {
-    width: 95vw;
-    max-width: 95vw;
+    width: 80vw;
+    max-width: 80vw;
   }
 }
 
 @media (max-width: 768px) {
   .table-wrapper,
   .table-header {
-    width: 98vw;
-    max-width: 98vw;
+    width: 80vw;
+    max-width: 80vw;
     padding: 1rem;
   }
   

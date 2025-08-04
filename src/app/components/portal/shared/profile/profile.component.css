@@ -1,9 +1,9 @@
 .profile-container {
-  max-width: 900px;
-  margin: 80px auto 20px auto; /* Added top margin for fixed nav */
+  max-width: 750px;
+  margin: 70px auto 20px auto; /* Added top margin for fixed nav */
   background: var(--primary-white);
-  border-radius: 16px;
-  box-shadow: 0 8px 32px var(--shadow-color);
+  border-radius: 14px;
+  box-shadow: 0 6px 24px var(--shadow-color);
   overflow: hidden;
   font-family: 'Segoe UI', sans-serif;
   position: relative;
@@ -25,7 +25,7 @@
   align-items: center;
   justify-content: space-between;
   background: linear-gradient(135deg, var(--sidebar-primary) 0%, var(--sidebar-secondary) 100%);
-  padding: 2rem 2.5rem 1.5rem 2.5rem;
+  padding: 1.5rem 2rem 1.2rem 2rem;
   position: relative;
   overflow: hidden;
 }
@@ -44,23 +44,23 @@
 .header-left {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
   position: relative;
   z-index: 2;
 }
 
 .main-icon {
   background: linear-gradient(135deg, var(--primary-white), var(--tertiary-color));
-  border-radius: 20px;
-  width: 80px;
-  height: 80px;
+  border-radius: 16px;
+  width: 70px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   color: var(--primary-color);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  border: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   transition: all var(--transition-medium);
   position: relative;
   overflow: hidden;
@@ -94,12 +94,12 @@
 }
 
 .profile-title {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: var(--primary-white);
   display: flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: 0.6rem;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -107,17 +107,17 @@
   display: inline-block;
   background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
   color: var(--primary-white);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  border-radius: 20px;
-  padding: 0.4rem 1.2rem;
-  margin-left: 0.5rem;
+  border-radius: 16px;
+  padding: 0.3rem 1rem;
+  margin-left: 0.4rem;
   box-shadow: 0 2px 8px rgba(255, 107, 129, 0.3);
 }
 
 .profile-id {
   color: rgba(255, 255, 255, 0.8);
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
@@ -131,10 +131,10 @@
 
 /* Details Section */
 .profile-details {
-  padding: 2rem;
+  padding: 1.5rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.2rem;
   background: linear-gradient(135deg, var(--background-light) 0%, var(--tertiary-color) 100%);
   position: relative;
 }
@@ -153,11 +153,11 @@
 .detail-item {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 0.8rem;
   background: var(--primary-white);
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(44, 83, 100, 0.08);
-  padding: 1.25rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(44, 83, 100, 0.08);
+  padding: 1rem 1.2rem;
   transition: all var(--transition-medium);
   border: 1px solid var(--border-color);
   position: relative;
@@ -188,17 +188,17 @@
 }
 
 .detail-icon {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: var(--primary-color);
-  margin-top: 0.2rem;
+  margin-top: 0.1rem;
   background: linear-gradient(135deg, var(--tertiary-color), var(--background-light));
-  border-radius: 12px;
-  width: 48px;
-  height: 48px;
+  border-radius: 10px;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(99, 136, 174, 0.15);
+  box-shadow: 0 2px 6px rgba(99, 136, 174, 0.15);
   transition: all var(--transition-medium);
 }
 
@@ -215,20 +215,20 @@
 }
 
 .detail-title {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   color: var(--text-light);
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
 }
 
 .detail-value {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--dark-color);
   font-weight: 600;
   word-break: break-word;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 /* Responsive Design */
