@@ -23,18 +23,8 @@ export class EmployeeLeaveRequestComponent implements OnInit {
     {
       filterType: 'type',
       field: 'absenceType',
-      label: 'Leave Type',
-      options: []
-    },
-    {
-      filterType: 'dateRange',
-      field: 'startDate',
-      label: 'Start Date'
-    },
-    {
-      filterType: 'search',
-      field: 'reason',
-      label: 'Search Reason'
+      label: 'Filter By Leave Type',
+      options: ['0300','720']
     }
   ];
 

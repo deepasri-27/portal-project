@@ -22,26 +22,19 @@ export class EmployeePayslipComponent implements OnInit {
   data: EmployeePayslipDataType[] = [];
   tableTitle = "Employee Payslip Data";
   isLoading: boolean = true;
-  filters: FilterType[] = [
-    {
-      filterType: 'type',
-      field: 'position',
-      label: 'Position',
-      options: []
+   filters:FilterType[]=[
+  {
+      filterType: 'search',
+      field: 'companyCode',
+      label: 'Filter by Company Code'
     },
     {
       filterType: 'type',
-      field: 'currency',
-      label: 'Currency',
-      options: []
-    },
-    {
-      filterType: 'type',
-      field: 'payScaleGroup',
-      label: 'Pay Scale Group',
-      options: []
+      field: 'costCenter',
+      label: 'Search By Cost Center',
+      options: ['GEXX-20XX']
     }
-  ];
+]
 
   constructor(
     private payslipService: EmployeePayslipService,
@@ -83,9 +76,9 @@ export class EmployeePayslipComponent implements OnInit {
     const currencies = [...new Set(this.data.map(item => item.currency))].filter(Boolean);
     const payScaleGroups = [...new Set(this.data.map(item => item.payScaleGroup))].filter(Boolean);
 
-    this.filters[0].options = positions;
-    this.filters[1].options = currencies;
-    this.filters[2].options = payScaleGroups;
+    // this.filters[0].options = positions;
+    // this.filters[1].options = currencies;
+    // this.filters[2].options = payScaleGroups;
   }
 
   onDownload(employeeId: string): void {
